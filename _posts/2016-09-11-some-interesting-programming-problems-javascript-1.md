@@ -6,6 +6,7 @@ title: Some interesting programming problems (javascript) [1]
 I have been doing my internship at [Baylor University](http://www.baylor.edu/) at Waco for the past six weeks. And the coming week is the last week of my internship. It has been quite fun to do research here as my boss is very nice and not tough at all. I encounter some really interesting programming challenges during these weeks and here are some of them.
 
 # Re-insert i-th element into an array before/after j-th element
+
 ## Obvious approach
 The most obvious approach would be something like the following:
 
@@ -56,7 +57,9 @@ function insertBefore(arr, i, j){
 
 ### Recursive case
 After figuring out the base case, we have to figure out the recursive case. In the recursive case, we have to make a small step which transform the problem into a slightly smaller problem. In this case, the slightly smaller problem would be:
+
 if `i < j`, `insertBefore(swap(arr, i, i+1), i+1, j)`;
+
 if `i > j`, `insertBefore(swap(arr, i, i-1), i-1, j)`;
 
 Swapping the element forward/backward by one, is an easier problem to solve as it is closer to `j`. 
