@@ -63,6 +63,7 @@ Swapping the element forward/backward by one, is an easier problem to solve as i
 
 ### Final code
 So to combine the base and recursive case, 
+
 ```javascript
 var insertBefore = function(arr, i, j){
   if(i == j || i == j - 1) return arr;
