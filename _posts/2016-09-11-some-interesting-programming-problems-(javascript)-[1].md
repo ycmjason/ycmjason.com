@@ -9,6 +9,7 @@ I have been doing my internship at [Baylor University](http://www.baylor.edu/) a
 
 ### Obvious approach
 The most obvious approach would be something like the following:
+
 &#x60;&#x60;&#x60;javascript
 function insertBefore(arr, i, j){
   if(i &lt; j){
@@ -23,8 +24,8 @@ function insertBefore(arr, i, j){
   }
   return arr;
 }
-
 &#x60;&#x60;&#x60;
+
 To be fair, it is not very bad. But I am not a big fan of external operator. The more &#x60;for-loop&#x60; I see, the more irritated I feel. (despite the fact that it is usually more effective using external &#x60;for-loop&#x60;.)
 
 ### Functional approach
