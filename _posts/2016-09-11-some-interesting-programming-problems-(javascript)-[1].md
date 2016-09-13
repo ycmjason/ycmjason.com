@@ -35,7 +35,9 @@ With a functional approach, I think the problem is solved more elegantly. (Of co
 Just like all the other functional approach, we start with the base case. Base case is the simplest form of the problem which we can write the solution right a way.
 
 `i == j - 1`:
+
 Consider `insertBefore([0, 1, 2, 3, 4, 5], 1, 2)`, `arr[1]` is already before `arr[2]`, so the `[0, 1, 2, 3, 4, 5]` itself is the solution of this problem; Therefore the base case is:
+
 ```javascript
 function insertBefore(arr, i, j){
 	if(i == j - 1) return arr;
@@ -43,9 +45,11 @@ function insertBefore(arr, i, j){
 ```
 
 `i == j`:
+
 Consider `insertBefore([0, 1, 2, 3, 4, 5], 1, 1)`. This case is tricky. Should the solution be `[0, 1, 2, 3, 4, 5]` or `[1, 0, 2, 3, 4, 5]`? `[1, 0, 2, 3, 4, 5]` doesn't really make sense because `arr[1]` would become before `arr[0]` which is not desired; 
 
 Therefore the combined base case would be:
+
 ```javascript
 function insertBefore(arr, i, j){
 	if(i == j || i == j - 1) return arr;
@@ -54,13 +58,16 @@ function insertBefore(arr, i, j){
 
 #### Recursive case
 After figuring out the base case, we have to figure out the recursive case. In the recursive case, we have to make a small step which transform the problem into a slightly smaller problem. In this case, the slightly smaller problem would be:
+
 if `i < j`, `insertBefore(swap(arr, i, i+1), i+1, j)`;
+
 if `i > j`, `insertBefore(swap(arr, i, i-1), i-1, j)`;
 
 Swapping the element forward/backward by one, is an easier problem to solve as it is closer to `j`. 
 
 ##### Final code
 So to combine the base and recursive case, 
+
 ```javascript
 var insertBefore = function(arr, i, j){
   if(i == j || i == j - 1) return arr;
