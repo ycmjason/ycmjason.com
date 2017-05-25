@@ -15,6 +15,7 @@ url: "http://www.ycmjason.com" # the base hostname & protocol for your site
 github_username:  ycmjason
 facebook_username: ycmjason
 twitter_username: ycmjason
+cv: http://cv.ycmjason.com
 
 # Build settings
 markdown: kramdown
