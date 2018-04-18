@@ -1,4 +1,6 @@
+# created by gitignorer
+# profile used: node
 *.sw*
-.jekyll-metadata
-.sass-cache
-_site
+.DS_Store
+node_modules
+npm-debug.log*
