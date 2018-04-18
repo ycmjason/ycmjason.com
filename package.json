@@ -1,0 +1,26 @@
+{
+  "name": "ycmjason.github.io",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ycmjason/ycmjason.github.io.git"
+  },
+  "keywords": [],
+  "author": "Jason Yu <me@ycmjason.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ycmjason/ycmjason.github.io/issues"
+  },
+  "homepage": "https://github.com/ycmjason/ycmjason.github.io#readme",
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "vuepress": "^0.6.0"
+  }
+}
