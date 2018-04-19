@@ -45,6 +45,9 @@ dd {
   width: auto !important;
 }
 
-.sidebar:hover {
-  max-width: $sidebarExpandedWidth;
+
+@media (min-width: $MQNarrow) {
+  .sidebar:hover {
+    max-width: $sidebarExpandedWidth;
+  }
 }
