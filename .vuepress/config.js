@@ -26,7 +26,13 @@ module.exports = {
         '',
         ...generateSideBar('../blog'),
       ],
+      '/cv/': [
+        '',
+      ],
     },
     sidebarDepth: 0,
   },
+  markdown: {
+    config: md => md.use(require('markdown-it-deflist')),
+  }
 };

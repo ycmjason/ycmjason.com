@@ -1,6 +1,50 @@
+// colors
 $accentColor = #2B4570
 $textColor = #444444
 $borderColor = #eaecef
 $codeBgColor = #282c34
 
+// layout
+// $navbarHeight = 3.6rem
+$sidebarWidth = 20rem
+$sidebarExpandedWidth = 346px
 $contentWidth = 800px
+
+// responsive breakpoints
+// $MQNarrow = 959px
+// $MQMobile = 719px
+// $MQMobileNarrow = 419px
+
+dl {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-column-gap: 1rem;
+  grid-row-gap: 0.5rem;
+  padding: 1rem;
+  border: 3px double $borderColor;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0;
+}
+
+.sidebar-link {
+  display: block !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar {
+  transition: max-width 0.25s;
+  max-width: $sidebarWidth;
+  width: auto !important;
+}
+
+.sidebar:hover {
+  max-width: $sidebarExpandedWidth;
+}
