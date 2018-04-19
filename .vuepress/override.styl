@@ -7,7 +7,6 @@ $codeBgColor = #282c34
 // layout
 // $navbarHeight = 3.6rem
 $sidebarWidth = 20rem
-$sidebarExpandedWidth = 346px
 $contentWidth = 800px
 
 // responsive breakpoints
@@ -36,11 +35,10 @@ dd {
   display: block !important;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .sidebar {
-  transition: max-width 0.25s;
+  transition: max-width 0.5s, box-shadow 0.5s;
   max-width: $sidebarWidth;
   min-width: $sidebarWidth;
   width: auto !important;
@@ -48,7 +46,12 @@ dd {
 
 
 @media (min-width: $MQNarrow) {
+  .sidebar {
+    white-space: nowrap;
+  }
+
   .sidebar:hover {
-    max-width: $sidebarExpandedWidth;
+    max-width: 50vw;
+    box-shadow: 1px 0px 10px 5px #eaecef;
   }
 }

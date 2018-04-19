@@ -1,7 +1,36 @@
-const { join, basename } = require('path');
+const { join, basename, relative } = require('path');
+const moment = require('moment');
 const glob = require('glob');
 
-const generateSideBar = dir => glob.sync(join(__dirname, dir, '*.md')).map(p => basename(p, '.md')).filter(n => n !== 'README');
+const generateBlogSideBar = dir => {
+  const structure = {};
+  const files = glob.sync('**/*.md', { cwd: join(__dirname, dir) })
+    .filter(p => basename(p) !== 'README.md')
+    .map(p => {
+      const [year, month, filename] = p.split('/');
+      const day = basename(filename, '.md');
+      return [year, month, day];
+    }).forEach(([year, month, day]) => {
+      structure[year] = { ...structure[year] };
+      structure[year][month] = {
+        ...structure[year][month],
+        [day]: join(dir, year, month, day),
+      };
+    });
+  
+  const years = Object.keys(structure).sort().reverse();
+  return [].concat(...years.map(year => {
+    const months = Object.keys(structure[year]).sort().reverse();
+    return months.map(month => {
+      const days = Object.keys(structure[year][month]).sort().reverse();
+      return {
+        title: moment(year + '-' + month).format('YYYY MMM'),
+        collapsable: !(year + month === Math.max(...years) + Math.max(...months)),
+        children: days.map(day => join(dir, year, month, day)),
+      };
+    });
+  }));
+};
 
 module.exports = {
   title: 'Jason Yu',
@@ -24,7 +53,7 @@ module.exports = {
     sidebar: {
       '/blog/': [
         '',
-        ...generateSideBar('../blog'),
+        ...generateBlogSideBar('../blog'),
       ],
       '/cv/': [
         '',
