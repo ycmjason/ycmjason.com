@@ -11,23 +11,22 @@ module.exports = {
     ['link', { rel: 'icon', href: `/favicon.png` }],
   ],
   themeConfig: {
-    nav: {
-      '/': [
-        {
-          text: 'Blog',
-          link: '/blog/',
-        },
-        {
-          text: 'Curriculum Vitae',
-          link: '/cv/'
-        },
-      ],
-    },
+    nav: [
+      {
+        text: 'Blog',
+        link: '/blog/',
+      },
+      {
+        text: 'Curriculum Vitae',
+        link: '/cv/'
+      },
+    ],
     sidebar: {
       '/blog/': [
         '',
         ...generateSideBar('../blog'),
       ],
     },
+    sidebarDepth: 0,
   },
 };
