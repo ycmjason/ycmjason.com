@@ -1,10 +1,17 @@
 const { join, basename, relative } = require('path');
 const moment = require('moment');
 const glob = require('glob');
+const { readFileSync } = require('fs');
+
+const readTitleFromMd = path => {
+  const match = readFileSync(path, 'utf8').trim().match(/^#(.*)/);
+  if (!match) return;
+  return match[1].trim();
+};
 
 const generateBlogSideBar = dir => {
   const structure = {};
-  const files = glob.sync('**/*.md', { cwd: join(__dirname, dir) })
+  const files = glob.sync('**/*.md', { cwd: join(__dirname, '..', dir) })
     .filter(p => basename(p) !== 'README.md')
     .map(p => {
       const [year, month, filename] = p.split('/');
@@ -24,9 +31,13 @@ const generateBlogSideBar = dir => {
     return months.map(month => {
       const days = Object.keys(structure[year][month]).sort().reverse();
       return {
-        title: moment(year + '-' + month).format('YYYY MMM'),
+        title: moment(`${year}-${month}`).format('YYYY MMM'),
         collapsable: !(year + month === Math.max(...years) + Math.max(...months)),
-        children: days.map(day => join(dir, year, month, day)),
+        children: days.map(day => {
+          const url = join(dir, year, month, day);
+          const date = moment(`${year}-${month}-${day}`).format('DD MMMM YYYY');
+          return [url, date + ' - ' + readTitleFromMd(join(__dirname, '..', url + '.md'))]
+        }),
       };
     });
   }));
@@ -53,7 +64,7 @@ module.exports = {
     sidebar: {
       '/blog/': [
         '',
-        ...generateBlogSideBar('../blog'),
+        ...generateBlogSideBar('/blog'),
       ],
       '/cv/': [
         '',
