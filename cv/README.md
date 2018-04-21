@@ -38,6 +38,69 @@ Qualification
 
 ## Work Experience
 
+### The Hut Group, UK
+
+Years
+: Dec 2017 - Present
+
+Job Title
+: Graduate Software Engineer
+
+Responsibilities
+: - Support and maintain >30 websites owned by The Hut Group
+  - Collaborate with teammates to design and implement solutions
+  - Develop fully-tested frontend/backend components
+  - Deploy and release new versions of the websites
+  - Weekly agile sprint planning and retrospective
+
+Achievements
+: - Hold a weekly session of "JS Club", covering different topics of Javascript, to advocate the **goodness** of JS
+  - Simplify developers' daily development workflow by creating  a watcher which watches for file changes and triggers build correspondingly
+  - Enable mobile devices to access to the website hosted on their local machine by developing a proxy server
+  - Make internal tools more accessible by creating a centeralised command-line interface
+  
+###	Imperial College London
+
+Years
+: 2016 - 2017
+
+Job Title
+: Undergraduate Teaching Assistant
+
+Responsibilities
+: - Taught a weekly tutorial for 8 freshers to discuss logic/maths problems from the course
+  - Marked freshers' logic/maths weekly assignments with appropriate feedback
+
+### Baylor University, Waco, TX, US
+
+Years
+: 2016 July - 2016 Augest
+
+Job Title
+:	Research Assistant under [Dr. David Lin](https://www.ecs.baylor.edu/index.php?id=867332)
+
+Responsibilities
+: - Experimented on [Latent Dirichlet Allocation (LDA)](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation), as a topic model, to explore the effects of preprocessing, e.g. stemming/lemmatization, common words removal, to the resulting topics
+  - Examined the significance of the effects by comparing the topics of the original/generated documents
+
+Achievements
+: - [Developed a webapp which visualize the topics with heat map and charts](https://github.com/ycmjason/topic-visualisation)
+  - [Gave a talk to the MSc Computer Science students about the experience](https://docs.google.com/presentation/d/1gOqzw2jBK5JmMUaw6LyCmDPtl0NSPdRaoZYzbAmItBQ/edit?usp=sharing)
+
+### CityU Apps Lab, Hong Kong
+
+Years
+: 2015 December
+
+Job Title
+: Winter Internship
+
+Responsibilities
+: - Research about mobile app development and relevant technologies
+
+Achievements
+: - [Held a functional programming workshop in Haskell for the employees and the students](https://github.com/ycmjason/haskell_workshop)
+
 ## Open Source Contributions
 
 ## Hobby Projects

@@ -13,7 +13,7 @@ This blog is built with [VuePress](https://vuepress.vuejs.org/). Thanks to [Evan
 
 Here is a list of open source projects that I have created (in order of how proud I am of them):
 
-- [Faviator](https://www.faviator.xyz/)
+- :star: [Faviator](https://www.faviator.xyz/)
 - [gitignorer](https://www.npmjs.com/package/gitignorer)
 - [msg-generator](https://www.npmjs.com/package/msg-generator)
 
@@ -21,6 +21,7 @@ Here is a list of open source projects that I have created (in order of how prou
 
 I have also contributed in multiple open source projects:
 
+- :tada: [VuePress](https://github.com/vuejs/vuepress)
 - [parcel-plugin-markdown](https://github.com/gongpeione/parcel-plugin-markdown)
 - [console-png](https://github.com/aantthony/console-png)
 
@@ -32,13 +33,13 @@ Every developer has their preferences over a couple things. And here is a list o
 This list do not include everything I *know*.
 :::
 
-- [Javscript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Vue.js](https://vuejs.org/)
-- [Node.js](https://nodejs.org/)
-- [Haskell](https://www.haskell.org/)
-- [Vim](https://www.vim.org/)
-- [Parcel](https://parceljs.org/)
-- [Markdown](https://en.wikipedia.org/wiki/Markdown)
-- [tmux](https://github.com/tmux/tmux)
-- [Jest](https://facebook.github.io/jest/)
-- [Mocha](https://mochajs.org/)
+- :two_hearts: [Javscript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- :heart_eyes: [Vue.js](https://vuejs.org/)
+- :sparkling_heart: [Node.js](https://nodejs.org/)
+- :heart: [Haskell](https://www.haskell.org/)
+- :revolving_hearts: [Vim](https://www.vim.org/)
+- :heartbeat: [Parcel](https://parceljs.org/)
+- :heartpulse: [Markdown](https://en.wikipedia.org/wiki/Markdown)
+- :cupid: [tmux](https://github.com/tmux/tmux)
+- :heartpulse: [Jest](https://facebook.github.io/jest/)
+- :purple_heart: [Mocha](https://mochajs.org/)

@@ -17,14 +17,19 @@ $contentWidth = 800px
 dl {
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-column-gap: 1rem;
+  grid-column-gap: 2rem;
   grid-row-gap: 0.5rem;
   padding: 1rem;
   border: 3px double $borderColor;
 }
 
 dt {
+  white-space: nowrap;
   font-weight: bold;
+}
+
+dl ul {
+  margin: 0;
 }
 
 dd {
