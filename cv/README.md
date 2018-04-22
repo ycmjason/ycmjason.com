@@ -4,7 +4,6 @@ sidebarDepth: 2
 # Curriculum Vitae
 
 ## :tipping_hand_man: About Me
-
 Name
 : Jason Yu
 
@@ -12,15 +11,13 @@ Email
 : me@ycmjason.com
 
 Homepage
-: [https://www.ycmjason.com](https://www.ycmjason.com)
+: <Link href="https://www.ycmjason.com"></Link>
 
 Github
-: [https://github.com/ycmjason](https://github.com/ycmjason)
+: <Link href="https://github.com/ycmjason"></Link>
 
 NPM
-: [https://www.npmjs.com/~ycm.jason](https://www.npmjs.com/~ycm.jason)
-
-
+: <Link href="https://www.npmjs.com/~ycm.jason"></Link>
 
 ## :books: Education
 
@@ -54,6 +51,9 @@ Years
 Qualification
 : N/A
 
+Awards
+: - Outstanding performance in Physics and Computing
+  - Outstanding contribution to extra-curricular activities (2 years in a row)
 
 ## :necktie: Work Experience
 
@@ -128,23 +128,60 @@ Published Date
 : Jan 2018
 
 Github
-: https://github.com/faviator
+: <Link href="https://github.com/faviator"></Link>
 
 Homepage
-: [https://www.faviator.xyz/](https://www.faviator.xyz/)
+: <Link href="https://www.faviator.xyz/"></Link>
 
 Features
 : - Generation of svg icons with a simple config
   - Exports the icons to png/jpg
   - An online [playground](https://www.faviator.xyz/playground) which allow real-time tweaking of the config
 
+Technology Used
+: Node.js, Vue.js
+
+### Mahjong Score Calculator
+
+Published Date
+: Nov 2015
+
+Github
+: <Link href="https://github.com/ycmjason/mahjongCalculator"></Link>
+
+Homepage
+: <Link href="http://mahjongcalculator.ycmjason.com/"></Link>
+
+Features
+: - Score tracker for mahjong games
+  - Line chart plotting
+  - Multiplayer real-time update
+
+Technology Used
+: Angular.js, Socket.io, Node.js, Express
+
+### Secret Santa Allocation System
+
+Published Date
+: Nov 2015
+
+Github
+: - <Link href="https://github.com/ycmjason/ssas"></Link>
+  - <Link href="https://github.com/ycmjason/mbssas"></Link> (v1)
+
+Features
+: - Allocate secret santa to each person fairly and randomly.
+  - Sign in with Facebook
+
+Technology Used
+: Angular.js, Angular, Express, MongoDB, Mongoose
 
 ## :rainbow: Open Source Contributions
 
 ### VuePress :sparkles:
 
 Github
-: [https://github.com/vuejs/vuepress](https://github.com/vuejs/vuepress)
+: <Link href="https://github.com/vuejs/vuepress"></Link>
 
 Contributions
 : - [#168](https://github.com/vuejs/vuepress/pull/168) Allow custom repo label or inferred from the repo
@@ -154,7 +191,7 @@ Contributions
 ### parcel-plugin-markdown
 
 Github
-: [https://github.com/gongpeione/parcel-plugin-markdown](https://github.com/gongpeione/parcel-plugin-markdown)
+: <Link href="https://github.com/gongpeione/parcel-plugin-markdown"></Link>
 
 Contributions
 : - [#4](https://github.com/gongpeione/parcel-plugin-markdown/pull/4) Improved building process of HTML by using a method of the super class
@@ -163,7 +200,7 @@ Contributions
 ### console-png
 
 Github
-: [https://github.com/aantthony/console-png](https://github.com/aantthony/console-png)
+: <Link href="https://github.com/aantthony/console-png"></Link>
 
 Contributions
 : [#2](https://github.com/aantthony/console-png/pull/2) Added bin for terminal usage
@@ -193,7 +230,8 @@ Techinical
   Gensim,
   JQuery,
   Java,
-  Linux
+  Linux MongoDB,
+  Mongoose,
   NLTK,
   PHP,
   Prolog,
@@ -223,3 +261,11 @@ Cantonese
 
 Mandarin
 : Proficient :thumbsup: :thumbsup:
+
+<script>
+import Link from './Link.vue';
+
+export default {
+  components: { Link },
+};
+</script>
