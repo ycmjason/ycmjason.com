@@ -4,12 +4,23 @@ npm run build
 
 cd .vuepress/dist
 
-echo "www.ycmjason.com" > CNAME
+echo '{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}' > firebase.json
 
-git init
-git add -A
-git commit -m 'deploy'
+echo '{
+  "projects": {
+    "default": "ycmjason-com"
+  }
+}' > .firebaserc
 
-git push -f git@github.com:ycmjason/ycmjason.github.io.git master
+firebase deploy
 
 cd ../..
