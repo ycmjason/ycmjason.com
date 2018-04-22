@@ -16,11 +16,17 @@ $contentWidth = 800px
 
 dl {
   display: grid;
-  grid-template-columns: min-content 1fr;
   grid-column-gap: 2rem;
   grid-row-gap: 0.5rem;
   padding: 1rem;
   border: 3px double $borderColor;
+  overflow-x: auto;
+}
+
+@media (min-width: $MQMobile) {
+  dl {
+    grid-template-columns: min-content 1fr;
+  }
 }
 
 dt {
@@ -28,29 +34,29 @@ dt {
   font-weight: bold;
 }
 
-dl ul {
-  margin: 0;
-}
-
 dd {
   margin: 0;
 }
 
-.sidebar-link {
-  display: block !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
+dd ul {
+  margin: 0;
 }
-
-.sidebar {
-  transition: max-width 0.5s, box-shadow 0.5s;
-  max-width: $sidebarWidth;
-  min-width: $sidebarWidth;
-  width: auto !important;
-}
-
 
 @media (min-width: $MQNarrow) {
+  .sidebar {
+    transition: max-width 0.5s, box-shadow 0.5s;
+    max-width: $sidebarWidth;
+    min-width: $sidebarWidth;
+    width: auto !important;
+  }
+
+
+  .sidebar-link {
+    display: block !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .sidebar {
     white-space: nowrap;
   }

@@ -1,5 +1,5 @@
 ---
-sidebarDepth: 1
+sidebarDepth: 2
 ---
 # Curriculum Vitae (WIP)
 
@@ -54,10 +54,10 @@ Responsibilities
   - Weekly agile sprint planning and retrospective
 
 Achievements
-: - Hold a weekly session of "JS Club", covering different topics of Javascript, to advocate the **goodness** of JS
-  - Simplify developers' daily development workflow by creating  a watcher which watches for file changes and triggers build correspondingly
-  - Enable mobile devices to access to the website hosted on their local machine by developing a proxy server
-  - Make internal tools more accessible by creating a centeralised command-line interface
+: - :two_hearts: Hold a weekly session of "JS Club", covering different topics of Javascript, to advocate the **goodness** of JS
+  - :eye: Simplify developers' daily development workflow by creating  a watcher which watches for file changes and triggers build correspondingly
+  - :iphone: Enable mobile devices to access to the website hosted on their local machine by developing a proxy server
+  - :hammer_and_wrench: Make internal tools more accessible by creating a centeralised command-line interface
   
 ###	Imperial College London
 
@@ -84,8 +84,8 @@ Responsibilities
   - Examined the significance of the effects by comparing the topics of the original/generated documents
 
 Achievements
-: - [Developed a webapp which visualize the topics with heat map and charts](https://github.com/ycmjason/topic-visualisation)
-  - [Gave a talk to the MSc Computer Science students about the experience](https://docs.google.com/presentation/d/1gOqzw2jBK5JmMUaw6LyCmDPtl0NSPdRaoZYzbAmItBQ/edit?usp=sharing)
+: - Developed a [webapp](https://github.com/ycmjason/topic-visualisation) which visualize the topics with heat map and charts
+  - [Shared](https://docs.google.com/presentation/d/1gOqzw2jBK5JmMUaw6LyCmDPtl0NSPdRaoZYzbAmItBQ/edit?usp=sharing) with a group of MSc Computer Science students about the experience
 
 ### CityU Apps Lab, Hong Kong
 
@@ -99,7 +99,7 @@ Responsibilities
 : - Research about mobile app development and relevant technologies
 
 Achievements
-: - [Held a functional programming workshop in Haskell for the employees and the students](https://github.com/ycmjason/haskell_workshop)
+: - Held a [functional programming workshop](https://github.com/ycmjason/haskell_workshop) in Haskell for the employees and the students
 
 ## Open Source Contributions
 
