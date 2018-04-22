@@ -3,7 +3,7 @@ sidebarDepth: 2
 ---
 # Curriculum Vitae
 
-## About Me
+## :tipping_hand_man: About Me
 
 Name
 : Jason Yu
@@ -22,9 +22,9 @@ NPM
 
 
 
-## Education
+## :books: Education
 
-### Imperial College London
+### Imperial College London :sparkles:
 
 Years
 : 2014 - 2017
@@ -55,9 +55,9 @@ Qualification
 : N/A
 
 
-## Work Experience
+## :necktie: Work Experience
 
-### The Hut Group, UK
+### The Hut Group, UK :sparkles:
 
 Years
 : Dec 2017 - Present
@@ -120,9 +120,9 @@ Responsibilities
 Achievements
 : - Held a [functional programming workshop](https://github.com/ycmjason/haskell_workshop) in Haskell for the employees and the students
 
-## Hobby Projects
+## :bulb: Hobby Projects
 
-### Faviator
+### Faviator :sparkles:
 
 Published Date
 : Jan 2018
@@ -139,9 +139,9 @@ Features
   - An online [playground](https://www.faviator.xyz/playground) which allow real-time tweaking of the config
 
 
-## Open Source Contributions
+## :rainbow: Open Source Contributions
 
-### VuePress
+### VuePress :sparkles:
 
 Github
 : [https://github.com/vuejs/vuepress](https://github.com/vuejs/vuepress)
@@ -160,7 +160,7 @@ Contributions
 : - [#4](https://github.com/gongpeione/parcel-plugin-markdown/pull/4) Improved building process of HTML by using a method of the super class
   - [#3](https://github.com/gongpeione/parcel-plugin-markdown/pull/3) Removed unused dependencies and imports
 
-### console-png
+### console-png
 
 Github
 : [https://github.com/aantthony/console-png](https://github.com/aantthony/console-png)
@@ -168,4 +168,58 @@ Github
 Contributions
 : [#2](https://github.com/aantthony/console-png/pull/2) Added bin for terminal usage
 
-## Skills and Languages
+## :crossed_swords: Skills and Interests
+
+Techinical
+: My favorite stuff:
+  - Javscript  :two_hearts: :two_hearts: :two_hearts:
+  - Vue.js :kissing_heart: :kissing_heart: :kissing_heart:
+  - Node.js :thumbsup: :thumbsup: :thumbsup:
+  - Haskell
+  - Vim
+  - Parcel
+  - Markdown
+  - tmux
+  - Jest
+  - VuePress
+  - Mocha
+
+  Other:
+  Angular,
+  Angular.js,
+  Bash,
+  C++,
+  C,
+  Gensim,
+  JQuery,
+  Java,
+  Linux
+  NLTK,
+  PHP,
+  Prolog,
+  PyQuery,
+  Python,
+  React,
+  SQL,
+  SocketIO,
+  TypeScript,
+  Webpack,
+  require.js...
+
+Musical
+: Singing, A capella, Guitar, Piano, Beatboxing, Song Writting / Arraging / Recording
+
+Other
+: Swimming, Wine Tasting, Cooking, Sketching
+
+
+## :speech_balloon: Languages
+
+English
+: Fluent :thumbsup: :thumbsup: :thumbsup:
+
+Cantonese
+: Native :thumbsup: :thumbsup: :thumbsup:
+
+Mandarin
+: Proficient :thumbsup: :thumbsup:

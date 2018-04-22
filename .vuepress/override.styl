@@ -16,11 +16,13 @@ $contentWidth = 800px
 
 dl {
   display: grid;
+  align-items: stretch;
   grid-column-gap: 2rem;
   grid-row-gap: 0.5rem;
   padding: 1rem;
   border: 3px double $borderColor;
   overflow-x: auto;
+  line-height: 1.7;
 }
 
 @media (min-width: $MQMobile) {
@@ -31,11 +33,19 @@ dl {
 
 dt {
   white-space: nowrap;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 dd {
   margin: 0;
+}
+
+dd p:first-of-type {
+  margin-top: 0;
+}
+
+dd p:last-of-type {
+  margin-bottom: 0;
 }
 
 dd ul {
