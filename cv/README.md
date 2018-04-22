@@ -1,7 +1,26 @@
 ---
 sidebarDepth: 2
 ---
-# Curriculum Vitae (WIP)
+# Curriculum Vitae
+
+## About Me
+
+Name
+: Jason Yu
+
+Email
+: me@ycmjason.com
+
+Homepage
+: [https://www.ycmjason.com](https://www.ycmjason.com)
+
+Github
+: [https://github.com/ycmjason](https://github.com/ycmjason)
+
+NPM
+: [https://www.npmjs.com/~ycm.jason](https://www.npmjs.com/~ycm.jason)
+
+
 
 ## Education
 
@@ -58,7 +77,7 @@ Achievements
   - :eye: Simplify developers' daily development workflow by creating  a watcher which watches for file changes and triggers build correspondingly
   - :iphone: Enable mobile devices to access to the website hosted on their local machine by developing a proxy server
   - :hammer_and_wrench: Make internal tools more accessible by creating a centeralised command-line interface
-  
+
 ###	Imperial College London
 
 Years
@@ -101,8 +120,52 @@ Responsibilities
 Achievements
 : - Held a [functional programming workshop](https://github.com/ycmjason/haskell_workshop) in Haskell for the employees and the students
 
+## Hobby Projects
+
+### Faviator
+
+Published Date
+: Jan 2018
+
+Github
+: https://github.com/faviator
+
+Homepage
+: [https://www.faviator.xyz/](https://www.faviator.xyz/)
+
+Features
+: - Generation of svg icons with a simple config
+  - Exports the icons to png/jpg
+  - An online [playground](https://www.faviator.xyz/playground) which allow real-time tweaking of the config
+
+
 ## Open Source Contributions
 
-## Hobby Projects
+### VuePress
+
+Github
+: [https://github.com/vuejs/vuepress](https://github.com/vuejs/vuepress)
+
+Contributions
+: - [#168](https://github.com/vuejs/vuepress/pull/168) Allow custom repo label or inferred from the repo
+  - [#173](https://github.com/vuejs/vuepress/pull/173) Improved instructions on documentation regarding github page deployment
+
+
+### parcel-plugin-markdown
+
+Github
+: [https://github.com/gongpeione/parcel-plugin-markdown](https://github.com/gongpeione/parcel-plugin-markdown)
+
+Contributions
+: - [#4](https://github.com/gongpeione/parcel-plugin-markdown/pull/4) Improved building process of HTML by using a method of the super class
+  - [#3](https://github.com/gongpeione/parcel-plugin-markdown/pull/3) Removed unused dependencies and imports
+
+### console-png
+
+Github
+: [https://github.com/aantthony/console-png](https://github.com/aantthony/console-png)
+
+Contributions
+: [#2](https://github.com/aantthony/console-png/pull/2) Added bin for terminal usage
 
 ## Skills and Languages
