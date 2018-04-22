@@ -26,13 +26,13 @@ const generateBlogSideBar = dir => {
     });
   
   const years = Object.keys(structure).sort().reverse();
-  return [].concat(...years.map(year => {
+  const recentYear = (year => {
     const months = Object.keys(structure[year]).sort().reverse();
     return months.map(month => {
       const days = Object.keys(structure[year][month]).sort().reverse();
       return {
         title: moment(`${year}-${month}`).format('YYYY MMM'),
-        collapsable: !(year == Math.max(...years)),
+        collapsable: false,
         children: days.map(day => {
           const url = join(dir, year, month, day);
           const date = moment(`${year}-${month}-${day}`).format('DD MMMM YYYY');
@@ -40,7 +40,23 @@ const generateBlogSideBar = dir => {
         }),
       };
     });
-  }));
+  })(years[0]);
+
+  return [...recentYear, ...years.slice(1).map(year => {
+    const months = Object.keys(structure[year]).sort().reverse();
+    return {
+      title: year,
+      collapsable: true,
+      children: [].concat(...months.map(month => {
+        const days = Object.keys(structure[year][month]).sort().reverse();
+        return days.map(day => {
+          const url = join(dir, year, month, day);
+          const date = moment(`${year}-${month}-${day}`).format('DD MMMM YYYY');
+          return [url, date + ' - ' + readTitleFromMd(join(__dirname, '..', url + '.md'))]
+        });
+      }))
+    };
+  })];
 };
 
 module.exports = {
