@@ -32,7 +32,7 @@ const generateBlogSideBar = dir => {
       const days = Object.keys(structure[year][month]).sort().reverse();
       return {
         title: moment(`${year}-${month}`).format('YYYY MMM'),
-        collapsable: !(year + month === Math.max(...years) + Math.max(...months)),
+        collapsable: !(year == Math.max(...years)),
         children: days.map(day => {
           const url = join(dir, year, month, day);
           const date = moment(`${year}-${month}-${day}`).format('DD MMMM YYYY');
