@@ -4,7 +4,9 @@ const glob = require('glob');
 const { readFileSync } = require('fs');
 
 const readTitleFromMd = path => {
-  const match = readFileSync(path, 'utf8').trim().match(/^#(.*)/);
+  const lines = readFileSync(path, 'utf8').split('\n').map(l => l.trim());
+  const headerLine = lines.find(l => /^#[^#].*$/.test(l));
+  const match = headerLine.match(/^#(.*)/);
   if (!match) return;
   return match[1].trim();
 };
