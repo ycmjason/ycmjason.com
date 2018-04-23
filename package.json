@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build",
-    "deploy": "./deploy.sh",
+    "deploy": "npm run build && firebase deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ycmjason/ycmjason.github.io#readme",
   "devDependencies": {
+    "firebase-tools": "^3.18.4",
     "glob": "^7.1.2",
     "vuepress": "^0.7.0"
   },
