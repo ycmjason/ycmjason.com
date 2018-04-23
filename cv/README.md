@@ -183,9 +183,14 @@ Technology Used
 Github
 : <Link href="https://github.com/vuejs/vuepress"></Link>
 
+Homepage
+: <Link href="https://vuepress.vuejs.org/"></Link>
+
 Contributions
-: - [#168](https://github.com/vuejs/vuepress/pull/168) Allow custom repo label or inferred from the repo
-  - [#173](https://github.com/vuejs/vuepress/pull/173) Improved instructions on documentation regarding github page deployment
+: - [#206](https://github.com/vuejs/vuepress/pull/206) Fix emoji not showing on sidebar
+  - [#212](https://github.com/vuejs/vuepress/pull/212) Improved mobile UX on sidebar
+  - [#168](https://github.com/vuejs/vuepress/pull/168) Allow custom repo label or inferred from the repo
+  - [#148](https://github.com/vuejs/vuepress/pull/148), [#173](https://github.com/vuejs/vuepress/pull/173), [#213](https://github.com/vuejs/vuepress/pull/213) Improved instructions on documentation
 
 
 ### parcel-plugin-markdown
