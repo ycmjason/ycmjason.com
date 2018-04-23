@@ -63,7 +63,7 @@ const generateBlogSideBar = dir => {
 
 module.exports = {
   title: 'Jason Yu',
-  description: 'A passionate real-life problem solver and musician.',
+  description: 'Jason Yu is a passionate real-life problem solver and musician. Creator of Faviator. Like creating hobby projects to simplify daily life. Has a passion for Javascript and other technologies.',
   ga: 'UA-113352609-1',
   head: [
     ['link', { rel: 'icon', href: `/favicon.png` }],
