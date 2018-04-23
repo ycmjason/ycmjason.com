@@ -23,7 +23,7 @@
   "devDependencies": {
     "firebase-tools": "^3.18.4",
     "glob": "^7.1.2",
-    "vuepress": "^0.8.0"
+    "vuepress": "^0.8.1"
   },
   "dependencies": {
     "markdown-it-deflist": "^2.0.3",
