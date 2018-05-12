@@ -78,6 +78,10 @@ module.exports = {
         text: 'Curriculum Vitae',
         link: '/cv/'
       },
+      {
+        text: 'Github',
+        link: 'https://github.com/ycmjason'
+      },
     ],
     sidebar: {
       '/blog/': [
