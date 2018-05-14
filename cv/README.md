@@ -3,7 +3,7 @@ sidebarDepth: 2
 ---
 # Curriculum Vitae
 
-## :tipping_hand_man: About Me
+## :prince: About Me
 Name
 : Jason Yu
 
