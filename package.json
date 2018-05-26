@@ -1,5 +1,5 @@
 {
-  "name": "ycmjason.github.io",
+  "name": "ycmjason.com",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
@@ -25,10 +25,9 @@
     "faviator": "^1.1.1",
     "firebase-tools": "^3.18.5",
     "glob": "^7.1.2",
-    "vuepress": "^0.9.0",
     "markdown-it-deflist": "^2.0.3",
     "moment": "^2.22.1",
-    "webpack": "^4.8.3"
+    "vuepress": "^0.10.0"
   },
   "dependencies": {}
 }
