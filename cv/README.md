@@ -1,7 +1,11 @@
 ---
+pageClass: cv
 sidebarDepth: 2
 ---
+
 # Curriculum Vitae
+
+<blockquote class="print-only"><p>See the full version at https://www.ycmjason.com/cv</p></blockquote>
 
 ## :prince: About Me
 Name
@@ -274,3 +278,44 @@ export default {
   components: { Link },
 };
 </script>
+
+<style lang="scss">
+.cv {
+  .print-only {
+    display: none;
+  }
+
+  @media print {
+    .navbar {
+      display: none;
+    }
+
+    .content, .page {
+      padding-bottom: 0 !important;
+    }
+
+    .print-only {
+      display: block;
+    }
+
+    .header-anchor {
+      display: none;
+    }
+
+    dl {
+      grid-template-columns: min-content 1fr;
+    }
+
+    h1#curriculum-vitae {
+      padding-top: 0;
+      margin-bottom: 0;
+    }
+
+    h3#bellerbys-college-brighton, h3#st-paul-s-college-hong-kong, h3#console-png {
+      &, & + dl {
+        display: none;
+      }
+    }
+  }
+}
+</style>
