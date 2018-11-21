@@ -94,6 +94,7 @@ module.exports = {
     sidebarDepth: 0,
   },
   extendMarkdown (md) {
+    md.set({ linkify: true });
     md.use(require('markdown-it-deflist'));
   },
   plugins: [

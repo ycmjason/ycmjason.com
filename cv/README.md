@@ -15,17 +15,17 @@ Email
 : me@ycmjason.com
 
 Homepage
-: <Link href="https://www.ycmjason.com"></Link>
+: https://www.ycmjason.com
 
 Github
-: <Link href="https://github.com/ycmjason"></Link>
+: https://github.com/ycmjason
 
 NPM
-: <Link href="https://www.npmjs.com/~ycm.jason"></Link>
+: https://www.npmjs.com/~ycm.jason
 
 ## :books: Education
 
-### Imperial College London :sparkles:
+### Imperial College London
 
 Years
 : 2014 - 2017
@@ -61,7 +61,7 @@ Awards
 
 ## :necktie: Work Experience
 
-### The Hut Group, UK :sparkles:
+### The Hut Group, UK
 
 Years
 : Dec 2017 - Present
@@ -126,16 +126,63 @@ Achievements
 
 ## :bulb: Hobby Projects
 
-### Faviator :sparkles:
+:sparkles:: actively maintaining
 
-Published Date
-: Jan 2018
+### Secret Santa Allocation System 2018 :sparkles:
 
-Github
-: <Link href="https://github.com/faviator"></Link>
+A website for secret santa allocation.
+
+Publish Date
+: Nov 2018
 
 Homepage
-: <Link href="https://www.faviator.xyz/"></Link>
+: https://ssas.ycmjason.com/
+
+Github
+: https://github.com/ycmjason/ssas-2018
+
+Features
+: - Allocate secret santa to each person fairly and randomly.
+  - Sign in with Facebook
+
+Technology Used
+: Vue.js, Firebase Auth, Firestore
+
+### Vue.js 30 (WIP) :sparkles:
+
+A on-going project to convert JS30 by WesBos to Vue.js verison.
+
+Start Date
+: Sep 2018
+
+Github
+: https://github.com/ycmjason/vuejs30
+
+### svg-to-img :sparkles:
+
+Publish Date
+: Jul 2018
+
+Github
+: https://github.com/ycmjason/svg-to-img
+
+Features
+: - An svg to png/jpeg converter library that works on both browser and Node.js
+  - Use techniques like HiDPI Canvas and prefetching SVG ([see here](/blog/2018/07/02.html))
+
+Technology Used
+: Javascript
+
+### Faviator :sparkles:
+
+Publish Date
+: Jan 2018
+
+Homepage
+: https://www.faviator.xyz/
+
+Github
+: https://github.com/faviator
 
 Features
 : - Generation of svg icons with a simple config
@@ -147,14 +194,14 @@ Technology Used
 
 ### Mahjong Score Calculator
 
-Published Date
+Publish Date
 : Nov 2015
 
-Github
-: <Link href="https://github.com/ycmjason/mahjongCalculator"></Link>
-
 Homepage
-: <Link href="http://mahjongcalculator.ycmjason.com/"></Link>
+: http://mahjongcalculator.ycmjason.com/
+
+Github
+: https://github.com/ycmjason/mahjongCalculator
 
 Features
 : - Score tracker for mahjong games
@@ -164,14 +211,17 @@ Features
 Technology Used
 : Angular.js, Socket.io, Node.js, Express
 
-### Secret Santa Allocation System
+### Secret Santa Allocation System (2015 and 2016 versions)
 
-Published Date
-: Nov 2015
+Publish Date
+: Nov 2015, Nov 2016
+
+Homepage
+: They are replaced by their successor [ssas-2018](#secret-santa-allocation-system-2018).
 
 Github
-: - <Link href="https://github.com/ycmjason/ssas"></Link>
-  - <Link href="https://github.com/ycmjason/mbssas"></Link> (v1)
+: - https://github.com/ycmjason/ssas (2015)
+  - https://github.com/ycmjason/mbssas (2016)
 
 Features
 : - Allocate secret santa to each person fairly and randomly.
@@ -185,10 +235,10 @@ Technology Used
 ### VuePress :sparkles:
 
 Github
-: <Link href="https://github.com/vuejs/vuepress"></Link>
+: https://github.com/vuejs/vuepress
 
 Homepage
-: <Link href="https://vuepress.vuejs.org/"></Link>
+: https://vuepress.vuejs.org/
 
 Contributions
 : - [#206](https://github.com/vuejs/vuepress/pull/206) Fix emoji not showing on sidebar
@@ -200,7 +250,7 @@ Contributions
 ### parcel-plugin-markdown
 
 Github
-: <Link href="https://github.com/gongpeione/parcel-plugin-markdown"></Link>
+: https://github.com/gongpeione/parcel-plugin-markdown
 
 Contributions
 : - [#4](https://github.com/gongpeione/parcel-plugin-markdown/pull/4) Improved building process of HTML by using a method of the super class
@@ -209,7 +259,7 @@ Contributions
 ### console-png
 
 Github
-: <Link href="https://github.com/aantthony/console-png"></Link>
+: https://github.com/aantthony/console-png
 
 Contributions
 : [#2](https://github.com/aantthony/console-png/pull/2) Added bin for terminal usage
@@ -270,14 +320,6 @@ Cantonese
 
 Mandarin
 : Proficient :thumbsup: :thumbsup:
-
-<script>
-import Link from './Link.vue';
-
-export default {
-  components: { Link },
-};
-</script>
 
 <style lang="scss">
 .cv {
