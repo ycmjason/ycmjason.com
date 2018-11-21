@@ -92,6 +92,7 @@ module.exports = {
       ],
     },
     sidebarDepth: 0,
+    lastUpdated: true,
   },
   extendMarkdown (md) {
     md.set({ linkify: true });
