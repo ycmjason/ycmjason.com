@@ -64,7 +64,6 @@ const generateBlogSideBar = dir => {
 module.exports = {
   title: 'Jason Yu',
   description: 'Jason Yu is a passionate real-life problem solver and musician. Has a passion for Javascript and other technologies.',
-  ga: 'UA-113352609-1',
   head: [
     ['link', { rel: 'icon', href: `/favicon.png` }],
   ],
@@ -94,7 +93,13 @@ module.exports = {
     },
     sidebarDepth: 0,
   },
-  markdown: {
-    config: md => md.use(require('markdown-it-deflist')),
-  }
+  extendMarkdown (md) {
+    md.use(require('markdown-it-deflist'));
+  },
+  plugins: [
+    [
+      '@vuepress/google-analytics',
+      { ga: 'UA-113352609-1' },
+    ],
+  ],
 };

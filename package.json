@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "ycmjason.com",
   "version": "0.1.0",
   "description": "",
@@ -23,13 +24,14 @@
   "homepage": "https://github.com/ycmjason/ycmjason.github.io#readme",
   "devDependencies": {
     "faviator": "^1.2.0",
-    "firebase-tools": "^4.0.3",
+    "firebase-tools": "^6.1.1",
     "glob": "^7.1.2",
     "markdown-it-deflist": "^2.0.3",
     "moment": "^2.22.2",
     "node-sass": "^4.9.3",
-    "sass-loader": "^7.1.0",
-    "vuepress": "^0.14.1"
+    "sass-loader": "^7.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vuepress": "^1.0.0-alpha.23"
+  }
 }
