@@ -328,7 +328,9 @@ Mandarin
   }
 
   @media print {
-    .navbar {
+    .navbar,
+    .page-edit,
+    .header-anchor {
       display: none;
     }
 
@@ -338,10 +340,6 @@ Mandarin
 
     .print-only {
       display: block;
-    }
-
-    .header-anchor {
-      display: none;
     }
 
     dl {
