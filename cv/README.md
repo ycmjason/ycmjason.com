@@ -61,10 +61,29 @@ Awards
 
 ## :necktie: Work Experience
 
+### Attest Technologies Limited, UK
+
+Years
+: Mar 2017 - Present
+
+Job Title
+: Frontend Engineer
+
+Responsibilities
+: - Develop frontend solutions using Vue.js and Typescript
+  - Design and implement solutions with the squad
+  - Develop fully-tested frontend components
+  - Frequent deployment of the products
+  - Biweekly agile sprint planning and retrospective
+
+Achievements
+: - :crayon: Implementeted a module using Dikjstra algorithm (with a small custom tweak) which can draw svg lines connecting two elements avoiding obstacles.
+  - :monorail: Migrate vanilla Typescript app to Vue.js + Typescript.
+
 ### The Hut Group, UK
 
 Years
-: Dec 2017 - Present
+: Dec 2017 - Feb 2018
 
 Job Title
 : Graduate Software Engineer
@@ -74,13 +93,12 @@ Responsibilities
   - Collaborate with teammates to design and implement solutions
   - Develop fully-tested frontend/backend components
   - Deploy and release new versions of the websites
-  - Weekly agile sprint planning and retrospective
 
 Achievements
-: - :two_hearts: Hold a weekly session of "JS Club", covering different topics of Javascript, to advocate the **goodness** of JS
-  - :eye: Simplify developers' daily development workflow by creating  a watcher which watches for file changes and triggers build correspondingly
-  - :iphone: Enable mobile devices to access to the website hosted on their local machine by developing a proxy server
-  - :hammer_and_wrench: Make internal tools more accessible by creating a centeralised command-line interface
+: - Hold a weekly session of "JS Club", covering different topics of Javascript, to advocate the **goodness** of JS
+  - Simplify developers' daily development workflow by creating  a watcher which watches for file changes and triggers build correspondingly
+  - Enable mobile devices to access to the website hosted on their local machine by developing a proxy server
+  - Make internal tools more accessible by creating a centeralised command-line interface
 
 ###	Imperial College London
 
@@ -128,6 +146,22 @@ Achievements
 
 :sparkles:: actively maintaining
 
+### Perfect Colour :sparkles:
+
+A game that test your ability to mix RGB given a colour.
+
+Publish Date
+: Aug 2019
+
+Homepage
+: https://ycmjason.github.io/perfect-colour/
+
+Github
+: https://github.com/ycmjason/perfect-colour
+
+Technology Used
+: Vue.js, @vue/composition-api, Typescript
+
 ### Secret Santa Allocation System 2018 :sparkles:
 
 A website for secret santa allocation.
@@ -143,20 +177,10 @@ Github
 
 Features
 : - Allocate secret santa to each person fairly and randomly.
-  - Sign in with Facebook
+  - Sign in with Google/Facebook
 
 Technology Used
 : Vue.js, Firebase Auth, Firestore
-
-### Vue.js 30 (WIP) :sparkles:
-
-A on-going project to convert JS30 by WesBos to Vue.js verison.
-
-Start Date
-: Sep 2018
-
-Github
-: https://github.com/ycmjason/vuejs30
 
 ### svg-to-img :sparkles:
 
