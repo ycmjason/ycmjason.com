@@ -6,3 +6,8 @@ node_modules
 npm-debug.log*
 .vuepress/dist
 .firebase
+.cache
+.temp
+.env
+dist
+*.log
