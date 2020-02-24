@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>String.prototype.replace asynchronously? - YCM Jason</title><meta name="gridsome:hash" content="875795a6c03d41c238ecce61ddda1dea02e56ed5"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.13"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="Jason loves solving problems. And he plays music."><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="152x152" href="/assets/static/favicon.62d22cb.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/static/favicon.1539b60.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="167x167" href="/assets/static/favicon.dc0cdc5.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/static/favicon.7b22250.fc1e89df36d8722b28a19d261954e6a2.png"><link rel="preload" href="/assets/css/0.styles.846a3092.css" as="style"><link rel="preload" href="/assets/js/app.4670105f.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--dev-to-post-vue.c700b725.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.47322397.js"><link rel="prefetch" href="/assets/js/page--src--pages--articles-vue.1ef8fc1e.js"><link rel="prefetch" href="/assets/js/page--src--pages--cv-vue.14744004.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.f2d50720.js"><link rel="prefetch" href="/assets/js/vendors~page--src--pages--articles-vue.e2b0e5d6.js"><link rel="stylesheet" href="/assets/css/0.styles.846a3092.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <div data-server-rendered="true" id="app" class="layout"><a href="https://github.com/ycmjason/ycmjason.com" aria-label="View source on GitHub" class="github-corner" data-v-03ac3be2><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" data-v-03ac3be2><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" data-v-03ac3be2></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" class="octo-arm" style="transform-origin: 130px 106px;" data-v-03ac3be2></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body" data-v-03ac3be2></path></svg></a><header class="header"><strong class="site-name">YCM Jason</strong><nav class="nav"><a href="/" class="nav__link active">Home</a><a href="/articles/" class="nav__link">Articles</a><a href="/cv/" class="nav__link">CV</a><a href="https://github.com/ycmjason" target="_blank" rel="noopener" class="nav__link">Github</a></nav></header><div class="markdown-body"><h1>String.prototype.replace asynchronously?</h1><div><p><em>Original post: <a href="https://www.ycmjason.com/blog/2018/04/28.html" target="_blank" rel="noopener noreferrer">https://www.ycmjason.com/blog/2018/04/28.html<OutboundLink/></a></em></p>
+<blockquote>
+<p>this article assumes basic knowledge of RegExp.</p>
+</blockquote>
+<h2 id="background"><a class="header-anchor" href="#background">#</a> Background</h2>
+<p>I was working with <a href="https://github.com/vuejs/vuepress" target="_blank" rel="noopener noreferrer">vuepress<OutboundLink/></a> last week and I realise I want to be able to break my very long markdown into partials. So I raised this <a href="https://github.com/vuejs/vuepress/issues/222" target="_blank" rel="noopener noreferrer">issue<OutboundLink/></a>. And the legend, Evan You, suggested to use <code>&lt;!-- include ./sectionA.md --&gt;</code>. Then I picked up his advise and started digging into the code of vuepress.</p>
+<h3 id="string-prototype-replace"><a class="header-anchor" href="#string-prototype-replace">#</a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank" rel="noopener noreferrer">String.prototype.replace<OutboundLink/></a></h3>
+<p>Before I explain how I solved the problem, I would like to make sure we are all on the same page. My solution is based on <code>String.prototype.replace</code> function which I will very briefly explain how this function works. This function takes in two arguments:</p>
+<ol>
+<li>What to replace (RegExp | String)</li>
+<li>What to replace with (String | Function)</li>
+</ol>
+<h4 id="string-prototype-replace-string-string"><a class="header-anchor" href="#string-prototype-replace-string-string">#</a> String.prototype.replace(<em>String</em>, <em>String</em>)</h4>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'I am very happy, happy, happy.'</span><span class="token punctuation">;</span>
+str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'happy'</span><span class="token punctuation">,</span> <span class="token string">'sad'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// I am very sad, happy, happy.</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>The above example shows how we could replace a word in a string. Notice that only the first occurrence of <code>happy</code> is replaced by <code>sad</code>. This behaviour is similar to when you pass in a RegExp without global flag.</p>
+<h4 id="string-prototype-replace-string-function"><a class="header-anchor" href="#string-prototype-replace-string-function">#</a> String.prototype.replace(<em>String</em>, <em>Function</em>)</h4>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'I am very happy, happy, happy.'</span><span class="token punctuation">;</span>
+str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'happy'</span><span class="token punctuation">,</span> <span class="token parameter">word</span> <span class="token operator">=></span> <span class="token string">'not '</span> <span class="token operator">+</span> word<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ^ I am very not happy, happy, happy.</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>You could retrieve the matched word by passing in a replacer function. The value returned from the replacer function would be used to replace the <code>word</code>.</p>
+<p>This use case is rare and probably not very useful as you already know the targeting word. You could simply do <code>str.replace('happy', 'not happy')</code> to have the same effect.</p>
+<h4 id="string-prototype-replace-regexp-string"><a class="header-anchor" href="#string-prototype-replace-regexp-string">#</a> String.prototype.replace(<em>RegExp</em>, <em>String</em>)</h4>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'I am very happyyyyy, happy, happy.'</span><span class="token punctuation">;</span>
+str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/happ(y+)/</span><span class="token punctuation">,</span> <span class="token string">'sleep$1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// I am very sleepyyyyy, happy, happy.</span>
+str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/happ(y+)/g</span><span class="token punctuation">,</span> <span class="token string">'sleep$1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// I am very sleepyyyyy, sleepy, sleepy.</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>Should be fairly straight forward. Two things to note:</p>
+<ol>
+<li><code>/happ(y+)/</code> matches &quot;happy&quot; and all the &quot;y&quot;s that come after it.</li>
+<li><code>$1</code> will be replaced by whatever is matched in the groups <code>()</code> of the RegExp. You can have more than one groups and simply use <code>$2</code>, <code>$3</code>, <code>$4</code> as their placeholders.</li>
+</ol>
+<h4 id="string-prototype-replace-regexp-function"><a class="header-anchor" href="#string-prototype-replace-regexp-function">#</a> String.prototype.replace(<em>RegExp</em>, <em>Function</em>)</h4>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'I am very happyyyyy, happy, happyy.'</span><span class="token punctuation">;</span>
+
+str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/happ(y+)/</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">match<span class="token punctuation">,</span> ys</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token comment">// match: 'happyyyyy'; ys: 'yyyyy'</span>
+	<span class="token keyword">return</span> <span class="token string">'sleep'</span> <span class="token operator">+</span> ys<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// I am very sleepyyyyy, happy, happyy.</span>
+
+str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/happ(y+)/g</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">match<span class="token punctuation">,</span> ys</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token comment">// This function is called 3 times:</span>
+	<span class="token comment">//     1. match: 'happyyyyy'; ys: 'yyyyy'</span>
+	<span class="token comment">// 	   2. match: 'happy'; ys: 'y'</span>
+	<span class="token comment">//     3. match: 'happyy'; ys: 'yy'</span>
+	<span class="token keyword">return</span> <span class="token string">'sleep'</span> <span class="token operator">+</span> ys<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// I am very sleepyyyyy, sleepy, sleepyy.</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>The comments should be quite self-explanatory.</p>
+<h3 id="the-synchronous-way"><a class="header-anchor" href="#the-synchronous-way">#</a> The synchronous way</h3>
+<p>Back to the problem we have, to replace <code>&lt;!-- include ./sectionA.md --&gt;</code> with the content of <code>./sectionA.md</code>.</p>
+<p>Any decent regex-er could come up with a regex to match that placeholder, and we came up with something like:</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> placeholderRe <span class="token operator">=</span> <span class="token regex">/&lt;!--\s*include\s+([^\s]+)\s*-->/g</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>Note: <code>\s</code> matches any space/tab etc. See <a href="https://www.w3schools.com/jsref/jsref_regexp_whitespace.asp" target="_blank" rel="noopener noreferrer">here<OutboundLink/></a> for more information.</p>
+<p>This RegExp will match the placeholder as a whole and group the filename after the <code>include</code>.</p>
+<p>So I basically use the <code>String.prototype.replace</code> to do the job:</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> readFileSync<span class="token punctuation">,</span> existsSync <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">replaceIncludePlaceholdersWithFileContents</span> <span class="token operator">=</span> <span class="token parameter">str</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> placeholderRe <span class="token operator">=</span> <span class="token regex">/&lt;!--\s*include\s+([^\s]+)\s*-->/g</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>placeholderRe<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">placeholder<span class="token punctuation">,</span> filename</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">existsSync</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> placeholder<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">readFileSync</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>This works, we just need to handle one more case, i.e. when the partial being included also contain <code>&lt;!-- include file.md --&gt;</code>. Obviously this become a recursive problem. The way to deal with this is simply doing the <em>Leap of faith</em>.</p>
+<p>Simply by applying <code>replaceIncludePlaceholdersWithFileContents</code> recursively on the content of each file included by the current file would do the job!</p>
+<p>So we have something like:</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> readFileSync<span class="token punctuation">,</span> existsSync <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">replaceIncludePlaceholdersWithFileContents</span> <span class="token operator">=</span> <span class="token parameter">str</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> placeholderRe <span class="token operator">=</span> <span class="token regex">/&lt;!--\s*include\s+([^\s]+)\s*-->/g</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>placeholderRe<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">placeholder<span class="token punctuation">,</span> filename</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">existsSync</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> placeholder<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">replaceIncludePlaceholdersWithFileContents</span><span class="token punctuation">(</span>
+	        <span class="token function">readFileSync</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span>
+	    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>This time our base case is when the included file do not contain the placeholder, then the function should terminate as the replacer function would not be called.</p>
+<h3 id="the-asynchronous-way"><a class="header-anchor" href="#the-asynchronous-way">#</a> The asynchronous way</h3>
+<p>So I submitted the pull request, and some feedback has been given to me suggesting the use of <code>fs.readFile</code>, the async version of <code>fs.readFileSync</code>.</p>
+<p>Immediately I realise, if I have a function called <code>asyncStringReplace(str, search, replacer)</code> which does what <code>String.prototype.replace</code> does but allow <code>replacer</code> to return a <code>Promise</code>, then I could just change my code to the following and it would work.</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> readFile<span class="token punctuation">,</span> existsSync <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs-extra'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">replaceIncludePlaceholdersWithFileContents</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token parameter">str</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> placeholderRe <span class="token operator">=</span> <span class="token regex">/&lt;!--\s*include\s+([^\s]+)\s*-->/g</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">await</span> <span class="token function">asyncStringReplace</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> placeholderRe<span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">placeholder<span class="token punctuation">,</span> filename</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">existsSync</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> placeholder<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">await</span> <span class="token function">replaceIncludePlaceholdersWithFileContents</span><span class="token punctuation">(</span>
+	        <span class="token keyword">await</span> <span class="token function">readFile</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span>
+	    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>Spent so much time on thinking about the replacement of the placeholder, I would love to retain the already existing logic as much as possible.</p>
+<p>So now what I need to write is just the <code>asyncStringReplace</code> method.</p>
+<h2 id="asyncstringreplace"><a class="header-anchor" href="#asyncstringreplace">#</a> asyncStringReplace</h2>
+<p>The <code>asyncStringReplace</code> method should take in three arguments:</p>
+<ol>
+<li><code>str</code> - the original string</li>
+<li><code>regex</code> - the RegExp that represents the substring of <code>str</code> to be replaced</li>
+<li><code>aReplacer</code> - an asynchronous function that takes in each match, should return <code>Promise</code>.</li>
+</ol>
+<p>I basically copied from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec" target="_blank" rel="noopener noreferrer">mdn<OutboundLink/></a> the &quot;while-loop&quot; that loops through the matches using <code>RegExp.prototype.exec</code>. By using <code>RegExp.prototype.exec</code> we could track the <code>RegExp.lastIndex</code> and <code>match.index</code> of each match, which I couldn't think of a way to achieve this with <code>String.prototype.match</code>.</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">asyncStringReplace</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> regex<span class="token punctuation">,</span> aReplacer</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> substrs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> match<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>match <span class="token operator">=</span> regex<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// put non matching string</span>
+        substrs<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> match<span class="token punctuation">.</span>index<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// call the async replacer function with the matched array spreaded</span>
+        substrs<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">aReplacer</span><span class="token punctuation">(</span><span class="token operator">...</span>match<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        i <span class="token operator">=</span> regex<span class="token punctuation">.</span>lastIndex<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// put the rest of str</span>
+    substrs<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// wait for aReplacer calls to finish and join them back into string</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">await</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>substrs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>My approach basically split the given <code>str</code> with the given <code>regex</code> into substrings and put them into <code>substrs</code>.</p>
+<p><code>substrs</code> therefore contains:</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token punctuation">[</span>
+	<span class="token comment">/* first loop in while */</span>
+	<span class="token constant">NON_MATCHING_STRING</span><span class="token punctuation">,</span>
+	<span class="token function">aReplacer</span><span class="token punctuation">(</span><span class="token constant">MATCHING_STRING</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* second loop in while */</span>  
+	<span class="token constant">NON_MATCHING_STRING</span><span class="token punctuation">,</span>
+	<span class="token function">aReplacer</span><span class="token punctuation">(</span><span class="token constant">MATCHING_STRING</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* ... */</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* n-th loop in while */</span>  
+	<span class="token constant">NON_MATCHING_STRING</span><span class="token punctuation">,</span>
+	<span class="token function">aReplacer</span><span class="token punctuation">(</span><span class="token constant">MATCHING_STRING</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* substrs.push(restStr) */</span>
+	<span class="token constant">REST_NON_MATCHING_STRING</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>E.g.
+If we call the following</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token function">asyncStringReplace</span><span class="token punctuation">(</span><span class="token string">'i am happyy, happy === happyyy very!'</span><span class="token punctuation">,</span> <span class="token regex">/happ(y+)/g</span><span class="token punctuation">,</span> someAsyncReplacer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>The corresponding <code>substrs</code> would be:</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token punctuation">[</span>
+    <span class="token comment">/* first loop in while */</span>
+	<span class="token string">'i am '</span><span class="token punctuation">,</span>
+	<span class="token function">someAsyncReplacer</span><span class="token punctuation">(</span><span class="token string">'happyy'</span><span class="token punctuation">,</span> <span class="token string">'yy'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	
+    <span class="token comment">/* second loop in while */</span>
+	<span class="token string">', '</span><span class="token punctuation">,</span>
+	<span class="token function">someAsyncReplacer</span><span class="token punctuation">(</span><span class="token string">'happy'</span><span class="token punctuation">,</span> <span class="token string">'y'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	
+    <span class="token comment">/* third loop in while */</span>
+	<span class="token string">' === '</span><span class="token punctuation">,</span>
+	<span class="token function">someAsyncReplacer</span><span class="token punctuation">(</span><span class="token string">'happyyy'</span><span class="token punctuation">,</span> <span class="token string">'yyy'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+	<span class="token comment">/* substrs.push(restStr) */</span>
+	<span class="token string">' very!'</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>Notice since <code>aReplacer</code> is an asynchronous function, <code>aReplacer(MATCHING_STRING)</code> would therefore be a <code>Promise</code>. <code>Promise.all</code> could be used here to construct a <code>Promise</code> which resolves when all promises are resolved in this list.</p>
+<p>The last line</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code>	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">await</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>substrs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p><code>await Promise.all(substrs)</code> would yield to an array of string and <code>.join('')</code> would join all of them back together.</p>
+<p>An example of how this could be applied:</p>
+<!--beforebegin--><div class="language-js extra-class"><!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> readFile<span class="token punctuation">,</span> existsSync <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs-extra'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">replaceIncludePlaceholdersWithFileContents</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token parameter">str</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> placeholderRe <span class="token operator">=</span> <span class="token regex">/&lt;!--\s*include\s+([^\s]+)\s*-->/g</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">await</span> <span class="token function">asyncStringReplace</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> placeholderRe<span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">placeholder<span class="token punctuation">,</span> filename</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">existsSync</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> placeholder<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">await</span> <span class="token function">replaceIncludePlaceholdersWithFileContents</span><span class="token punctuation">(</span>
+	        <span class="token keyword">await</span> <span class="token function">readFile</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span>
+	    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--></div></div><footer>Copyright © 2020 Jason Yu</footer></div>
+    <script src="/assets/js/app.4670105f.js" defer></script><script src="/assets/js/page--src--templates--dev-to-post-vue.c700b725.js" defer></script>
+  </body>
+</html>

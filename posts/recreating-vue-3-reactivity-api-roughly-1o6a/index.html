@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Recreating Vue 3 Reactivity API (roughly) - YCM Jason</title><meta name="gridsome:hash" content="875795a6c03d41c238ecce61ddda1dea02e56ed5"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.13"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="Jason loves solving problems. And he plays music."><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="152x152" href="/assets/static/favicon.62d22cb.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/static/favicon.1539b60.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="167x167" href="/assets/static/favicon.dc0cdc5.fc1e89df36d8722b28a19d261954e6a2.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/static/favicon.7b22250.fc1e89df36d8722b28a19d261954e6a2.png"><link rel="preload" href="/assets/css/0.styles.846a3092.css" as="style"><link rel="preload" href="/assets/js/app.4670105f.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--dev-to-post-vue.c700b725.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.47322397.js"><link rel="prefetch" href="/assets/js/page--src--pages--articles-vue.1ef8fc1e.js"><link rel="prefetch" href="/assets/js/page--src--pages--cv-vue.14744004.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.f2d50720.js"><link rel="prefetch" href="/assets/js/vendors~page--src--pages--articles-vue.e2b0e5d6.js"><link rel="stylesheet" href="/assets/css/0.styles.846a3092.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <div data-server-rendered="true" id="app" class="layout"><a href="https://github.com/ycmjason/ycmjason.com" aria-label="View source on GitHub" class="github-corner" data-v-03ac3be2><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" data-v-03ac3be2><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" data-v-03ac3be2></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" class="octo-arm" style="transform-origin: 130px 106px;" data-v-03ac3be2></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body" data-v-03ac3be2></path></svg></a><header class="header"><strong class="site-name">YCM Jason</strong><nav class="nav"><a href="/" class="nav__link active">Home</a><a href="/articles/" class="nav__link">Articles</a><a href="/cv/" class="nav__link">CV</a><a href="https://github.com/ycmjason" target="_blank" rel="noopener" class="nav__link">Github</a></nav></header><div class="markdown-body"><h1>Recreating Vue 3 Reactivity API (roughly)</h1><div><div class="yt-container">
+          <iframe class="yt-container__yt" src="https://www.youtube.com/embed/O0b6A6Wi87Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+<p>This article is roughly based off the talk I gave on 20th November 2019 at <a href="https://www.meetup.com/vuejs-london/events/266072043/" target="_blank" rel="noopener noreferrer">Vue.js London #13 meetup<OutboundLink/></a>. You can find the video of the talk <a href="https://www.youtube.com/watch?v=O0b6A6Wi87Q" target="_blank" rel="noopener noreferrer">here<OutboundLink/></a> and the repo <a href="https://github.com/ycmjason-talks/2019-11-20-vuejs-london-meetup-13" target="_blank" rel="noopener noreferrer">here<OutboundLink/></a>.</p>
+<p>Typescript will be used in this article so we can look at the problem in a slightly different perspective. If you hate typescript, you can watch <a href="https://www.youtube.com/watch?v=O0b6A6Wi87Q" target="_blank" rel="noopener noreferrer">my talk<OutboundLink/></a> instead which was in Javascript.</p>
+<h2 id="introduction-to-vue-3-reactivity-api"><a class="header-anchor" href="#introduction-to-vue-3-reactivity-api">#</a> Introduction to Vue 3 Reactivity API</h2>
+<p>You can read about the <a href="https://vue-composition-api-rfc.netlify.com/#api-introduction" target="_blank" rel="noopener noreferrer">Official Vue 3 Reactivity API<OutboundLink/></a>. But here is a brief introduction with examples.</p>
+<p>There are 4 functions in the reactivity API:</p>
+<ol>
+<li><code>reactive()</code></li>
+<li><code>ref()</code></li>
+<li><code>computed()</code></li>
+<li><code>watch()</code></li>
+</ol>
+<p>Consider <a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-1" target="_blank" rel="noopener noreferrer">example 1<OutboundLink/></a>:</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@vue/runtime-core'</span>
+
+<span class="token comment">// % in Javascript is remainder operator, e.g. -1 % 5 gives -1.</span>
+<span class="token comment">// The following is an implementation for modulus.</span>
+<span class="token keyword">const</span> <span class="token function-variable function">mod</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">%</span> y<span class="token punctuation">)</span> <span class="token operator">+</span> y<span class="token punctuation">)</span> <span class="token operator">%</span> y
+
+<span class="token keyword">const</span> <span class="token constant">MAX_ROAD_LENGTH</span> <span class="token operator">=</span> <span class="token number">10</span>
+
+<span class="token keyword">const</span> car <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  position<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  speed<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  car<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token function">mod</span><span class="token punctuation">(</span>car<span class="token punctuation">.</span>position <span class="token operator">+</span> car<span class="token punctuation">.</span>speed<span class="token punctuation">,</span> <span class="token constant">MAX_ROAD_LENGTH</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> road <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token string">'_'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token constant">MAX_ROAD_LENGTH</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+  road<span class="token punctuation">[</span>car<span class="token punctuation">.</span>position<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'🚗'</span>
+
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>road<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-1?lite=true"></iframe>
+<p>This code uses <code>reactive()</code> and <code>watch()</code> from the reactivity API. <code>reactive()</code> create an reactive object, i.e. the retrieval and setting of any properties will be tracked. <code>watch()</code> takes in a callback that will be executed immediately; whenever the callback's dependencies are changed, the callback will be evaluated again.</p>
+<p>So in this example, <code>car.position</code> is updated every <code>1000ms</code>. And we will see the car moving from the right to the left.</p>
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/kbz0eabcpkmdbixcsqwe.gif" alt="car moving to the left"></p>
+<p>Consider <a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-2" target="_blank" rel="noopener noreferrer">example 2<OutboundLink/></a></p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> computed<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@vue/runtime-core'</span>
+
+<span class="token keyword">const</span> counter <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> squared <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> counter<span class="token punctuation">.</span>value <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>  counter<span class="token punctuation">.</span>value <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">counter: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>counter<span class="token punctuation">.</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">counter²: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>squared<span class="token punctuation">.</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-2?lite=true"></iframe>
+<p>This code uses <code>ref()</code>, <code>computed()</code> and <code>watch()</code>. <code>ref()</code> and <code>computed()</code> both returns a <code>Ref</code>. A <code>Ref</code> is simply defined as:</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Ref</span><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  value<span class="token operator">:</span> <span class="token constant">T</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>From the example, <code>ref(0)</code> returns <code>{ value: 0 }</code> where the <code>value</code> will be reactive. <code>computed()</code> takes in a function returns a <code>Ref</code> whose value is whatever the function returns.</p>
+<p>Hopefully this quick introduction by examples makes sense. If you are in doubt, make sure you read the official description of the <a href="https://vue-composition-api-rfc.netlify.com/#api-introduction" target="_blank" rel="noopener noreferrer">Vue 3 Reactivity API<OutboundLink/></a> before reading the rest of the article.</p>
+<h2 id="quick-introduction-to-es6-proxy"><a class="header-anchor" href="#quick-introduction-to-es6-proxy">#</a> Quick introduction to ES6 <code>Proxy</code></h2>
+<p><code>Proxy</code> is an ES6 feature; it is the real magic behind Vue 3's reactivity. You can see the full documentation <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">here<OutboundLink/></a>.</p>
+<p>In this introduction, I am just going to include the parts we need from proxy to create reactivity.</p>
+<p><code>Proxy</code> is an object which allow us to programmatically control how it behaves on native operations.</p>
+<p>Consider <a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-3" target="_blank" rel="noopener noreferrer">example 3<OutboundLink/></a></p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">const</span> target<span class="token operator">:</span> Record<span class="token operator">&lt;</span><span class="token builtin">any</span><span class="token punctuation">,</span> <span class="token builtin">any</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token keyword">set</span><span class="token punctuation">(</span>setTarget<span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">=== start p.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> = </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> ===</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">setTarget === target -> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>setTarget <span class="token operator">===</span> target<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> key<span class="token punctuation">,</span> value <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    setTarget<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">=== end p.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> = </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> ===</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token keyword">get</span><span class="token punctuation">(</span>setTarget<span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">=== start getting p.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">} ===</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">getting setTarget[</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">]: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>setTarget<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">=== end getting p.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">} ===</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">'nope'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+p<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">3</span> <span class="token comment">// will trigger set trap</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+target<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">5</span> <span class="token comment">// will not trigger trap</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">p.x: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>p<span class="token punctuation">.</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span> <span class="token comment">// will trigger get trap</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">p.y: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>p<span class="token punctuation">.</span>y<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span> <span class="token comment">// will trigger get trap</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-3?lite=true"></iframe>
+<p>Here is the output:</p>
+<!--beforebegin--><div class="language- extra-class"><!--afterbegin--><pre v-pre class="language-text"><code>=== start p.x = 3 ===
+setTarget === target -&gt; true
+{ key: &#39;x&#39;, value: 3 }
+=== end p.x = 3 ===
+
+=== start getting p.x} ===
+getting setTarget[x]: 5
+=== end getting p.x} ===
+p.x: nope
+
+=== start getting p.y} ===
+getting setTarget[y]: undefined
+=== end getting p.y} ===
+p.y: nope
+
+{ x: 5 }
+</code></pre>
+<!--beforeend--></div><!--afterend--><p><em>Please note that the reason for <code>key: string | number</code> is because Typescript currently cannot handle symbols as keys in objects. This is so stupid and there is a <a href="https://github.com/microsoft/TypeScript/issues/1863" target="_blank" rel="noopener noreferrer">5-year-old issue<OutboundLink/></a> created regarding this. <code>key</code> will be typed as <code>string | number | symbol</code> otherwise.</em></p>
+<p>As you can see in the example, we have set up the <code>set</code> and <code>get</code> trap for the proxy <code>p</code>. Whenever <code>p</code>'s property is set or retrieved, our traps will be called and we can change how it behaves.</p>
+<p>In this example, we always return <code>'nope'</code> in the <code>get</code> function. This is why we see <code>'nope'</code> for both <code>p.x</code> and <code>p.y</code>.</p>
+<p>If you are still unsure about how <code>Proxy</code> works, make sure you read more into it in the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">mdn documentation<OutboundLink/></a>.</p>
+<h2 id="let-s-recreate-vue-3-s-reactivity-api"><a class="header-anchor" href="#let-s-recreate-vue-3-s-reactivity-api">#</a> Let's recreate Vue 3's reactivity API</h2>
+<p>You should be familiar with Vue 3's reactivity API and <code>Proxy</code> by now. Let's now try to recreate Vue 3's reactivity API.</p>
+<h3 id="reactive-and-watch"><a class="header-anchor" href="#reactive-and-watch">#</a> <code>reactive()</code> and <code>watch()</code></h3>
+<p>Let's recall <a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-1" target="_blank" rel="noopener noreferrer">example 1<OutboundLink/></a>:</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@vue/runtime-core'</span>
+
+<span class="token comment">// % in Javascript is remainder operator, e.g. -1 % 5 gives -1.</span>
+<span class="token comment">// The following is an implementation for modulus.</span>
+<span class="token keyword">const</span> <span class="token function-variable function">mod</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">%</span> y<span class="token punctuation">)</span> <span class="token operator">+</span> y<span class="token punctuation">)</span> <span class="token operator">%</span> y
+
+<span class="token keyword">const</span> <span class="token constant">MAX_ROAD_LENGTH</span> <span class="token operator">=</span> <span class="token number">10</span>
+
+<span class="token keyword">const</span> car <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  position<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  speed<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  car<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token function">mod</span><span class="token punctuation">(</span>car<span class="token punctuation">.</span>position <span class="token operator">+</span> car<span class="token punctuation">.</span>speed<span class="token punctuation">,</span> <span class="token constant">MAX_ROAD_LENGTH</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> road <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token string">'_'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token constant">MAX_ROAD_LENGTH</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+  road<span class="token punctuation">[</span>car<span class="token punctuation">.</span>position<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'🚗'</span>
+
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>road<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>Our aim in this section is to make <a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-1" target="_blank" rel="noopener noreferrer">example 1<OutboundLink/></a> work with our custom<code>reactive()</code> and <code>watch()</code>.</p>
+<h4 id="brute-force-reactivity"><a class="header-anchor" href="#brute-force-reactivity">#</a> Brute-force &quot;reactivity&quot;</h4>
+<p>We can quickly make <a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-1" target="_blank" rel="noopener noreferrer">example 1<OutboundLink/></a> work as expected by simply calling the watchers (<code>watch()</code> callbacks) whenever a reactive property is set. Let's implement this first and see where we can depart from there.</p>
+<p>First, let's keep track of the watchers in <code>watch()</code>.</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">const</span> watchers<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">const</span> <span class="token function-variable function">watch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// this is what Vue 3 watch() will do</span>
+  watchers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>Pretty straightforward. Now we have a list of watchers. Next we have to trigger them whenever a reactive property is changed.</p>
+<p>We can achieve this by having <code>reactive()</code> to return a proxy whose <code>set</code> trap will trigger all <code>watchers</code>.</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">const</span> watchers<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">const</span> <span class="token function-variable function">watch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// this is what Vue 3 watch() will do</span>
+  watchers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> reactive <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token keyword">extends</span> <span class="token class-name">object</span><span class="token operator">></span><span class="token punctuation">(</span>t<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter"><span class="token constant">T</span></span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token keyword">set</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token keyword">keyof</span> <span class="token constant">T</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value 
+
+      watchers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">watcher</span> <span class="token operator">=></span> <span class="token function">watcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  
+    <span class="token keyword">get</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token keyword">keyof</span> <span class="token constant">T</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>Two things to note about the types:</p>
+<ol>
+<li>Please note that the reason for <code>key: keyof T</code> is because Typescript would require <code>key</code> to be a key of <code>T</code> before being able to do <code>target[key] = value</code>. Without <code>: keyof T</code>, <code>key</code> will be typed as <code>stirng | number | symbol</code> which introduces another problem with the <a href="https://github.com/microsoft/TypeScript/issues/1863" target="_blank" rel="noopener noreferrer">5-year-old issue<OutboundLink/></a> mentioned earlier.</li>
+<li>Previously <code>string | number</code> was sufficient because the target was a   <code>Record&lt;any, any&gt;</code>, so typescript knows that the target can be   extended.</li>
+</ol>
+<p>An example to illustrate how the type works.</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">const</span> r <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> a<span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// r is of type `{ a: number }`</span>
+r<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">5</span>
+r<span class="token punctuation">.</span>b <span class="token comment">// this will throw a type error as `b` is not a key of `{ a: number }`</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>Exporting our <code>watch()</code> and <code>reactive()</code>, we can combine them with <a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-1" target="_blank" rel="noopener noreferrer">example 1<OutboundLink/></a>:</p>
+<p><a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-4" target="_blank" rel="noopener noreferrer">Example 4<OutboundLink/></a>:</p>
+<iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-4?lite=true"></iframe>
+<p>And the car is moving! ✅</p>
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/kbz0eabcpkmdbixcsqwe.gif" alt="car moving to the left"></p>
+<p>There are couple of problems with this approach:</p>
+<ol>
+<li>
+<p><strong>Watchers will be called N times if we trigger mutate reactive   object N times</strong></p>
+<p>Watchers should only be fired once after a series of consecutive   mutation. Currently each mutation will trigger the watchers   immediately.</p>
+</li>
+<li>
+<p><strong>Watchers will be called even when it doesn't need to</strong></p>
+<p>Watchers should only be reevaluated whenever their dependencies changes. We currently do not care and call the watchers whenever somethings is mutated.</p>
+</li>
+</ol>
+<h4 id="brute-force-reactivity-fixing-problem-1"><a class="header-anchor" href="#brute-force-reactivity-fixing-problem-1">#</a> Brute-force reactivity (fixing problem 1)</h4>
+<p>We aim to solve the first problem in the last section.</p>
+<p>To illustrate the problem, I have modified the code to add one more car which will trigger another mutation in the interval. You can see the code in <a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-5" target="_blank" rel="noopener noreferrer">example 5<OutboundLink/></a>.</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./reactivity'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// % in Javascript is remainder operator, e.g. -1 % 5 gives -1.</span>
+<span class="token comment">// The following is an implementation for modulus.</span>
+<span class="token keyword">const</span> <span class="token function-variable function">mod</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">%</span> y<span class="token punctuation">)</span> <span class="token operator">+</span> y<span class="token punctuation">)</span> <span class="token operator">%</span> y
+
+<span class="token keyword">const</span> <span class="token constant">MAX_ROAD_LENGTH</span> <span class="token operator">=</span> <span class="token number">10</span>
+
+<span class="token keyword">const</span> cars <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    position<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    speed<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    position<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    speed<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> car <span class="token keyword">of</span> cars<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    car<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token function">mod</span><span class="token punctuation">(</span>car<span class="token punctuation">.</span>position <span class="token operator">+</span> car<span class="token punctuation">.</span>speed<span class="token punctuation">,</span> <span class="token constant">MAX_ROAD_LENGTH</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> callCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> road <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token string">'_'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token constant">MAX_ROAD_LENGTH</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> car <span class="token keyword">of</span> cars<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    road<span class="token punctuation">[</span>car<span class="token punctuation">.</span>position<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'🚗'</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>road<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">callCount: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>callCount<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p><img src="https://thepracticaldev.s3.amazonaws.com/i/o1iv5vp111l3mbmcxhv5.gif" alt="counter incrementing by 2"></p>
+<p>You can see how the <code>callCount</code> increments by 2. This is because there are two mutations happening every <code>1000ms</code> so the watcher was called twice every <code>1000ms</code>.</p>
+<p>Our aim is to have the watchers only called once after a series of consecutive mutations.</p>
+<p>How do we achieve this? &quot;Firing something only once after a series of invocation&quot;? Does this sound familiar? We actually have probably encountered this already in many places. For example, showing search suggestions only after user has stopped typing for a while; firing scroll listener once only after the user has stopped scrolling for a while?</p>
+<p>Debounce! Yes, we can just debounce the watchers. This will allow a series of mutation finish before triggering the watcher. And it will only do it <em>once</em>! Perfect for this use case!</p>
+<p>I will just use <a href="https://lodash.com/" target="_blank" rel="noopener noreferrer">lodash<OutboundLink/></a>'s <code>debounce</code> here so we won't need to implement it.</p>
+<p>See <a href="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-6" target="_blank" rel="noopener noreferrer">example 6<OutboundLink/></a>:</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">import</span> debounce <span class="token keyword">from</span> <span class="token string">'lodash.debounce'</span>
+
+<span class="token keyword">const</span> watchers<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">const</span> <span class="token function-variable function">watch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  watchers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">debounce</span><span class="token punctuation">(</span>callback<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// debouncing callback</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> reactive <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token keyword">extends</span> <span class="token class-name">object</span><span class="token operator">></span><span class="token punctuation">(</span>t<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter"><span class="token constant">T</span></span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token keyword">set</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token keyword">keyof</span> <span class="token constant">T</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value 
+
+      watchers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">watcher</span> <span class="token operator">=></span> <span class="token function">watcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  
+    <span class="token keyword">get</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token keyword">keyof</span> <span class="token constant">T</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-6?lite=true"></iframe>
+<p>You can see how the <code>callCount</code> only increment by 1 every <code>1000ms</code>.</p>
+<p><img src="https://thepracticaldev.s3.amazonaws.com/i/uuy062he9m0h5qk9l0sx.gif" alt="incrementing 1 at a time"></p>
+<h4 id="dependency-tracking"><a class="header-anchor" href="#dependency-tracking">#</a> Dependency tracking</h4>
+<p>The second problem: &quot;watchers will be called even when it doesn’t need to&quot;, can be solved with dependency tracking. We need to know what a watcher depend on and only invoke the watcher when those dependencies are mutated.</p>
+<p>In order to illustrate the problem, I have modified the <code>index.ts</code>.</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./reactivity'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> r1 <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> x<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> r2 <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> x<span class="token operator">:</span> <span class="token number">100</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  r1<span class="token punctuation">.</span>x<span class="token operator">++</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+
+<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  r2<span class="token punctuation">.</span>x<span class="token operator">--</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">5000</span><span class="token punctuation">)</span>
+
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">r1.x: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>r1<span class="token punctuation">.</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">r2.x: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>r2<span class="token punctuation">.</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-7?lite=true"></iframe>
+<p>With this example, we can see the problem clearly. We expect <code>r1.x</code> to be logged every second and <code>r2.x</code> every 5 seconds. But both values are logged every second because all watchers are called.</p>
+<p>Here are the steps we can implement dependencies tracking:</p>
+<ol>
+<li>We can keep track of the dependencies of a watcher in a <code>Set</code>, which helps avoid duplications. A dependency is a property in a reactive. We can represent each property in a reactive with a unique identifier.  It could be anything unique but I'll use a <code>Symbol()</code> here.</li>
+<li>Clear the dependencies set before calling the watcher.</li>
+<li>When a reactive property is retrieved, add the symbol representing that property to the dependencies set.</li>
+<li>After the watcher callback finishes, <code>dependencies</code> will be populated with symbols that it depends on. Since each watcher now relates to a set of dependencies, we will keep <code>{ callback, dependencies}</code> in the <code>watchers</code> list.</li>
+<li>Instead of triggering all watchers as a property is being set, we could trigger only the watchers that depend on that property.</li>
+</ol>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">import</span> debounce <span class="token keyword">from</span> <span class="token string">'lodash.debounce'</span>
+
+<span class="token keyword">const</span> dependencies <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token operator">&lt;</span><span class="token builtin">symbol</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 1. keep track of dependencies</span>
+
+<span class="token keyword">const</span> watchers<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span><span class="token punctuation">,</span>
+  dependencies<span class="token operator">:</span> Set<span class="token operator">&lt;</span><span class="token builtin">symbol</span><span class="token operator">></span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">const</span> <span class="token function-variable function">watch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  dependencies<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 2. clear dependencies </span>
+  <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 4. dependencies is populated</span>
+  watchers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    callback<span class="token operator">:</span> <span class="token function">debounce</span><span class="token punctuation">(</span>callback<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    dependencies<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>dependencies<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// make a copy</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> reactive <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token keyword">extends</span> <span class="token class-name">object</span><span class="token operator">></span><span class="token punctuation">(</span>t<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter"><span class="token constant">T</span></span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> keyToSymbolMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token operator">&lt;</span><span class="token keyword">keyof</span> <span class="token constant">T</span><span class="token punctuation">,</span> <span class="token builtin">symbol</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> getSymbolForKey <span class="token operator">=</span> <span class="token punctuation">(</span>key<span class="token operator">:</span> <span class="token keyword">keyof</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter"><span class="token builtin">symbol</span></span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token builtin">symbol</span> <span class="token operator">=</span> keyToSymbolMap<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>keyToSymbolMap<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      keyToSymbolMap<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token builtin">symbol</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token builtin">symbol</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token keyword">set</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token keyword">keyof</span> <span class="token constant">T</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value 
+
+      <span class="token comment">// 5. only trigger watchers depending on this property</span>
+      watchers
+        <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> dependencies <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> dependencies<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token function">getSymbolForKey</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> callback <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  
+    <span class="token keyword">get</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token keyword">keyof</span> <span class="token constant">T</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      dependencies<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">getSymbolForKey</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 3. add symbol to dependencies</span>
+      <span class="token keyword">return</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-8?lite=true"></iframe>
+<p>With this we can see the result matches our expectation and this means dependency tracking is working!!!</p>
+<h4 id="update-dependencies-on-the-fly"><a class="header-anchor" href="#update-dependencies-on-the-fly">#</a> Update dependencies on the fly</h4>
+<p>A watcher may change its dependencies. Consider the following code:</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">const</span> r1 <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> isReady<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> r2 <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> x<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  r1<span class="token punctuation">.</span>isReady <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+
+<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  r2<span class="token punctuation">.</span>x<span class="token operator">++</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span>
+
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>r1<span class="token punctuation">.</span>isReady<span class="token punctuation">)</span> <span class="token keyword">return</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">r2.x: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>r2<span class="token punctuation">.</span>x<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>In this example, we expect the log to happen after 1 second and every 500ms afterwards.</p>
+<p>However our previous implementation only logs once:</p>
+<iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-9?lite=true"></iframe>
+<p>This is because our watcher only access <code>r1.x</code> at its first call. So our dependency tracking only keeps track of <code>r1.x</code>.</p>
+<p>To fix this, we can update the dependencies set every time the watcher is called.</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">const</span> <span class="token function-variable function">watch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> watcher <span class="token operator">=</span> <span class="token punctuation">{</span>
+    callback<span class="token operator">:</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      dependencies<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      watcher<span class="token punctuation">.</span>dependencies <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>dependencies<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    dependencies<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token operator">&lt;</span><span class="token builtin">symbol</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+
+  watcher<span class="token punctuation">.</span><span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  watchers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>watcher<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>This wraps the dependency tracking into the watcher to ensure the dependencies is always up to date.</p>
+<p>With this change, it is now fully working! 🎉</p>
+<iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-10?lite=true"></iframe>
+<h3 id="ref-computed"><a class="header-anchor" href="#ref-computed">#</a> <code>ref()</code>, <code>computed()</code></h3>
+<p>We can build <code>ref()</code> and <code>computed()</code> pretty easily by composing <code>reactive()</code> and <code>watch()</code>.</p>
+<p>We can introduce the type <code>Ref</code> as defined above:</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Ref</span><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  value<span class="token operator">:</span> <span class="token constant">T</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>Then <code>ref()</code> simply returns a <code>reactive</code> with just <code>.value</code>.</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">const</span> ref <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> Ref<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> value <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>And a <code>computed()</code> just return a ref which includes a watcher that updates the value of the ref.</p>
+<!--beforebegin--><div class="language-ts extra-class"><!--afterbegin--><pre v-pre class="language-ts"><code><span class="token keyword">const</span> computed <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token function-variable function">fn</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> Ref<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> r <span class="token operator">=</span> ref<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">undefined</span> <span class="token keyword">as</span> <span class="token builtin">any</span><span class="token punctuation">)</span>
+
+  <span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    r<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> r
+<span class="token punctuation">}</span>
+</code></pre>
+<!--beforeend--></div><!--afterend--><p>See the following example:</p>
+<iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@ycmjason/recreating-vue-3-reactivity-api-11?lite=true"></iframe>
+<h3 id="conclusion"><a class="header-anchor" href="#conclusion">#</a> Conclusion</h3>
+<p>Thanks for reading this tedious article and hope you have gain some insights about how the magic behind Vue's reactivity works. This article has been worked on across months because I travelled to Japan in the middle of writing this. So please let me know if you spot any mistakes/inconsistency which can improve this article.</p>
+<p>The reactivity we have built is just a really rough naive implementation and there are so many more considerations put into the actual Vue 3 reactivity. For example, handling <code>Array</code>, <code>Set</code>, <code>Map</code>; handling immutability etc. So please do not use these code in production.</p>
+<p>Lastly, hopefully we will see Vue 3 soon and we can make use of this amazing api to build awesome things! Happy coding!</p>
+</div></div><footer>Copyright © 2020 Jason Yu</footer></div>
+    <script src="/assets/js/app.4670105f.js" defer></script><script src="/assets/js/page--src--templates--dev-to-post-vue.c700b725.js" defer></script>
+  </body>
+</html>
