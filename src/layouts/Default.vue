@@ -36,10 +36,11 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
+  font-size: 16px;
 }
 
 .layout {
-  max-width: 760px;
+  max-width: 48rem;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
@@ -52,6 +53,13 @@ body {
   margin-bottom: 20px;
   height: 80px;
   flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 55rem) {
+  .header {
+    padding-right: 3rem;
+  }
 }
 
 .site-name {
