@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build and Deploy
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,8 +19,23 @@ jobs:
         run: yarn build
         env:
           DEV_TO_API_KEY: ${{ secrets.DEV_TO_API_KEY }}
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: dist
+          path: dist
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: dist
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: dist
+
