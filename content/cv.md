@@ -58,7 +58,7 @@ Awards
 ### Attest Technologies Limited, UK
 
 Years
-: Mar 2017 - Present
+: Mar 2019 - Present
 
 Job Title
 : Frontend Engineer
@@ -77,7 +77,7 @@ Achievements
 ### The Hut Group, UK
 
 Years
-: Dec 2017 - Feb 2018
+: Dec 2017 - Feb 2019
 
 Job Title
 : Graduate Software Engineer

@@ -8,13 +8,13 @@
     "clean": "/bin/rm -rf .cache src/.temp node_modules"
   },
   "dependencies": {
-    "@vuepress/markdown": "^1.4.0",
+    "@vuepress/markdown": "^1.4.1",
     "common-tags": "^1.8.0",
-    "dayjs": "^1.8.23",
+    "dayjs": "^1.8.24",
     "dotenv": "^8.2.0",
     "front-matter": "^3.1.0",
     "fs-extra": "^9.0.0",
-    "gridsome": "^0.7.13",
+    "gridsome": "^0.7.14",
     "lodash.mapvalues": "^4.6.0",
     "lodash.zip": "^4.2.0",
     "markdown-it-deflist": "^2.0.3",
