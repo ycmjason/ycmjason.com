@@ -314,9 +314,9 @@ Techinical
   Python,
   SQL,
   SocketIO,
-  Webpack,
   Vite,
   VuePress...
+  Webpack,
 
 Musical
 : Singing, A capella, Guitar, Piano, Beatboxing, Song Writting / Arraging / Recording
