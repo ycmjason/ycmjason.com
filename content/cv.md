@@ -17,42 +17,6 @@ Github
 NPM
 : https://www.npmjs.com/~ycm.jason
 
-## :books: Education
-
-### Imperial College London
-
-Years
-: 2014 - 2017
-
-Qualification
-: BEng. Computing (Second Upper)
-
-Courses
-: Computer Vision | Type Systems for Programming Languages | Information and Coding Theory | Networks | Compilers | Operating system | Databases | A.I. | Hardware | Maths Methods | Reasoning about programming | Logic | Programming in Haskell, Java, C, C++, Prolog, Python...
-
-### Bellerbys College, Brighton
-
-Years
-: 2013 - 2014
-
-Qualification
-: GCE A-Level (Mathematics A\*, Further Mathematics A\*, Physics A)
-
-Awards
-: Best A2 Student in Decision Maths
-
-### St. Paul's College, Hong Kong
-
-Years
-: 2007 - 2013
-
-Qualification
-: N/A
-
-Awards
-: - Outstanding performance in Physics and Computing
-  - Outstanding contribution to extra-curricular activities (2 years in a row)
-
 ## :necktie: Work Experience
 
 ### Attest Technologies Limited, UK
@@ -135,6 +99,42 @@ Responsibilities
 
 Achievements
 : - Held a [functional programming workshop](https://github.com/ycmjason/haskell_workshop) in Haskell for the employees and the students
+
+## :books: Education
+
+### Imperial College London
+
+Years
+: 2014 - 2017
+
+Qualification
+: BEng. Computing (Second Upper)
+
+Courses
+: Computer Vision | Type Systems for Programming Languages | Information and Coding Theory | Networks | Compilers | Operating system | Databases | A.I. | Hardware | Maths Methods | Reasoning about programming | Logic | Programming in Haskell, Java, C, C++, Prolog, Python...
+
+### Bellerbys College, Brighton
+
+Years
+: 2013 - 2014
+
+Qualification
+: GCE A-Level (Mathematics A\*, Further Mathematics A\*, Physics A)
+
+Awards
+: Best A2 Student in Decision Maths
+
+### St. Paul's College, Hong Kong
+
+Years
+: 2007 - 2013
+
+Qualification
+: N/A
+
+Awards
+: - Outstanding performance in Physics and Computing
+  - Outstanding contribution to extra-curricular activities (2 years in a row)
 
 ## :bulb: Hobby Projects
 
@@ -286,40 +286,37 @@ Contributions
 
 Techinical
 : My favorite stuff:
-  - Javscript  :two_hearts: :two_hearts: :two_hearts:
-  - Vue.js :kissing_heart: :kissing_heart: :kissing_heart:
-  - Node.js :thumbsup: :thumbsup: :thumbsup:
+  - Typescript  :two_hearts: :two_hearts: :two_hearts:
+  - Javscript  :two_hearts:
+  - React
   - Haskell
   - Vim
+  - Vue.js
+  - Node.js
   - Parcel
   - Markdown
   - tmux
   - Jest
-  - VuePress
   - Mocha
 
   Other:
   Angular,
-  Angular.js,
   Bash,
   C++,
   C,
-  Gensim,
   JQuery,
   Java,
-  Linux MongoDB,
-  Mongoose,
-  NLTK,
+  Linux,
+  MongoDB,
   PHP,
   Prolog,
   PyQuery,
   Python,
-  React,
   SQL,
   SocketIO,
-  TypeScript,
   Webpack,
-  require.js...
+  Vite,
+  VuePress...
 
 Musical
 : Singing, A capella, Guitar, Piano, Beatboxing, Song Writting / Arraging / Recording
