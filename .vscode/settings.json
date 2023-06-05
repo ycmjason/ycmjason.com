@@ -1,0 +1,27 @@
+{
+  "prettier.enable": false,
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit"
+    // "source.organizeImports.biome": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}

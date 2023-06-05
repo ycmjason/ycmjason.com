@@ -1,44 +1,55 @@
-name: CD
+name: Deploy to GitHub Pages
 
 on:
+  # Trigger the workflow on push to main branch
   push:
-    branches:
-      - master
-  schedule:
-    - cron:  '0 3 * * *'
+    branches: [ main ]
+  # Allow manual trigger
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '12.x'
-      - run: yarn install
-      - name: Build
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build project
         run: yarn build
         env:
           DEV_TO_API_KEY: ${{ secrets.DEV_TO_API_KEY }}
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: dist
-          path: dist
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: dist
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: dist
-          cname: www.ycmjason.com
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

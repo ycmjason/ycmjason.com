@@ -21,5 +21,6 @@
     "node-fetch": "^2.6.1",
     "prism-themes": "^1.5.0",
     "toml": "^3.0.0"
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }

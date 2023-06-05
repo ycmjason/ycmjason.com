@@ -64,7 +64,7 @@ const loadDevTo = async ({ addCollection }) => {
 
 // loadStatic
 const fs = require('fs-extra');
-const path = require('path');
+const path = require('node:path');
 const zip = require('lodash.zip');
 const loadStatic = async ({ addCollection }) => {
   const STATIC_DIR = './content';
@@ -83,7 +83,7 @@ const loadStatic = async ({ addCollection }) => {
   }
 };
 
-module.exports = function(api) {
+module.exports = (api) => {
   api.loadSource(async api => {
     const LOADERS = [loadDevTo, loadStatic];
     await Promise.all(LOADERS.map(l => l(api)));
