@@ -1,25 +1,33 @@
 {
-  "name": "gridsome-starter-dev-to",
+  "name": "ycmjason.com",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "gridsome build",
-    "develop": "gridsome develop",
-    "explore": "gridsome explore",
-    "clean": "/bin/rm -rf .cache src/.temp node_modules"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "check:fix": "biome check --write",
+    "format:check": "biome format",
+    "format:fix": "biome format --write",
+    "lint": "biome lint",
+    "lint:fix": "biome line --write"
   },
   "dependencies": {
-    "@vuepress/markdown": "^1.7.1",
-    "common-tags": "^1.8.0",
-    "dayjs": "^1.9.6",
-    "dotenv": "^8.2.0",
-    "front-matter": "^4.0.2",
-    "fs-extra": "^9.0.1",
-    "gridsome": "^0.7.23",
-    "lodash.mapvalues": "^4.6.0",
-    "lodash.zip": "^4.2.0",
-    "markdown-it-deflist": "^2.1.0",
-    "node-fetch": "^2.6.1",
-    "prism-themes": "^1.5.0",
-    "toml": "^3.0.0"
-  }
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@tailwindcss/vite": "^4.0.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "globals": "^15.14.0",
+    "tailwindcss": "^4.0.1",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.5",
+    "vite-plugin-commonjs": "^0.10.4"
+  },
+  "packageManager": "yarn@4.6.0"
 }
