@@ -2331,23 +2331,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:~5.6.2":
-  version: 5.6.3
-  resolution: "typescript@npm:5.6.3"
+"typescript@npm:^5.8.0-beta":
+  version: 5.8.0-dev.20250131
+  resolution: "typescript@npm:5.8.0-dev.20250131"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/44f61d3fb15c35359bc60399cb8127c30bae554cd555b8e2b46d68fa79d680354b83320ad419ff1b81a0bdf324197b29affe6cc28988cd6a74d4ac60c94f9799
+  checksum: 10c0/32d054573787244e87dc08e46e2d6c8e0c6535a27122a5a94732b4588edcb83a2e36c22a112cac492290847ff9c72d2d8e0358c0e6416cfaf8017d85bc7e7add
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A~5.6.2#optional!builtin<compat/typescript>":
-  version: 5.6.3
-  resolution: "typescript@patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=8c6c40"
+"typescript@patch:typescript@npm%3A^5.8.0-beta#optional!builtin<compat/typescript>":
+  version: 5.8.0-dev.20250131
+  resolution: "typescript@patch:typescript@npm%3A5.8.0-dev.20250131#optional!builtin<compat/typescript>::version=5.8.0-dev.20250131&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/7c9d2e07c81226d60435939618c91ec2ff0b75fbfa106eec3430f0fcf93a584bc6c73176676f532d78c3594fe28a54b36eb40b3d75593071a7ec91301533ace7
+  checksum: 10c0/a03a7185f38a8fae062b7215d5fb29fb759348978d8baddc27dd2d336ad9d37b86b4cb1d4bdcd5098418e1e7894608e0a31231c9327af0d01cc072aa1a0adf7e
   languageName: node
   linkType: hard
 
@@ -2536,7 +2536,7 @@ __metadata:
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     tailwindcss: "npm:^4.0.1"
-    typescript: "npm:~5.6.2"
+    typescript: "npm:^5.8.0-beta"
     vite: "npm:^6.0.5"
     vite-plugin-commonjs: "npm:^0.10.4"
   languageName: unknown

@@ -1,1 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&family=Zeyada&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --color-diary-closed-bg: hsl(0 0% 10%); /* Dark leather-like background */
+  --color-diary-closed-text: hsl(0 0% 90%); /* Faded parchment white */
+  --color-diary-closed-border: hsl(0 0% 29%); /* Aged metallic grey */
+  --color-diary-closed-accent: hsl(36 35% 30%); /* Muted gold for an old magic feel */
+  --color-diary-closed-hover: hsl(45 90% 50%); /* Enchanted golden ink effect */
+  --color-diary-opened-bg: #dad3b7;
+  --color-diary-opened-text: #2b1b0f;
+}
+
+html,
+body {
+  font-family: "Special Elite", serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: var(--color-stone-500);
+}

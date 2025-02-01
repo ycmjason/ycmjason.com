@@ -1,82 +1,57 @@
-import { useEffect, useRef, useState } from 'react';
-import { HandwritingRecognizer } from '../handwriting/HandwritingRecognizer';
+import { type HTMLAttributes, useEffect, useRef } from 'react';
+import { HandwritingRecognizerCanvasController } from '../handwriting/HandwritingRecognizerCanvasController';
+import { useStableCallback } from '../hooks/useStableCallback';
+import { clsx } from '../utils/clsx';
 
-export const OCRCanvas = () => {
-  const handwritingRecognizerRef = useRef<HandwritingRecognizer | null>(null);
+export const OCRCanvas = ({
+  onDrawStart,
+  onDrawEnd,
+  className,
+  ...props
+}: {
+  onDrawStart?: (e: {
+    canvasController: HandwritingRecognizerCanvasController;
+  }) => void;
+  onDrawEnd: (e: {
+    canvasController: HandwritingRecognizerCanvasController;
+  }) => void;
+} & HTMLAttributes<HTMLCanvasElement>) => {
+  const canvasControllerRef = useRef<HandwritingRecognizerCanvasController | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [recognizedText, setRecognizedText] = useState('');
-  const [isProcessing, setIsProcessing] = useState(false);
+
+  const onDrawStartStable = useStableCallback(() => {
+    const canvasController = canvasControllerRef.current;
+    if (canvasController === null) return;
+    onDrawStart?.({ canvasController });
+  });
+  const onDrawEndStable = useStableCallback(() => {
+    const canvasController = canvasControllerRef.current;
+    if (canvasController === null) return;
+    onDrawEnd({ canvasController });
+  });
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    canvas.width = 800;
-    canvas.height = 400;
+    const parent = canvas.parentElement;
+    if (!(parent instanceof HTMLElement)) return;
+    const { width, height } = parent.getBoundingClientRect();
+    canvas.width = width;
+    canvas.height = height;
 
-    handwritingRecognizerRef.current = new HandwritingRecognizer(canvas);
+    canvasControllerRef.current = new HandwritingRecognizerCanvasController(canvas, {
+      onDrawStart: onDrawStartStable,
+      onDrawEnd: onDrawEndStable,
+    });
+
+    return () => canvasControllerRef.current?.destroy();
   }, []);
 
-  const clearCanvas = () => {
-    const handwritingRecognizer = handwritingRecognizerRef.current;
-    if (!handwritingRecognizer) {
-      return;
-    }
-
-    handwritingRecognizer.clear();
-  };
-
-  const processImage = async () => {
-    setIsProcessing(true);
-    const handwritingRecognizer = handwritingRecognizerRef.current;
-
-    if (!handwritingRecognizer) {
-      return;
-    }
-
-    const [bestMatch] = await handwritingRecognizer.recognize();
-    if (bestMatch) {
-      setRecognizedText(bestMatch);
-    }
-
-    setIsProcessing(false);
-  };
-
   return (
-    <div className="p-4 max-w-4xl mx-auto">
-      <div className="mb-4">
-        <canvas
-          ref={canvasRef}
-          className="border border-gray-300 rounded-lg cursor-crosshair bg-white"
-        />
-      </div>
-
-      <div className="flex gap-4 mb-4">
-        <button
-          type="button"
-          onClick={processImage}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-        >
-          Submit
-        </button>
-        <button
-          type="button"
-          onClick={clearCanvas}
-          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
-        >
-          Clear Canvas
-        </button>
-      </div>
-
-      <div className="mt-4">
-        <h3 className="text-lg font-semibold mb-2"> Recognized Text: </h3>
-        {isProcessing ? (
-          <div className="text-gray-600"> Processing...</div>
-        ) : (
-          <div className="p-4 bg-gray-100 rounded-lg min-h-24">
-            {recognizedText || 'No text recognized yet. Draw something!'}
-          </div>
-        )}
-      </div>
-    </div>
+    <canvas
+      ref={canvasRef}
+      className={clsx('h-full w-full cursor-crosshair', className)}
+      {...props}
+    />
   );
 };

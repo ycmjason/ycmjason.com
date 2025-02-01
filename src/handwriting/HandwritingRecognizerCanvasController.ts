@@ -22,53 +22,93 @@ type GoogleHandwritingApiResult =
 const GOOGLE_HANDWRITING_API =
   'https://www.google.com/inputtools/request?ime=handwriting&app=mobilesearch&cs=1&oe=UTF-8';
 
-export type HandwritingRecognizerConstructorOptions = {
+export type HandwritingRecognizerCanvasControllerOptions = {
   lineWidth?: number;
+  onDrawStart?: () => void;
+  onDrawEnd?: () => void;
 };
 
-export class HandwritingRecognizer {
-  #canvas: HTMLCanvasElement;
+const DEFAULT_LINE_WIDTH = 3;
+export class HandwritingRecognizerCanvasController {
+  canvas: HTMLCanvasElement;
+  #destroyed = false;
   #canvasContext: CanvasRenderingContext2D;
   #currentStroke: Point[] = [];
   #strokes: Stroke[] = [];
-  #isDrawing = false;
+  #_isDrawing = false;
+
+  readonly destroy: () => void;
+  get #isDrawing(): boolean {
+    return this.#_isDrawing;
+  }
+  set #isDrawing(isDrawing: boolean) {
+    if (this.#destroyed) return;
+    if (isDrawing === this.#_isDrawing) return;
+    this.#_isDrawing = isDrawing;
+    this.#options[isDrawing ? 'onDrawStart' : 'onDrawEnd']?.();
+  }
+
+  #options: HandwritingRecognizerCanvasControllerOptions;
 
   constructor(
     canvas: HTMLCanvasElement,
-    { lineWidth = 3 }: HandwritingRecognizerConstructorOptions = {},
+    options: HandwritingRecognizerCanvasControllerOptions = {},
   ) {
-    this.#canvas = canvas;
+    this.#options = options;
+    this.canvas = canvas;
     const ctx = canvas.getContext('2d');
     if (!ctx) throw new Error('Could not get canvas context');
     this.#canvasContext = ctx;
 
-    this.#setupCanvas({ lineWidth });
-    this.#attachEventListeners();
+    this.#setupCanvas();
+    this.destroy = this.#attachEventListeners();
   }
 
-  #setupCanvas({ lineWidth }: { lineWidth: number }) {
-    this.#canvasContext.strokeStyle = 'black';
+  #setupCanvas() {
+    this.#canvasContext.strokeStyle = 'rgba(22, 39, 76, 0.7)';
     this.#canvasContext.lineCap = 'round';
     this.#canvasContext.lineJoin = 'round';
-    this.#canvasContext.lineWidth = lineWidth;
+    this.#canvasContext.lineWidth = this.#options.lineWidth ?? DEFAULT_LINE_WIDTH;
+    this.clear();
   }
 
-  #attachEventListeners() {
+  #attachEventListeners(): () => void {
+    const startStroke = this.#startStroke.bind(this);
+    const continueStroke = this.#continueStroke.bind(this);
+    const endStroke = this.#endStroke.bind(this);
+    const handleTouchStart = this.#handleTouchStart.bind(this);
+    const handleTouchMove = this.#handleTouchMove.bind(this);
+    const handleTouchEnd = this.#handleTouchEnd.bind(this);
+
     // Mouse events
-    this.#canvas.addEventListener('mousedown', this.#startStroke.bind(this));
-    this.#canvas.addEventListener('mousemove', this.#continueStroke.bind(this));
-    this.#canvas.addEventListener('mouseup', this.#endStroke.bind(this));
-    this.#canvas.addEventListener('mouseout', this.#endStroke.bind(this));
-    this.#canvas.addEventListener('mouseleave', this.#endStroke.bind(this));
+    this.canvas.addEventListener('mousedown', startStroke);
+    this.canvas.addEventListener('mousemove', continueStroke);
+    this.canvas.addEventListener('mouseup', endStroke);
+    this.canvas.addEventListener('mouseout', endStroke);
+    this.canvas.addEventListener('mouseleave', endStroke);
 
     // Touch events
-    this.#canvas.addEventListener('touchstart', this.#handleTouchStart.bind(this));
-    this.#canvas.addEventListener('touchmove', this.#handleTouchMove.bind(this));
-    this.#canvas.addEventListener('touchend', this.#handleTouchEnd.bind(this));
+    this.canvas.addEventListener('touchstart', handleTouchStart);
+    this.canvas.addEventListener('touchmove', handleTouchMove);
+    this.canvas.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      // Mouse events
+      this.canvas.removeEventListener('mousedown', startStroke);
+      this.canvas.removeEventListener('mousemove', continueStroke);
+      this.canvas.removeEventListener('mouseup', endStroke);
+      this.canvas.removeEventListener('mouseout', endStroke);
+      this.canvas.removeEventListener('mouseleave', endStroke);
+
+      // Touch events
+      this.canvas.removeEventListener('touchstart', handleTouchStart);
+      this.canvas.removeEventListener('touchmove', handleTouchMove);
+      this.canvas.removeEventListener('touchend', handleTouchEnd);
+    };
   }
 
   #getPointFromEvent({ clientX, clientY }: Pick<MouseEvent, 'clientX' | 'clientY'>): Point {
-    const rect = this.#canvas.getBoundingClientRect();
+    const rect = this.canvas.getBoundingClientRect();
     return {
       x: clientX - rect.left,
       y: clientY - rect.top,
@@ -93,11 +133,11 @@ export class HandwritingRecognizer {
 
   #endStroke() {
     if (!this.#isDrawing) return;
-    this.#isDrawing = false;
     if (this.#currentStroke.length > 0) {
       this.#strokes.push({ points: [...this.#currentStroke] });
     }
     this.#currentStroke = [];
+    this.#isDrawing = false;
   }
 
   #handleTouchStart(e: TouchEvent) {
@@ -124,8 +164,7 @@ export class HandwritingRecognizer {
   }
 
   clear() {
-    this.#canvasContext.fillStyle = 'white';
-    this.#canvasContext.fillRect(0, 0, this.#canvas.width, this.#canvas.height);
+    this.#canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.#strokes = [];
     this.#currentStroke = [];
     this.#isDrawing = false;
@@ -139,9 +178,9 @@ export class HandwritingRecognizer {
     });
   }
 
-  async recognize(options: RecognitionOptions = {}): Promise<string[]> {
+  async recognize(options: RecognitionOptions = {}): Promise<string> {
     if (this.#strokes.length === 0) {
-      throw new Error('No handwriting to recognize');
+      return '';
     }
 
     const response = await fetch(GOOGLE_HANDWRITING_API, {
@@ -154,11 +193,11 @@ export class HandwritingRecognizer {
         requests: [
           {
             writing_guide: {
-              writing_area_width: options.width || this.#canvas.width,
-              writing_area_height: options.height || this.#canvas.height,
+              writing_area_width: options.width || this.canvas.width,
+              writing_area_height: options.height || this.canvas.height,
             },
             ink: this.#formatTracesForAPI(),
-            language: options.language || 'zh_TW',
+            language: options.language ?? 'en',
           },
         ],
       }),
@@ -180,6 +219,6 @@ export class HandwritingRecognizer {
       throw new Error(statusMessage);
     }
 
-    return result[0]?.[1] ?? [];
+    return result[0]?.[1]?.[0] ?? '';
   }
 }
