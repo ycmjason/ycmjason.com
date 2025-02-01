@@ -65,7 +65,7 @@ export class HandwritingRecognizerCanvasController {
   }
 
   #setupCanvas() {
-    this.#canvasContext.strokeStyle = 'rgba(22, 39, 76, 0.7)';
+    this.#canvasContext.strokeStyle = 'rgba(77, 26, 1, 0.7)';
     this.#canvasContext.lineCap = 'round';
     this.#canvasContext.lineJoin = 'round';
     this.#canvasContext.lineWidth = this.#options.lineWidth ?? DEFAULT_LINE_WIDTH;

@@ -17,7 +17,7 @@ export const OCRCanvasWithTimeout = ({
 
   return (
     <OCRCanvas
-      onTransitionEnd={e => {
+      onTransitionEnd={() => {
         transitionEndHandlerRef.current?.();
       }}
       onDrawStart={() => {
@@ -51,16 +51,14 @@ export const OCRCanvasWithTimeout = ({
           ? {
               transitionDuration: `${timeout * 0.4}ms`,
               transitionDelay: `${timeout * 0.6}ms`,
+              filter: 'opacity(0) blur(var(--blur-xs)',
             }
           : {
               transitionDuration: '350ms',
+              filter: 'opacity(1)',
             }
       }
-      className={clsx(
-        isDebouncing ? 'opacity-0 blur-xs' : 'opacity-100 blur-none',
-        'transition-blur transition-filter',
-        className,
-      )}
+      className={clsx('transition-filter', className)}
       {...props}
     />
   );
