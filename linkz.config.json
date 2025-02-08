@@ -1,0 +1,30 @@
+{
+  "$schema": "https://linkz.fishball.app/config-schema.json",
+  "outDir": "dist",
+  "publicDir": "public",
+  "favicon": "profile.png",
+  "profilePicture": "profile.png",
+  "name": "YCM Jason",
+  "links": [
+    {
+      "title": "YCMJason's Diary - my AI diary inspired by Tom Riddle's Diary",
+      "url": "https://diary.ycmjason.com/"
+    },
+    {
+      "title": "Articles on Dev.to",
+      "url": "https://dev.to/ycmjason"
+    },
+    {
+      "title": "Github",
+      "url": "https://github.com/ycmjason"
+    },
+    {
+      "title": "X",
+      "url": "https://x.com/ycmjason"
+    },
+    {
+      "title": "LinkedIn",
+      "url": "https://www.linkedin.com/in/ycmjason/"
+    }
+  ]
+}
