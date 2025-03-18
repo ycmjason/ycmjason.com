@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
+
+.cv-md {
+  p, li {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}

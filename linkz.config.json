@@ -5,26 +5,36 @@
   "favicon": "profile.png",
   "profilePicture": "profile.png",
   "name": "YCM Jason",
+  "stylesheets": ["cv.css"],
   "links": [
     {
+      "title": "CV",
+      "href": "/cv"
+    },
+    {
       "title": "YCMJason's Diary - my AI diary inspired by Tom Riddle's Diary",
-      "url": "https://diary.ycmjason.com/"
+      "href": "https://diary.ycmjason.com/",
+      "external": true
     },
     {
       "title": "Articles on Dev.to",
-      "url": "https://dev.to/ycmjason"
+      "href": "https://dev.to/ycmjason",
+      "external": true
     },
     {
       "title": "Github",
-      "url": "https://github.com/ycmjason"
+      "href": "https://github.com/ycmjason",
+      "external": true
     },
     {
       "title": "X",
-      "url": "https://x.com/ycmjason"
+      "href": "https://x.com/ycmjason",
+      "external": true
     },
     {
       "title": "LinkedIn",
-      "url": "https://www.linkedin.com/in/ycmjason/"
+      "href": "https://www.linkedin.com/in/ycmjason/",
+      "external": true
     }
   ]
 }
