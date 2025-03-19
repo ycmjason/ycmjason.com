@@ -8,16 +8,11 @@
 
 Software Engineer • Tech Speaker
 
-## Social Links
-
-- ycmjason.com
-- github.com/ycmjason
-- linkedin.com/in/ycmjason
-- x.com/ycmjason
-- dev.to/ycmjason
-- youtube.com/@YCMJasonCodes
-
----
+[[Personal Website]](https://www.ycmjason.com) •
+[[GitHub]](https://github.com/ycmjason) •
+[[LinkedIn]](https://www.linkedin.com/in/ycmjason/) •
+[[X]](https://x.com/ycmjason) • [[dev.to]](https://dev.to/ycmjason) •
+[[YouTube]](https://www.youtube.com/@YCMJasonCodes)
 
 ## 🧑‍💻 Work Experience
 
@@ -97,8 +92,6 @@ Building multiple apps, SaaS, and open-source projects:
 - Founded & led **"JS Club"** to promote modern JavaScript practices.
 - Developed a CLI tool to improve developer workflows.
 
----
-
 ## 🎤 Public Speaking
 
 - **Live Coding: Recreating Vue's Reactivity System**\
@@ -122,8 +115,6 @@ Building multiple apps, SaaS, and open-source projects:
   - 📍 [Manchester Web Meetup](https://www.meetup.com/Manchester-Web-Meetup/)
   - ▶️ [Recording](https://www.youtube.com/watch?v=85gJMUEcnkc)
 
----
-
 ## 🛠️ Open Source & Side Projects
 
 - diary.ycmjason.com
@@ -136,28 +127,27 @@ Building multiple apps, SaaS, and open-source projects:
   - Vision quiz testing ability to recognize RGB values.
   - [Find out more on GitHub](https://github.com/ycmjason/perfect-colour)
 
----
-
 ## ✍️ Articles
 
 📖 All articles availabel at dev.to/ycmjason
 
 Here are some hand-picked highlights:
 
-- **Typing Partially Applicable Functions in TypeScript**\
-  📆 Jun 2023 • 🔗 Read
-  (https://dev.to/ycmjason/typing-partially-applicable-functions-1oa4)
-- **Detecting Barcodes from the Browser**\
-  📆 Nov 2021 • 🔗 Read
-  (https://dev.to/ycmjason/detecting-barcode-from-the-browser-d7n)
-- **Writing Cleaner Code with the Rule of Least Power**\
-  📆 Apr 2020 • 🔗 Read
-  (https://dev.to/ycmjason/writing-cleaner-code-with-the-rule-of-least-power-rolp-4kkk)
-- **Building a Simple Virtual DOM from Scratch**\
-  📆 Dec 2018 • 🔗 Read
-  (https://dev.to/ycmjason/building-a-simple-virtual-dom-from-scratch-3d05)
-
----
+- **Typing Partially Applicable Functions in TypeScript**
+  - 📆 Jun 2023
+  - 🔗
+    [Read](https://dev.to/ycmjason/typing-partially-applicable-functions-1oa4)
+- **Detecting Barcodes from the Browser**
+  - 📆 Nov 2021
+  - 🔗 [Read](https://dev.to/ycmjason/detecting-barcode-from-the-browser-d7n)
+- **Writing Cleaner Code with the Rule of Least Power**
+  - 📆 Apr 2020
+  - 🔗
+    [Read](https://dev.to/ycmjason/writing-cleaner-code-with-the-rule-of-least-power-rolp-4kkk)
+- **Building a Simple Virtual DOM from Scratch**
+  - 📆 Dec 2018
+  - 🔗
+    [Read](https://dev.to/ycmjason/building-a-simple-virtual-dom-from-scratch-3d05)
 
 ## 🎓 Education
 
