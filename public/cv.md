@@ -132,7 +132,7 @@ Building multiple apps, SaaS, and open-source projects:
 - [Keyboard-Keyboard](https://keyboard-keyboard.ycmjason.com)
   - Web-based **musical keyboard** using **Web Audio API**.
   - [Find out more on GitHub](https://github.com/ycmjason/keyboard-keyboard)
-- [Perfect Colour](https://perfect-color.ycmjason.com)
+- [Perfect Colour](https://perfect-colour.ycmjason.com)
   - Vision quiz testing ability to recognize RGB values.
   - [Find out more on GitHub](https://github.com/ycmjason/perfect-colour)
 

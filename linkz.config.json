@@ -13,28 +13,23 @@
     },
     {
       "title": "YCMJason's Diary - my AI diary inspired by Tom Riddle's Diary",
-      "href": "https://diary.ycmjason.com/",
-      "external": true
+      "href": "https://diary.ycmjason.com/"
     },
     {
       "title": "Articles on Dev.to",
-      "href": "https://dev.to/ycmjason",
-      "external": true
+      "href": "https://dev.to/ycmjason"
     },
     {
       "title": "Github",
-      "href": "https://github.com/ycmjason",
-      "external": true
+      "href": "https://github.com/ycmjason"
     },
     {
       "title": "X",
-      "href": "https://x.com/ycmjason",
-      "external": true
+      "href": "https://x.com/ycmjason"
     },
     {
       "title": "LinkedIn",
-      "href": "https://www.linkedin.com/in/ycmjason/",
-      "external": true
+      "href": "https://www.linkedin.com/in/ycmjason/"
     }
   ]
 }
