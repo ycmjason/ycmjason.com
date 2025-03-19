@@ -17,79 +17,87 @@ Software Engineer • Tech Speaker
 
 ## 🧑‍💻 Work Experience
 
-### 🍡 Fishball Ltd
+### 🍡 Fishball Ltd (Founder)
 
-2025 - Present • Founder
+**2025 - Present**
 
-Building multiple apps, SaaS, and open-source projects, including:
+Building multiple apps, SaaS, and open-source projects:
 
-- 📱 Mobile Apps:
-  - 🇬🇧
-    [Ace It: Life in the UK Test](https://play.google.com/store/apps/details?id=app.fishball.ace_it.liuk)
-    - 💻 React Native, TypeScript
-    - An app designed to help users prepare for the UK Citizenship test − "Life
-      in the UK Test".
-  - ♠️
-    [Big2Cal](https://play.google.com/store/apps/details?id=app.fishball.big2cal)
-    - 💻 React Native, TypeScript
-    - A score-tracking app for a popular Hong Kong card game **Big2**.
-  - ⌚️
-    [WearDa Metronome](https://play.google.com/store/apps/details?id=com.wearda.metronome)
-    - 💻 Jetpack Compose, Kotlin
-    - A WearOS vibrating metronome (~1.2k MAU, >5k downloads).
-- 🌐 Web apps:
-  - 🀄️ mjcal.app
-    - 💻 React, TypeScript
-    - A mahjong score-tracking app with stats, graphs, and analytics.
-- 😻 Open Source Projects:
-  - [@fishballpkg/linkz](https://github.com/fishballapp/linkz)
-    - A config-driven static site generator powering this very website.
-    - Generates a linktree-like website, with support to render markdown.
-  - [@fishballpkg/acme](https://github.com/fishballapp/acme)
-    - A minimalistic, zero-dependency, pure TypeScript ACME client/library.
-    - ACME, Automatic Certificate Management Environment, is the
-      [open standard](https://datatracker.ietf.org/doc/html/rfc8555) for
-      generating TLS certificates from ACME authorities that can be used for
-      HTTPS and more.
+#### 📱 Mobile Apps
 
-### Bloomberg LP
+- 🇬🇧
+  [Ace It: Life in the UK Test](https://play.google.com/store/apps/details?id=app.fishball.ace_it.liuk)
+  - 💻 React Native, TypeScript
+  - A study app for the UK Citizenship Test.
+- ♠️
+  [Big2Cal](https://play.google.com/store/apps/details?id=app.fishball.big2cal)
+  - 💻 React Native, TypeScript
+  - Score-tracking app for the popular Hong Kong card game **Big2**.
+- ⌚️
+  [WearDa Metronome](https://play.google.com/store/apps/details?id=com.wearda.metronome)
+  - 💻 Jetpack Compose, Kotlin
+  - A WearOS vibrating metronome (~1.2k MAU, >5k downloads).
 
-2023 - 2025 • Senior TypeScript Engineer
+#### 🌐 Web Apps
 
-- Planned, developed, and maintained robust, scalable, and maintainable
-  features.
-- Established a number of coding patterns enhancing Developer Experience.
-- Developed a
-  [TypeScript Language Service Plugin](https://github.com/microsoft/typescript/wiki/using-the-language-service-api)
-  - Showed strict mode errors across the codebase in IDE.
-  - Allowed adding `@ts-expect-strict-error-next-line` directives.
-  - CI pipeline to ensure no unmarked strict mode errors.
-  - Enhanced developer experience and sped up migration to strict mode.
-  - Eliminated 15% of 10k strict mode errors in the first month.
+- 🀄️ mjcal.app
+  - 💻 React, TypeScript
+  - Mahjong score-tracking app with analytics and stats.
 
-### Attest Technology Limited
+#### 😻 Open Source Projects
 
-2019 - 2023 • Frontend Engineer
+- [@fishballpkg/linkz](https://github.com/fishballapp/linkz)
+  - Config-driven static site generator powering my website.
+  - Generates a **linktree-like** page with markdown support.
+- [@fishballpkg/acme](https://github.com/fishballapp/acme)
+  - Minimalistic, zero-dependency, pure TypeScript **ACME client**.
+  - Uses the [ACME standard](https://datatracker.ietf.org/doc/html/rfc8555) for
+    generating **TLS certificates**.
 
-- Implemented an A* algorithm-based SVG line drawing module.
+### Bloomberg LP (Senior TypeScript Engineer)
+
+**2023 - 2025**
+
+- Led migration to TypeScript strict mode
+  - Increased visibility of strict mode errors:
+    - Developed `@ts-expect-strict-error`, a
+      [TypeScript Language Service Plugin](https://github.com/microsoft/typescript/wiki/using-the-language-service-api),
+      showing strict mode errors in IDEs (without affecting `tsc`).
+    - Allowed suppressing errors with `@ts-expect-strict-error-next-line`.
+  - Prevented new strict mode errors:
+    - Built a CLI tool leveraging `@ts-expect-strict-error`.
+    - Enforced checks via a new CI step, blocking PRs with unmarked strict
+      errors.
+  - Reduced existing strict mode errors:
+    - Introduced Grafana dashboards to track progress and a leaderboard to
+      gamify error elimination.
+    - Eliminated **15% of 10k errors** in the first month.
+- Defined best practices and patterns for scalable TypeScript code.
+
+### Attest Technology Limited (Frontend Engineer)
+
+**2019 - 2023**
+
+- Developed an __A_ algorithm-based SVG line drawing module_*.
 - Improved error detection and component testing DX.
-- Introduced the application of the "rule of least power" principle for code.
-  ([see my article here](https://dev.to/ycmjason/writing-cleaner-code-with-the-rule-of-least-power-rolp-4kkk))
-- Led migration of a vanilla TypeScript app to Vue.js.
+- Advocated for the
+  ["rule of least power"](https://dev.to/ycmjason/writing-cleaner-code-with-the-rule-of-least-power-rolp-4kkk)
+  as a coding principle.
+- Led migration from **vanilla TypeScript** to **Vue.js**.
 
-### The Hut Group
+### The Hut Group (Full Stack Engineer)
 
-2017 - 2019 • Full Stack Engineer
+**2017 - 2019**
 
-- Built a vanilla JavaScript component framework.
-- Founded and led a weekly "JS Club" to advocate modern JavaScript practices.
-- Developed a CLI tool to streamline developer workflows.
+- Built a **vanilla JavaScript component framework**.
+- Founded & led **"JS Club"** to promote modern JavaScript practices.
+- Developed a CLI tool to improve developer workflows.
 
 ---
 
-## 🗣️ Public Speaking
+## 🎤 Public Speaking
 
-- **Live Coding: Recreating Vue's Reactivity System**
+- **Live Coding: Recreating Vue's Reactivity System**\
   - 📆 Oct 2023
   - 📍 [Vue.js Slovenia Meetup](https://www.meetup.com/vue-slovenia/)
   - ▶️ [Recording](https://www.youtube.com/watch?v=ukqWIooTt_c)
@@ -112,54 +120,46 @@ Building multiple apps, SaaS, and open-source projects, including:
 
 ---
 
-## Open Source & Side Projects
+## 🛠️ Open Source & Side Projects
 
 - diary.ycmjason.com
-  - AI-powered diary using LLM, inspired by Tom Riddle’s diary.
-  - Read more: https://github.com/ycmjason/diary.ycmjason.com
+  - AI-powered diary using **LLM**, inspired by Tom Riddle’s diary.
+  - [Find out more on GitHub](https://github.com/ycmjason/diary.ycmjason.com)
 - [Keyboard-Keyboard](https://keyboard-keyboard.ycmjason.com)
-  - A musical keyboard web app using
-    [Web Audio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API).
-  - Read more: https://github.com/ycmjason/keyboard-keyboard
+  - Web-based **musical keyboard** using **Web Audio API**.
+  - [Find out more on GitHub](https://github.com/ycmjason/keyboard-keyboard)
 - [Perfect Colour](https://perfect-color.ycmjason.com)
-  - A fun quiz to test how good your eyes are at recognizing the RGB values of a
-    given colour.
-  - It starts from easy to hard colours.
-  - Read more: https://github.com/ycmjason/perfect-colour
+  - Vision quiz testing ability to recognize RGB values.
+  - [Find out more on GitHub](https://github.com/ycmjason/perfect-colour)
 
 ---
 
 ## ✍️ Articles
 
-You can see all my articles on dev.to/ycmjason.
+📖 All articles availabel at dev.to/ycmjason
 
-Here are some hand-picked ones that I am especially proud of:
+Here are some hand-picked highlights:
 
-- **Advanced Typescript: Typing Partially Applicable Functions**
-  - 📆 Jun 2023
-  - 🔗 https://dev.to/ycmjason/typing-partially-applicable-functions-1oa4
-- **Detecting barcode from the browser!!!**
-  - 📆 Nov 2021
-  - 🔗 https://dev.to/ycmjason/detecting-barcode-from-the-browser-d7n
-- **Writing cleaner code with the rule of least power #ROLP**
-  - 📆 Apr 2020
-  - 🔗
-    https://dev.to/ycmjason/writing-cleaner-code-with-the-rule-of-least-power-rolp-4kkk
-- **Building a Simple Virtual DOM from Scratch**
-  - 📆 Dec 2018
-  - 🔗 https://dev.to/ycmjason/building-a-simple-virtual-dom-from-scratch-3d05
-- **Let me explain to you what is `this`. (Javascript)**
-  - 📆 Jun 2018
-  - 🔗
-    https://dev.to/ycmjason/let-me-explain-to-you-what-is-this-javascript-44ja
+- **Typing Partially Applicable Functions in TypeScript**\
+  📆 Jun 2023 • 🔗 Read
+  (https://dev.to/ycmjason/typing-partially-applicable-functions-1oa4)
+- **Detecting Barcodes from the Browser**\
+  📆 Nov 2021 • 🔗 Read
+  (https://dev.to/ycmjason/detecting-barcode-from-the-browser-d7n)
+- **Writing Cleaner Code with the Rule of Least Power**\
+  📆 Apr 2020 • 🔗 Read
+  (https://dev.to/ycmjason/writing-cleaner-code-with-the-rule-of-least-power-rolp-4kkk)
+- **Building a Simple Virtual DOM from Scratch**\
+  📆 Dec 2018 • 🔗 Read
+  (https://dev.to/ycmjason/building-a-simple-virtual-dom-from-scratch-3d05)
 
 ---
 
 ## 🎓 Education
 
-### Imperial College London
+### **Imperial College London**
 
-2014 - 2017 • BEng Computing
+**2014 - 2017** • BEng Computing
 
 - Courses: Haskell, Java, C, C++, Prolog, Python, AI, Operating Systems,
   Compilers, Networking.
