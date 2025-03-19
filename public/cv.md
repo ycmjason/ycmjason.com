@@ -1,5 +1,9 @@
 🆕 Want to talk to my CV? Check out diary.ycmjason.com.
 
+<p class="print-only">
+➡️ See this CV at <a href="https://www.ycmjason.com/cv">https://www.ycmjason.com/cv</a>
+</p>
+
 # Jason Yu
 
 Software Engineer • Tech Speaker

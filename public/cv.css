@@ -13,3 +13,32 @@
     }
   }
 }
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  body {
+    background-color: white;
+  }
+
+  .cv-md > p:nth-child(1), /* diary link */
+  body > .container > a, /* back button */
+  #powered-by {
+    display: none;
+  }
+
+  .bg {
+    position: absolute;
+    height: 100%;
+  }
+
+  body {
+    position: relative;
+  }
+
+  .print-only {
+    display: block;
+  }
+}
