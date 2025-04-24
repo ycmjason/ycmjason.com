@@ -1,5 +1,6 @@
 {
   "tasks": {
+    "build:cv": "npx one-page-pdf http://localhost:3000/cv public/cv.pdf",
     "build": "deno run -r -A jsr:@fishballpkg/linkz linkz.config.json -f"
   }
 }

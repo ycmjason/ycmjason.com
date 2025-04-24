@@ -1,4 +1,14 @@
-🆕 Want to talk to my CV? Check out diary.ycmjason.com.
+<p class="print-hidden">
+  🆕 Want to talk to my CV? Check out
+  <a href="https://diary.ycmjason.com" target="_blank" rel="noopener noreferrer">diary.ycmjason.com</a>
+  .
+</p>
+
+<p class="print-hidden">
+  <a href="/cv.pdf" class="button" target="_blank" rel="noopener noreferrer">
+    ⬇️ Download PDF
+  </a>
+</p>
 
 <p class="print-only">
 ➡️ See this CV at <a href="https://www.ycmjason.com/cv">https://www.ycmjason.com/cv</a>
@@ -8,11 +18,26 @@
 
 Software Engineer • Tech Speaker
 
-[[Personal Website]](https://www.ycmjason.com) •
-[[GitHub]](https://github.com/ycmjason) •
-[[LinkedIn]](https://www.linkedin.com/in/ycmjason/) •
-[[X]](https://x.com/ycmjason) • [[dev.to]](https://dev.to/ycmjason) •
-[[YouTube]](https://www.youtube.com/@YCMJasonCodes)
+<div class="social-links">
+  <a href="https://www.ycmjason.com" class="button" target="_blank" rel="noopener noreferrer">
+    Personal Website
+  </a>
+  <a href="https://github.com/ycmjason" class="button" target="_blank" rel="noopener noreferrer">
+    GitHub
+  </a>
+  <a href="https://www.linkedin.com/in/ycmjason/" class="button" target="_blank" rel="noopener noreferrer">
+    LinkedIn
+  </a>
+  <a href="https://x.com/ycmjason" class="button" target="_blank" rel="noopener noreferrer">
+    X
+  </a>
+  <a href="https://dev.to/ycmjason" class="button" target="_blank" rel="noopener noreferrer">
+    dev.to
+  </a>
+  <a href="https://www.youtube.com/@YCMJasonCodes" class="button" target="_blank" rel="noopener noreferrer">
+    YouTube
+  </a>
+</div>
 
 ## 🧑‍💻 Work Experience
 
