@@ -3,6 +3,7 @@
   "outDir": "dist",
   "publicDir": "public",
   "favicon": "profile.png",
+  "ga": "G-K6Q51010LJ",
   "profilePicture": "profile.png",
   "name": "YCM Jason",
   "stylesheets": ["cv.css"],
