@@ -5,7 +5,7 @@
 </p>
 
 <p class="print-hidden">
-  <a href="/cv.pdf" class="button" target="_blank" rel="noopener noreferrer">
+  <a href="/cv.pdf" class="button" download>
     ⬇️ Download PDF
   </a>
 </p>
