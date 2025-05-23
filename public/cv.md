@@ -49,6 +49,10 @@ Building multiple apps, SaaS, and open-source projects:
 
 #### 📱 Mobile Apps
 
+- ⌚️
+  [WearDa Metronome](https://play.google.com/store/apps/details?id=com.wearda.metronome)
+  - 💻 Jetpack Compose, Kotlin
+  - A WearOS vibrating metronome (>12k downloads).
 - 🇬🇧
   [Ace It: Life in the UK Test](https://play.google.com/store/apps/details?id=app.fishball.ace_it.liuk)
   - 💻 React Native, TypeScript
@@ -57,10 +61,6 @@ Building multiple apps, SaaS, and open-source projects:
   [Big2Cal](https://play.google.com/store/apps/details?id=app.fishball.big2cal)
   - 💻 React Native, TypeScript
   - Score-tracking app for the popular Hong Kong card game **Big2**.
-- ⌚️
-  [WearDa Metronome](https://play.google.com/store/apps/details?id=com.wearda.metronome)
-  - 💻 Jetpack Compose, Kotlin
-  - A WearOS vibrating metronome (~1.2k MAU, >5k downloads).
 
 #### 🌐 Web Apps
 
