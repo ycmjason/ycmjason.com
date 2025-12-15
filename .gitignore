@@ -11,3 +11,4 @@ npm-debug.log*
 .env
 dist
 *.log
+public/cv.pdf

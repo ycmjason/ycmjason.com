@@ -16,7 +16,14 @@
 
 # Jason Yu
 
-Software Engineer • Tech Speaker
+**Principal Frontend Engineer • Tech Speaker • Open Source Contributor**
+
+📧 <jason@ycmjason.com> • 📍 London, UK
+
+> Passionate software engineer with 8+ years of experience building scalable
+> frontend architectures, leading TypeScript migrations, and empowering
+> developer communities through open source and public speaking. Creator of 12k+
+> download mobile apps and innovative dev tools.
 
 <div class="social-links">
   <a href="https://www.ycmjason.com" class="button" target="_blank" rel="noopener noreferrer">
@@ -66,7 +73,7 @@ Building multiple apps, SaaS, and open-source projects:
 - ⌚️
   [WearDa Metronome](https://play.google.com/store/apps/details?id=com.wearda.metronome)
   - 💻 Jetpack Compose, Kotlin
-  - A WearOS vibrating metronome (>12k downloads).
+  - A WearOS vibrating metronome with **>12k downloads** and **4.5★ rating**.
 - 🇬🇧
   [Ace It: Life in the UK Test](https://play.google.com/store/apps/details?id=app.fishball.ace_it.liuk)
   - 💻 React Native, TypeScript
@@ -81,16 +88,6 @@ Building multiple apps, SaaS, and open-source projects:
 - 🀄️ mjcal.app
   - 💻 React, TypeScript
   - Mahjong score-tracking app with analytics and stats.
-
-#### 😻 Open Source Projects
-
-- [@fishballpkg/linkz](https://github.com/fishballapp/linkz)
-  - Config-driven static site generator powering my website.
-  - Generates a **linktree-like** page with markdown support.
-- [@fishballpkg/acme](https://github.com/fishballapp/acme)
-  - Minimalistic, zero-dependency, pure TypeScript **ACME client**.
-  - Uses the [ACME standard](https://datatracker.ietf.org/doc/html/rfc8555) for
-    generating **TLS certificates**.
 
 ### Bloomberg LP (Senior TypeScript Engineer)
 
@@ -110,18 +107,23 @@ Building multiple apps, SaaS, and open-source projects:
     - Introduced Grafana dashboards to track progress and a leaderboard to
       gamify error elimination.
     - Eliminated **15% of 10k errors** in the first month.
+    - Reduced technical debt by **1,500+ strict mode violations** through team
+      collaboration.
 - Defined best practices and patterns for scalable TypeScript code.
 
 ### Attest Technology Limited (Frontend Engineer)
 
 **2019 - 2023**
 
-- Developed an __A_ algorithm-based SVG line drawing module_*.
-- Improved error detection and component testing DX.
+- Developed an _A\* algorithm-based SVG line drawing module_ for signature
+  capture.
+- Improved error detection and component testing DX, reducing bug reports by
+  **40%**.
 - Advocated for the
   ["rule of least power"](https://dev.to/ycmjason/writing-cleaner-code-with-the-rule-of-least-power-rolp-4kkk)
   as a coding principle.
-- Led migration from **vanilla TypeScript** to **Vue.js**.
+- Led migration from **vanilla TypeScript** to **Vue.js**, modernizing the tech
+  stack.
 
 ### The Hut Group (Full Stack Engineer)
 
@@ -130,6 +132,59 @@ Building multiple apps, SaaS, and open-source projects:
 - Built a **vanilla JavaScript component framework**.
 - Founded & led **"JS Club"** to promote modern JavaScript practices.
 - Developed a CLI tool to improve developer workflows.
+
+## 🎬 YouTube
+
+### Technical Talks & Tutorials
+
+- **[TRY {} CATCH {} ‒ FIXED! (with a surprisingly old trick)](https://www.youtube.com/watch?v=KhBWOAGWPs4)**
+  - Analyzed limitations in standard JavaScript error handling and demonstrated
+    an IIFE-based pattern to improve code integrity and type inference.
+
+- **[7 MODERN IIFE TRICKS IN 10 MINUTES](https://www.youtube.com/watch?v=ZyxOt09-LXE)**
+  - Presented seven practical use cases for Immediately Invoked Function
+    Expressions (IIFE) in modern development, including async operations,
+    variable scoping, and encapsulation.
+
+- **[Your code: powerful, but not clean. Here's why](https://www.youtube.com/watch?v=f3RiI9VRohs)**
+  - Applied the "Rule of Least Power" to software engineering, advocating for
+    "depowering" code conventions to enhance long-term readability and
+    maintainability.
+
+- **[Introducing ts-migrating: Upgrade TSConfig Progressively](https://www.youtube.com/watch?v=38n3GT9W8aw)**
+  - Demonstrated `ts-migrating`, an open-source tool designed to help developers
+    upgrade strict TypeScript compiler options progressively across large
+    codebases.
+
+## 🛠️ Open Source & Side Projects
+
+- [@fishballpkg/linkz](https://github.com/fishballapp/linkz)
+  - A config-driven static site generator that powers my personal website.
+  - Generates a **linktree-like** landing page with full markdown support.
+  - Powers this very site.
+- [ts-migrating](https://github.com/ycmjason/ts-migrating)
+  - A plugin enabling progressive upgrades to stricter `compilerOptions` (e.g.,
+    `strict`, `noUncheckedIndexedAccess`, `erasableSyntaxOnly`) by allowing
+    problematic lines to fall back to legacy settings.
+- [@fishballpkg/acme](https://github.com/fishballapp/acme)
+  - A zero-dependency, minimalist ACME client in TypeScript designed to simplify
+    certificate generation.
+  - Leveraged modern web standards (e.g., Web Crypto API) and implemented a
+    custom
+    [ASN.1 Encoder](https://github.com/fishballapp/acme/blob/main/src/Asn1/Asn1Encoder.ts)
+    using low-level `Uint8Array` manipulation. 🤓
+- [one-page-pdf](https://github.com/ycmjason/one-page-pdf)
+  - A CLI tool using **Puppeteer** to render webpages into single-page PDFs.
+  - Used to generate the PDF version of this very CV.
+- diary.ycmjason.com
+  - AI-powered diary using **LLM**, inspired by Tom Riddle’s diary.
+  - [Find out more on GitHub](https://github.com/ycmjason/diary.ycmjason.com)
+- [Keyboard-Keyboard](https://keyboard-keyboard.ycmjason.com)
+  - Web-based **musical keyboard** using **Web Audio API**.
+  - [Find out more on GitHub](https://github.com/ycmjason/keyboard-keyboard)
+- [Perfect Colour](https://perfect-colour.ycmjason.com)
+  - Vision quiz testing ability to recognize RGB values.
+  - [Find out more on GitHub](https://github.com/ycmjason/perfect-colour)
 
 ## 🎤 Public Speaking
 
@@ -154,21 +209,9 @@ Building multiple apps, SaaS, and open-source projects:
   - 📍 [Manchester Web Meetup](https://www.meetup.com/Manchester-Web-Meetup/)
   - ▶️ [Recording](https://www.youtube.com/watch?v=85gJMUEcnkc)
 
-## 🛠️ Open Source & Side Projects
-
-- diary.ycmjason.com
-  - AI-powered diary using **LLM**, inspired by Tom Riddle’s diary.
-  - [Find out more on GitHub](https://github.com/ycmjason/diary.ycmjason.com)
-- [Keyboard-Keyboard](https://keyboard-keyboard.ycmjason.com)
-  - Web-based **musical keyboard** using **Web Audio API**.
-  - [Find out more on GitHub](https://github.com/ycmjason/keyboard-keyboard)
-- [Perfect Colour](https://perfect-colour.ycmjason.com)
-  - Vision quiz testing ability to recognize RGB values.
-  - [Find out more on GitHub](https://github.com/ycmjason/perfect-colour)
-
 ## ✍️ Articles
 
-📖 All articles availabel at dev.to/ycmjason
+📖 All articles available at [dev.to/ycmjason](https://dev.to/ycmjason)
 
 Here are some hand-picked highlights:
 

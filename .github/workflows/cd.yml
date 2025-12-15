@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   # Trigger the workflow on push to main branch
   push:
-    branches: [ main ]
+    branches: [main]
   # Allow manual trigger
   workflow_dispatch:
 
@@ -32,14 +32,38 @@ jobs:
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x # Run with latest stable Deno.
+      - run: deno install
       - name: Build
-        run: deno run -r -A jsr:@fishballpkg/linkz linkz.config.json -f
+        run: deno run build
+      - name: Build CV
+        run: |
+          # https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md
+          echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+          npx serve dist -p 3000 &
+          SERVER_PID=$!
+
+          # Wait for server to be ready with proper health check
+          echo "Waiting for server to be ready..."
+          for i in {1..30}; do
+            if curl -s http://localhost:3000 > /dev/null; then
+              echo "Server is ready!"
+              break
+            fi
+            echo "Attempt $i: Server not ready yet, waiting..."
+            sleep 1
+          done
+
+          # Verify the CV page is accessible
+          curl -f http://localhost:3000/cv || echo "Warning: CV page returned error"
+
+          deno run build:cv
+          kill $SERVER_PID
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist'
+          path: "dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
