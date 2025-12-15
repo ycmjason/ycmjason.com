@@ -38,7 +38,6 @@ jobs:
       - name: Build CV
         run: |
           # https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md
-          echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
           npx serve dist -p 3000 &
           SERVER_PID=$!
 
