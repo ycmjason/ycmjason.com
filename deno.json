@@ -1,12 +1,12 @@
 {
   "nodeModulesDir": "auto",
   "tasks": {
-    "build:cv": "npx one-page-pdf http://localhost:3000/cv public/cv.pdf",
+    "build:cv": "npx one-page-pdf --debug http://localhost:3000/cv public/cv.pdf",
     "build": "deno run -r -A jsr:@fishballpkg/linkz linkz.config.json -f"
   },
   "imports": {
-    "one-page-pdf": "npm:one-page-pdf@^1.1.0",
+    "one-page-pdf": "npm:one-page-pdf@^1.1.3",
     "serve": "npm:serve@^14.2.5"
   },
-  "allowScripts": ["npm:puppeteer@24.33.0", "npm:puppeteer@24.4.0"]
+  "allowScripts": ["npm:puppeteer@24.33.0"]
 }
