@@ -41,6 +41,20 @@ Software Engineer • Tech Speaker
 
 ## 🧑‍💻 Work Experience
 
+### Boltzbit (Principal Frontend Engineer)
+
+**2025 - Present**
+
+- Architected a **scalable frontend monorepo** to facilitate seamless
+  integration with external teams.
+- Spearheaded the **migration to TypeScript**, improving code reliability and
+  developer experience.
+- Led the frontend architecture for a **no-code, AI-empowered app builder**:
+  - Developed a **widget registry** enabling users to compose apps via modular
+    components.
+  - Created a **Widget SDK** to support third-party extensions and ecosystem
+    growth.
+
 ### 🍡 Fishball Ltd (Founder)
 
 **2025 - Present**
