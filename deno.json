@@ -1,11 +1,12 @@
 {
   "nodeModulesDir": "auto",
   "tasks": {
-    "build:cv": "sh -c 'npx one-page-pdf http://localhost:3000/cv dist/cv.pdf'",
+    "build:cv": "sh -c 'npx one-page-pdf --zoom=0.7 http://localhost:3000/cv dist/cv.pdf'",
     "build": "deno run -r -A jsr:@fishballpkg/linkz linkz.config.json -f"
   },
   "imports": {
-    "one-page-pdf": "npm:one-page-pdf@^1.1.5",
+    "@fishballpkg/linkz": "jsr:@fishballpkg/linkz@^0.11.0",
+    "one-page-pdf": "npm:one-page-pdf@^1.2.2",
     "serve": "npm:serve@^14.2.5"
   },
   "allowScripts": ["npm:puppeteer@24.33.0"]

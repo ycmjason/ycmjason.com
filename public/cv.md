@@ -5,8 +5,8 @@
 </p>
 
 <p class="print-hidden">
-  <a href="/cv.pdf" class="button" download>
-    ⬇️ Download PDF
+  <a href="/cv.pdf" class="button">
+    PDF Version
   </a>
 </p>
 
