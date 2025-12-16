@@ -1,7 +1,7 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:one-page-pdf@^1.1.3": "1.1.3",
+    "npm:one-page-pdf@^1.1.4": "1.1.4",
     "npm:serve@^14.2.5": "14.2.5"
   },
   "npm": {
@@ -549,8 +549,8 @@
         "wrappy"
       ]
     },
-    "one-page-pdf@1.1.3": {
-      "integrity": "sha512-oKwRpImnylZky5fAamfRRyNybd+hmVkc3lcKJH3PoI3ehf+32BdxpBnZCK0nTKvpMQ7vgpzCh4DxtCbKtgwW1A==",
+    "one-page-pdf@1.1.4": {
+      "integrity": "sha512-mlCkCcCs1Jw49QCgJN4dwaLWOGVNQr+rIDNH4gN2InP1TXR2zgiNlBiKsxYJGXFXUVHlEsJc9h3+Z4ast3rkLw==",
       "dependencies": [
         "puppeteer"
       ],
@@ -940,7 +940,7 @@
   },
   "workspace": {
     "dependencies": [
-      "npm:one-page-pdf@^1.1.3",
+      "npm:one-page-pdf@^1.1.4",
       "npm:serve@^14.2.5"
     ]
   }
