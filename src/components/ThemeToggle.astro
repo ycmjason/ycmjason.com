@@ -92,6 +92,8 @@
         : mode;
     root.dataset.theme = mode;
     root.classList.toggle('dark', effective === 'dark');
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', effective === 'dark' ? '#1e212a' : '#faf2f4');
     if (label) label.textContent = mode;
   };
 

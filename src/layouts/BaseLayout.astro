@@ -25,6 +25,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content={description}>
+    <meta name="theme-color" content="#faf2f4">
     <link rel="canonical" href={canonicalUrl}>
     <link rel="icon" type="image/webp" href="/stickers/happy.webp">
     <link rel="apple-touch-icon" href="/stickers/happy.webp">
@@ -69,6 +70,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <script is:inline>
     // Set theme + data-theme attr before paint. Wrapped in try/catch because
     // localStorage throws in some sandboxed contexts (private iframes etc.).
+    // Mobile browser chrome (status bar, address bar) tints via theme-color.
     (() => {
       let mode = 'system';
       try {
@@ -80,6 +82,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
         mode === 'dark' ||
         (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
       if (dark) root.classList.add('dark');
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', dark ? '#1e212a' : '#faf2f4');
     })();
     </script>
   </head>
