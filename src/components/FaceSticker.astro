@@ -61,11 +61,6 @@ const decorative = !alt;
 .face-sticker.auto-wiggle {
   animation: wiggle-once 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--auto-wiggle-delay, 600ms) 1 both;
 }
-/* skip auto-wiggle after the first page view of a session */
-:global(:root.wiggled) .face-sticker.auto-wiggle {
-  animation: none;
-  transform: rotate(var(--rot));
-}
 @keyframes wiggle {
   0% {
     transform: rotate(calc(var(--rot) + 0deg)) scale(1.08);

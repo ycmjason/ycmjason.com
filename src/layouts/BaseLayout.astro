@@ -80,18 +80,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
         mode === 'dark' ||
         (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
       if (dark) root.classList.add('dark');
-
-      // Auto-wiggle: only on the first page view of a session, not every nav.
-      let wiggled = false;
-      try {
-        wiggled = sessionStorage.getItem('wiggled') === '1';
-      } catch {}
-      if (wiggled) root.classList.add('wiggled');
-      else {
-        try {
-          sessionStorage.setItem('wiggled', '1');
-        } catch {}
-      }
     })();
     </script>
   </head>
