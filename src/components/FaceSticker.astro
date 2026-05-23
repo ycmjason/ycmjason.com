@@ -42,23 +42,18 @@ const decorative = !alt;
 </span>
 
 <script>
-// Replay the wiggle on every tap/click. Multiple FaceStickers on the page
-// each manage themselves, so we delegate from the document and restart the
-// animation by toggling the class (with a forced reflow in between).
-document.addEventListener('pointerdown', (e) => {
-  const target = e.target as Element | null;
-  const el = target?.closest('.face-sticker.wiggle') as HTMLElement | null;
-  if (!el) return;
-  el.classList.remove('tap-wiggle');
-  void el.offsetWidth;
-  el.classList.add('tap-wiggle');
-});
-document.addEventListener('animationend', (e) => {
-  const target = e.target as HTMLElement | null;
-  if (target?.classList.contains('tap-wiggle')) {
-    target.classList.remove('tap-wiggle');
-  }
-});
+// Replay the wiggle on every tap/click. Restart the CSS animation by
+// removing the class, forcing a reflow, then re-adding it.
+for (const el of document.querySelectorAll<HTMLElement>('.face-sticker.wiggle')) {
+  el.addEventListener('pointerdown', () => {
+    el.classList.remove('tap-wiggle');
+    void el.offsetWidth;
+    el.classList.add('tap-wiggle');
+  });
+  el.addEventListener('animationend', () => {
+    el.classList.remove('tap-wiggle');
+  });
+}
 </script>
 
 <style>
