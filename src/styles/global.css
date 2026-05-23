@@ -120,6 +120,19 @@
     color: inherit;
     text-decoration: none;
   }
+
+  /* Honour reduced-motion globally. Individual components may opt in to
+     keeping a non-motion fallback transform via their own rules. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @utility text-balance {

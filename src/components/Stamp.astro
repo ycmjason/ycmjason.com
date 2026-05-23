@@ -7,7 +7,11 @@ interface Props {
 const { text, rotate = -8, class: cls = '' } = Astro.props;
 ---
 
-<span class={`stamp ${cls}`} style={`--rot:${rotate}deg; transform: rotate(var(--rot));`}>
+<span
+  class={`stamp ${cls}`}
+  style={`--rot:${rotate}deg; transform: rotate(var(--rot));`}
+  aria-hidden="true"
+>
   {text}
 </span>
 

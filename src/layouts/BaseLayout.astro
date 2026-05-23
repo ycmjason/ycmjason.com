@@ -10,7 +10,7 @@ interface Props {
 }
 
 const {
-  title = 'YCM Jason — Principal Frontend Engineer',
+  title = 'YCM Jason · Principal Frontend Engineer',
   description = "Jason Yu's personal corner of the internet. Principal frontend engineer, tech speaker, OSS contributor. Hong Kong-born, London-based.",
   bare = false,
 } = Astro.props;
@@ -31,9 +31,22 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Eczar:wght@400;500;600;700;800&family=Gloock&family=JetBrains+Mono:wght@400;500;700&display=swap"
     >
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Eczar:wght@400;500;600;700;800&family=Gloock&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    >
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Eczar:wght@400;500;600;700;800&family=Gloock&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      >
+    </noscript>
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     <meta property="og:type" content="website">
@@ -42,10 +55,16 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1731">
     <meta property="og:image:height" content="909">
-    <meta property="og:image:alt" content="A diary-page portrait of Jason Yu — Principal Frontend Engineer">
+    <meta
+      property="og:image:alt"
+      content="A diary-page portrait of Jason Yu, Principal Frontend Engineer"
+    >
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content={canonicalImage}>
-    <meta name="twitter:image:alt" content="A diary-page portrait of Jason Yu — Principal Frontend Engineer">
+    <meta
+      name="twitter:image:alt"
+      content="A diary-page portrait of Jason Yu, Principal Frontend Engineer"
+    >
     <title>{title}</title>
     <script is:inline>
     // Set theme + data-theme attr before paint. Wrapped in try/catch because
@@ -61,6 +80,18 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
         mode === 'dark' ||
         (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
       if (dark) root.classList.add('dark');
+
+      // Auto-wiggle: only on the first page view of a session, not every nav.
+      let wiggled = false;
+      try {
+        wiggled = sessionStorage.getItem('wiggled') === '1';
+      } catch {}
+      if (wiggled) root.classList.add('wiggled');
+      else {
+        try {
+          sessionStorage.setItem('wiggled', '1');
+        } catch {}
+      }
     })();
     </script>
   </head>
