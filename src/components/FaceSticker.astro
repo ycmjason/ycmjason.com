@@ -7,14 +7,27 @@ interface Props {
   class?: string;
   alt?: string;
   wiggle?: boolean;
+  /** Play the wiggle once on mount as a small "hello" gesture. */
+  autoWiggle?: boolean;
+  /** Delay (ms) before the auto-wiggle fires. */
+  autoWiggleDelay?: number;
 }
-const { mood, size = 96, rotate = -6, class: cls = '', alt, wiggle = true } = Astro.props;
+const {
+  mood,
+  size = 96,
+  rotate = -6,
+  class: cls = '',
+  alt,
+  wiggle = true,
+  autoWiggle = false,
+  autoWiggleDelay = 600,
+} = Astro.props;
 const decorative = !alt;
 ---
 
 <span
-  class={`face-sticker inline-block ${wiggle ? 'wiggle' : ''} ${cls}`}
-  style={`--rot: ${rotate}deg; --size: ${size}px; transform: rotate(var(--rot));`}
+  class={`face-sticker inline-block ${wiggle ? 'wiggle' : ''} ${autoWiggle ? 'auto-wiggle' : ''} ${cls}`}
+  style={`--rot: ${rotate}deg; --size: ${size}px; --auto-wiggle-delay: ${autoWiggleDelay}ms; transform: rotate(var(--rot));`}
   aria-hidden={decorative ? 'true' : undefined}
 >
   <img
@@ -45,23 +58,28 @@ const decorative = !alt;
   transform: rotate(calc(var(--rot) + 8deg)) scale(1.08);
   animation: wiggle 600ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+.face-sticker.auto-wiggle {
+  animation: wiggle-once 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--auto-wiggle-delay, 600ms) 1
+    both;
+}
 @keyframes wiggle {
-  0% {
-    transform: rotate(calc(var(--rot) + 0deg)) scale(1.08);
-  }
-  25% {
-    transform: rotate(calc(var(--rot) + 12deg)) scale(1.08);
-  }
-  55% {
-    transform: rotate(calc(var(--rot) - 6deg)) scale(1.08);
-  }
-  100% {
-    transform: rotate(calc(var(--rot) + 8deg)) scale(1.08);
-  }
+  0%   { transform: rotate(calc(var(--rot) + 0deg)) scale(1.08); }
+  25%  { transform: rotate(calc(var(--rot) + 12deg)) scale(1.08); }
+  55%  { transform: rotate(calc(var(--rot) - 6deg)) scale(1.08); }
+  100% { transform: rotate(calc(var(--rot) + 8deg)) scale(1.08); }
+}
+/* One-shot wiggle on mount: settles back to the resting rotation. */
+@keyframes wiggle-once {
+  0%   { transform: rotate(var(--rot)) scale(1); }
+  25%  { transform: rotate(calc(var(--rot) + 14deg)) scale(1.06); }
+  55%  { transform: rotate(calc(var(--rot) - 8deg)) scale(1.06); }
+  80%  { transform: rotate(calc(var(--rot) + 5deg)) scale(1.03); }
+  100% { transform: rotate(var(--rot)) scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
   .face-sticker,
-  .face-sticker.wiggle:hover {
+  .face-sticker.wiggle:hover,
+  .face-sticker.auto-wiggle {
     transition: none;
     animation: none;
     transform: rotate(var(--rot));

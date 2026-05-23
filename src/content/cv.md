@@ -11,7 +11,7 @@
 </p>
 
 <p class="print-only">
-➡️ See this CV at <a href="https://www.ycmjason.com/cv">https://www.ycmjason.com/cv</a>
+➡️ See this CV at <a href="https://ycmjason.com/cv">https://ycmjason.com/cv</a>
 </p>
 
 # Jason Yu
@@ -26,7 +26,7 @@
 > download mobile apps and innovative dev tools.
 
 <div class="social-links">
-  <a href="https://www.ycmjason.com" class="button" target="_blank" rel="noopener noreferrer">
+  <a href="https://ycmjason.com" class="button" target="_blank" rel="noopener noreferrer">
     Personal Website
   </a>
   <a href="https://github.com/ycmjason" class="button" target="_blank" rel="noopener noreferrer">
