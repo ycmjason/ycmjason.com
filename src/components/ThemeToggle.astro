@@ -1,0 +1,99 @@
+---
+// Three-state theme toggle: system / light / dark. Persisted in localStorage.
+// The pre-paint script lives in BaseLayout so we avoid FOUC.
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Cycle theme"
+  title="Theme: system / light / dark"
+  class="group fixed top-4 right-4 z-50 grid h-12 w-12 place-items-center rounded-full border-2 border-ink/70 bg-paper/90 text-ink shadow-[2px_3px_0_var(--color-ink)] transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:rotate-[-6deg] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bubblegum"
+>
+  <svg
+    data-icon="sun"
+    class="hidden h-5 w-5"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4"></circle>
+    <path
+      d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+    ></path>
+  </svg>
+  <svg
+    data-icon="moon"
+    class="hidden h-5 w-5"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+  </svg>
+  <svg
+    data-icon="system"
+    class="hidden h-5 w-5"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+    <path d="M8 21h8M12 17v4"></path>
+  </svg>
+  <span
+    data-label
+    class="absolute -bottom-6 right-0 font-hand text-xs text-ink-soft opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+  ></span>
+</button>
+
+<script is:inline>
+(() => {
+  const KEY = 'theme';
+  const order = ['system', 'light', 'dark'];
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  const icons = btn.querySelectorAll('[data-icon]');
+  const label = btn.querySelector('[data-label]');
+
+  const apply = (mode) => {
+    const effective =
+      mode === 'system'
+        ? matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+        : mode;
+    root.classList.toggle('dark', effective === 'dark');
+    icons.forEach((i) => {
+      i.classList.toggle('hidden', i.dataset.icon !== mode);
+    });
+    label.textContent = mode;
+  };
+
+  const current = () => localStorage.getItem(KEY) || 'system';
+  apply(current());
+
+  btn.addEventListener('click', () => {
+    const next = order[(order.indexOf(current()) + 1) % order.length];
+    localStorage.setItem(KEY, next);
+    apply(next);
+  });
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (current() === 'system') apply('system');
+  });
+})();
+</script>

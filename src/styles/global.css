@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Eczar:wght@400;500;600;700;800&family=Gloock&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+@theme {
+  /* paper canvas */
+  --color-paper: oklch(97% 0.012 350);
+  --color-paper-shade: oklch(94% 0.014 350);
+  --color-paper-edge: oklch(88% 0.014 350);
+
+  /* ink — cobalt ballpoint */
+  --color-ink: oklch(28% 0.09 260);
+  --color-ink-soft: oklch(45% 0.07 260);
+  --color-ink-faint: oklch(62% 0.05 260);
+
+  /* bubblegum — strawberry-milk pink */
+  --color-bubblegum: oklch(72% 0.19 0);
+  --color-bubblegum-soft: oklch(88% 0.07 0);
+  --color-bubblegum-deep: oklch(58% 0.21 0);
+
+  /* highlighter — neon yellow, rare */
+  --color-highlighter: oklch(92% 0.17 100);
+
+  /* washi tape — warm tan */
+  --color-tape: oklch(85% 0.07 80);
+  --color-tape-stripe: oklch(78% 0.09 80);
+
+  /* red rubber stamp */
+  --color-stamp: oklch(54% 0.18 25);
+
+  --font-display: 'Gloock', 'Georgia', serif;
+  --font-body: 'Eczar', 'Georgia', serif;
+  --font-hand: 'Caveat', 'Comic Sans MS', cursive;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  :root.dark {
+    color-scheme: dark;
+
+    --color-paper: oklch(20% 0.028 265);
+    --color-paper-shade: oklch(25% 0.03 265);
+    --color-paper-edge: oklch(30% 0.03 265);
+
+    --color-ink: oklch(92% 0.02 80);
+    --color-ink-soft: oklch(75% 0.025 80);
+    --color-ink-faint: oklch(58% 0.03 80);
+
+    --color-bubblegum: oklch(76% 0.16 0);
+    --color-bubblegum-soft: oklch(38% 0.09 0);
+    --color-bubblegum-deep: oklch(82% 0.17 0);
+
+    --color-highlighter: oklch(80% 0.16 100);
+    --color-tape: oklch(40% 0.05 80);
+    --color-tape-stripe: oklch(50% 0.07 80);
+    --color-stamp: oklch(66% 0.17 25);
+  }
+
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-feature-settings: "kern", "liga", "onum";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100dvh;
+    line-height: 1.6;
+  }
+
+  /* paper grain — subtle SVG noise */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0 0.35  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  :root.dark body::before {
+    mix-blend-mode: screen;
+    opacity: 0.18;
+  }
+
+  /* ruled-notebook lines, faint */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      color-mix(in oklch, var(--color-ink) 8%, transparent) 31px,
+      color-mix(in oklch, var(--color-ink) 8%, transparent) 32px
+    );
+    opacity: 0.6;
+  }
+
+  /* keep content above background layers */
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  ::selection {
+    background: var(--color-highlighter);
+    color: var(--color-ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* link underline that looks ballpoint-drawn */
+@utility link-pen {
+  background-image: linear-gradient(
+    transparent 60%,
+    color-mix(in oklch, var(--color-bubblegum) 70%, transparent) 60%,
+    color-mix(in oklch, var(--color-bubblegum) 70%, transparent) 95%,
+    transparent 95%
+  );
+  background-size: 100% 100%;
+  transition: background-size 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@utility link-pen-hover {
+  background-image: linear-gradient(
+    color-mix(in oklch, var(--color-bubblegum) 35%, transparent),
+    color-mix(in oklch, var(--color-bubblegum) 35%, transparent)
+  );
+}
+
+/* highlighter swipe */
+@utility highlighted {
+  background-image: linear-gradient(
+    transparent 12%,
+    color-mix(in oklch, var(--color-highlighter) 75%, transparent) 12%,
+    color-mix(in oklch, var(--color-highlighter) 75%, transparent) 88%,
+    transparent 88%
+  );
+  padding: 0 0.1em;
+}

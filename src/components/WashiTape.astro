@@ -1,0 +1,51 @@
+---
+interface Props {
+  rotate?: number;
+  width?: number;
+  height?: number;
+  pattern?: 'stripe' | 'dot' | 'plain';
+  class?: string;
+  style?: string;
+}
+const {
+  rotate = -8,
+  width = 120,
+  height = 28,
+  pattern = 'stripe',
+  class: cls = '',
+  style = '',
+} = Astro.props;
+---
+
+<span
+  class={`washi-tape pattern-${pattern} ${cls}`}
+  style={`--rot:${rotate}deg; width:${width}px; height:${height}px; ${style}`}
+  aria-hidden="true"
+></span>
+
+<style>
+.washi-tape {
+  display: inline-block;
+  background-color: color-mix(in oklch, var(--color-tape) 92%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklch, var(--color-ink) 8%, transparent),
+    2px 2px 4px -1px color-mix(in oklch, var(--color-ink) 18%, transparent);
+  transform: rotate(var(--rot));
+  border-radius: 1px;
+}
+.pattern-stripe {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 7px,
+    color-mix(in oklch, var(--color-tape-stripe) 70%, transparent) 7px 11px
+  );
+}
+.pattern-dot {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in oklch, var(--color-tape-stripe) 80%, transparent) 1.5px,
+    transparent 2px
+  );
+  background-size: 10px 10px;
+}
+</style>

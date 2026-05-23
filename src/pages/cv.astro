@@ -1,0 +1,55 @@
+---
+import FaceSticker from '../components/FaceSticker.astro';
+import WashiTape from '../components/WashiTape.astro';
+import { Content as CvContent } from '../content/cv.md';
+import CvLayout from '../layouts/CvLayout.astro';
+---
+
+<CvLayout>
+  <main class="relative mx-auto max-w-[820px] px-5 py-16 sm:px-10">
+    <div class="print-hidden relative mb-8 flex flex-wrap items-center justify-between gap-4">
+      <a href="/" class="font-hand text-xl text-ink-soft hover:text-bubblegum-deep">
+        ← back to the diary
+      </a>
+      <div class="flex items-center gap-3">
+        <a
+          href="/cv.pdf"
+          class="inline-flex items-center gap-2 border-2 border-ink bg-paper-shade px-4 py-2 font-mono text-xs uppercase tracking-widest text-ink shadow-[3px_3px_0_var(--color-ink)] transition-transform duration-200 ease-out hover:-translate-y-0.5"
+        >
+          <svg
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 3v12M6 9l6 6 6-6M5 21h14"></path>
+          </svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+
+    <div class="print-hidden relative mb-12">
+      <WashiTape rotate={-5} width={130} class="absolute -top-2 left-4 z-10" />
+      <WashiTape rotate={7} width={110} pattern="dot" class="absolute -top-2 right-8 z-10" />
+      <FaceSticker
+        mood="thinking"
+        size={84}
+        rotate={-12}
+        class="absolute -top-4 -right-4 z-20 hidden sm:inline-block"
+      />
+    </div>
+
+    <article class="cv-md">
+      <CvContent />
+    </article>
+
+    <p class="print-hidden mt-16 text-center font-hand text-lg text-ink-faint">
+      ✁ — — — — — — — — — — — — — — — — — — — — — — — — ✁
+    </p>
+  </main>
+</CvLayout>

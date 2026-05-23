@@ -1,0 +1,40 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  rotate?: number;
+  width?: number;
+  class?: string;
+}
+const { src, alt, caption, rotate = -2, width = 280, class: cls = '' } = Astro.props;
+---
+
+<figure
+  class={`polaroid relative inline-block bg-paper-shade p-3 pb-12 shadow-[6px_10px_24px_-6px_color-mix(in_oklch,var(--color-ink)_30%,transparent)] ring-1 ring-ink/10 ${cls}`}
+  style={`--rot: ${rotate}deg; transform: rotate(var(--rot)); width: ${width}px;`}
+>
+  <img
+    src={src}
+    alt={alt}
+    loading="lazy"
+    decoding="async"
+    class="block aspect-square w-full object-cover"
+  >
+  {caption && (
+    <figcaption
+      class="absolute right-3 bottom-2 left-3 text-center font-hand text-xl leading-none text-ink-soft"
+    >
+      {caption}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+.polaroid {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+</style>

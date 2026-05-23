@@ -1,0 +1,60 @@
+---
+interface Props {
+  rotate?: number;
+  arrow?: 'left' | 'right' | 'down' | 'up' | 'none';
+  class?: string;
+}
+const { rotate = -4, arrow = 'left', class: cls = '' } = Astro.props;
+---
+
+<aside
+  class={`margin-note relative inline-block font-hand text-ink-soft leading-tight ${cls}`}
+  style={`--rot:${rotate}deg; transform: rotate(var(--rot));`}
+>
+  <slot />
+  {arrow !== 'none' && (
+    <svg
+      class={`arrow arrow-${arrow}`}
+      viewBox="0 0 80 40"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 22 Q 30 5 60 18 T 75 22" />
+      <path d="M75 22 l -8 -4 M75 22 l -10 6" />
+    </svg>
+  )}
+</aside>
+
+<style>
+.margin-note {
+  font-size: 1.15rem;
+}
+.arrow {
+  width: 60px;
+  height: 30px;
+  color: var(--color-bubblegum-deep);
+}
+.arrow-left {
+  transform: scaleX(-1);
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
+.arrow-right {
+  margin-left: 0.25rem;
+  vertical-align: middle;
+}
+.arrow-down {
+  transform: rotate(70deg) translateY(-4px);
+  display: block;
+  margin: -4px auto -6px;
+}
+.arrow-up {
+  transform: rotate(-110deg);
+  display: block;
+  margin: -10px auto -2px;
+}
+</style>

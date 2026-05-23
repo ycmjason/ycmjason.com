@@ -1,0 +1,39 @@
+---
+interface Props {
+  text: string;
+  rotate?: number;
+  class?: string;
+}
+const { text, rotate = -8, class: cls = '' } = Astro.props;
+---
+
+<span class={`stamp ${cls}`} style={`--rot:${rotate}deg; transform: rotate(var(--rot));`}>
+  {text}
+</span>
+
+<style>
+.stamp {
+  display: inline-block;
+  color: var(--color-stamp);
+  border: 2.5px solid var(--color-stamp);
+  padding: 0.25em 0.65em 0.2em;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--color-stamp) 50%, transparent);
+  /* faded-ink texture */
+  background:
+    radial-gradient(
+      circle at 30% 40%,
+      transparent 0.5px,
+      color-mix(in oklch, var(--color-paper) 80%, transparent) 1px,
+      transparent 1.5px
+    )
+    0 0 / 4px 4px;
+  background-blend-mode: lighten;
+}
+</style>

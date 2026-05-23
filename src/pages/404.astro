@@ -1,0 +1,44 @@
+---
+import FaceSticker from '../components/FaceSticker.astro';
+import MarginNote from '../components/MarginNote.astro';
+import WashiTape from '../components/WashiTape.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — page not found" description="That page isn't in this diary.">
+  <main class="relative mx-auto grid min-h-[80vh] max-w-[900px] place-items-center px-6 py-16">
+    <div class="relative text-center">
+      <FaceSticker mood="surprised" size={320} rotate={-8} wiggle={false} class="block mx-auto" />
+      <p class="mt-8 font-hand text-3xl text-ink-soft">oh.</p>
+      <h1
+        class="mt-2 font-display text-[clamp(2.75rem,7vw,5rem)] leading-[0.95] text-ink text-balance"
+      >
+        you flipped to a page<br>
+        that <em class="font-display italic text-bubblegum-deep">doesn't exist.</em>
+      </h1>
+      <p class="mx-auto mt-6 max-w-[42ch] text-pretty text-ink-soft">
+        Either I haven't written this entry yet, or you've taken a wrong turn somewhere on the way.
+        Either way — sorry about that.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-5">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 border-2 border-ink bg-paper-shade px-5 py-2.5 font-mono text-sm uppercase tracking-widest text-ink shadow-[3px_3px_0_var(--color-ink)] transition-transform duration-200 ease-out hover:-translate-y-0.5"
+        >
+          ← back to the front page
+        </a>
+        <a href="/cv" class="font-display text-lg text-ink link-pen hover:link-pen-hover">
+          or read my CV
+        </a>
+      </div>
+
+      <div class="absolute -top-10 -left-4 hidden md:block">
+        <WashiTape rotate={-22} width={120} pattern="dot" />
+      </div>
+      <div class="absolute top-10 -right-2 hidden md:block">
+        <MarginNote rotate={6} arrow="left"> a 404, in this economy? </MarginNote>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

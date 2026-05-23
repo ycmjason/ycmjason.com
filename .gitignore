@@ -1,14 +1,16 @@
-# created by gitignorer
-# profile used: node
-*.sw*
 .DS_Store
-node_modules
-npm-debug.log*
-.vuepress/dist
-.firebase
+*.sw*
+*.log
+.env
 .cache
 .temp
-.env
+
+# dependencies
+node_modules
+
+# build output
 dist
-*.log
+.astro
+
+# generated
 public/cv.pdf

@@ -1,0 +1,82 @@
+---
+interface Props {
+  href?: string;
+  rotate?: number;
+  tone?: 'pink' | 'cream' | 'sky' | 'yellow';
+  external?: boolean;
+  class?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+const {
+  href,
+  rotate = 0,
+  tone = 'cream',
+  external = false,
+  class: cls = '',
+  size = 'md',
+} = Astro.props;
+
+const tones = {
+  pink: 'bg-bubblegum-soft text-ink',
+  cream: 'bg-paper-shade text-ink',
+  sky: 'bg-[color-mix(in_oklch,var(--color-ink)_12%,var(--color-paper-shade))] text-ink',
+  yellow: 'bg-highlighter/70 text-ink',
+};
+const sizes = {
+  sm: 'p-4 text-sm',
+  md: 'p-5',
+  lg: 'p-6 text-lg',
+};
+
+const Tag = href ? 'a' : 'div';
+const linkProps = href
+  ? {
+      href,
+      ...(external && {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      }),
+    }
+  : {};
+---
+
+<Tag
+  {...linkProps}
+  class={`sticky-note group relative block ${tones[tone]} ${sizes[size]} ring-1 ring-ink/10 shadow-[4px_6px_14px_-4px_color-mix(in_oklch,var(--color-ink)_28%,transparent)] ${cls}`}
+  style={`--rot:${rotate}deg; transform: rotate(var(--rot));`}
+>
+  <slot />
+  {external && href && (
+    <svg
+      class="absolute top-3 right-3 h-4 w-4 text-ink/50 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-bubblegum-deep"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M7 17L17 7M9 7h8v8"></path>
+    </svg>
+  )}
+</Tag>
+
+<style>
+.sticky-note {
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+a.sticky-note:hover,
+a.sticky-note:focus-visible {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow: 6px 10px 22px -6px color-mix(in oklch, var(--color-ink) 40%, transparent);
+  outline: none;
+}
+a.sticky-note:focus-visible {
+  box-shadow:
+    6px 10px 22px -6px color-mix(in oklch, var(--color-ink) 40%, transparent),
+    0 0 0 3px var(--color-bubblegum);
+}
+</style>
