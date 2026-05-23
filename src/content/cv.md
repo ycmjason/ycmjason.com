@@ -18,11 +18,11 @@
 
 **Principal Frontend Engineer • Tech Speaker • Open Source Contributor**
 
-📧 <jason@ycmjason.com> • 📍 London, UK
+📧 <me@ycmjason.com> • 📍 London, UK
 
 > Passionate software engineer with 8+ years of experience building scalable
 > frontend architectures, leading TypeScript migrations, and empowering
-> developer communities through open source and public speaking. Creator of 12k+
+> developer communities through open source and public speaking. Creator of 14k+
 > download mobile apps and innovative dev tools.
 
 <div class="social-links">
@@ -73,21 +73,25 @@ Building multiple apps, SaaS, and open-source projects:
 - ⌚️
   [WearDa Metronome](https://play.google.com/store/apps/details?id=com.wearda.metronome)
   - 💻 Jetpack Compose, Kotlin
-  - A WearOS vibrating metronome with **>12k downloads** and **4.5★ rating**.
-- 🇬🇧
-  [Ace It: Life in the UK Test](https://play.google.com/store/apps/details?id=app.fishball.ace_it.liuk)
+  - A WearOS vibrating metronome with **>14k downloads**.
+- 🇬🇧 [Ace It: Life in the UK Test](https://liuk.ace-it.fishball.app/demo) ([Android](https://play.google.com/store/apps/details?id=app.fishball.ace_it.liuk), [iOS](https://apps.apple.com/gb/app/ace-it-life-in-the-uk-test/id6743565099))
   - 💻 React Native, TypeScript
   - A study app for the UK Citizenship Test.
-- ♠️
-  [Big2Cal](https://play.google.com/store/apps/details?id=app.fishball.big2cal)
+- ♠️ [Big2Cal](https://big2cal.app) ([Android](https://play.google.com/store/apps/details?id=app.fishball.big2cal), [iOS](https://apps.apple.com/gb/app/%E9%8B%A4d%E8%A8%88%E5%88%86%E5%99%A8-big2cal/id6743653589))
   - 💻 React Native, TypeScript
   - Score-tracking app for the popular Hong Kong card game **Big2**.
+- 🀄️ [麻雀計分器 mjcal](https://mjcal.app) ([Android](https://play.google.com/store/apps/details?id=app.fishball.mjcal), [iOS](https://apps.apple.com/gb/app/%E9%BA%BB%E9%9B%80%E8%A8%88%E5%88%86%E5%99%A8-mjcal/id6771811874))
+  - 💻 React Native, TypeScript
+  - A Cantonese mahjong scoring calculator with **customizable house rules**, automatic point calculation, and multi-round game tracking.
 
 #### 🌐 Web Apps
 
 - 🀄️ mjcal.app
   - 💻 React, TypeScript
   - Mahjong score-tracking app with analytics and stats.
+- 🔗 [dynm.link](https://www.dynm.link/)
+  - 💻 React, TypeScript, Cloudflare Workers + D1 + R2
+  - A "microlinks" platform — create redirects, hosted markdown pages, file links, bio pages, and more. Custom domains coming soon.
 
 ### Bloomberg LP (Senior TypeScript Engineer)
 
@@ -158,10 +162,6 @@ Building multiple apps, SaaS, and open-source projects:
 
 ## 🛠️ Open Source & Side Projects
 
-- [@fishballpkg/linkz](https://github.com/fishballapp/linkz)
-  - A config-driven static site generator that powers my personal website.
-  - Generates a **linktree-like** landing page with full markdown support.
-  - Powers this very site.
 - [ts-migrating](https://github.com/ycmjason/ts-migrating)
   - A plugin enabling progressive upgrades to stricter `compilerOptions` (e.g.,
     `strict`, `noUncheckedIndexedAccess`, `erasableSyntaxOnly`) by allowing
@@ -188,7 +188,7 @@ Building multiple apps, SaaS, and open-source projects:
 
 ## 🎤 Public Speaking
 
-- **Live Coding: Recreating Vue's Reactivity System**\
+- **Live Coding: Recreating Vue's Reactivity System**
   - 📆 Oct 2023
   - 📍 [Vue.js Slovenia Meetup](https://www.meetup.com/vue-slovenia/)
   - ▶️ [Recording](https://www.youtube.com/watch?v=ukqWIooTt_c)

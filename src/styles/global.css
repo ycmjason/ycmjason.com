@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Eczar:wght@400;500;600;700;800&family=Gloock&family=JetBrains+Mono:wght@400;500;700&display=swap");
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* paper canvas */
@@ -147,13 +147,14 @@
   );
 }
 
-/* highlighter swipe */
+/* highlighter swipe — always renders dark text on yellow for legibility */
 @utility highlighted {
   background-image: linear-gradient(
     transparent 12%,
-    color-mix(in oklch, var(--color-highlighter) 75%, transparent) 12%,
-    color-mix(in oklch, var(--color-highlighter) 75%, transparent) 88%,
+    var(--color-highlighter) 12%,
+    var(--color-highlighter) 88%,
     transparent 88%
   );
+  color: oklch(22% 0.06 260);
   padding: 0 0.1em;
 }

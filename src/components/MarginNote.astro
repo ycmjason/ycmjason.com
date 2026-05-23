@@ -23,8 +23,17 @@ const { rotate = -4, arrow = 'left', class: cls = '' } = Astro.props;
       stroke-linejoin="round"
       aria-hidden="true"
     >
-      <path d="M5 22 Q 30 5 60 18 T 75 22" />
-      <path d="M75 22 l -8 -4 M75 22 l -10 6" />
+      <defs>
+        <filter id="mn-rough" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4" />
+          <feDisplacementMap in="SourceGraphic" scale="1.4" />
+        </filter>
+      </defs>
+      <g filter="url(#mn-rough)">
+        <path d="M5 26 C 16 4, 50 6, 78 14" />
+        <path d="M66 4 L 79 15" />
+        <path d="M67 24 L 78 14" />
+      </g>
     </svg>
   )}
 </aside>

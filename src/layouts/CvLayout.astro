@@ -16,94 +16,64 @@ const {
 </BaseLayout>
 
 <style is:global>
-/* --- screen rendering of the CV: diary-flavored but readable --- */
+/* The CV article uses @tailwindcss/typography `prose` for its baseline.
+   Diary touches (highlighter on strong, dashed pink section borders,
+   ✦ bullets, .button / .social-links from cv.md) are layered on top here. */
+
 .cv-md {
-  max-width: 70ch;
-  margin-inline: auto;
-  color: var(--color-ink);
-  font-family: var(--font-body);
-  line-height: 1.65;
+  /* tighter than prose default to fit one page */
+  --tw-prose-body: var(--color-ink-soft);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-lead: var(--color-ink-soft);
+  --tw-prose-links: var(--color-ink);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-quotes: var(--color-ink-soft);
+  --tw-prose-quote-borders: var(--color-bubblegum);
+  --tw-prose-code: var(--color-ink);
+  --tw-prose-counters: var(--color-ink-faint);
+  --tw-prose-bullets: var(--color-bubblegum);
+  --tw-prose-hr: color-mix(in oklch, var(--color-ink) 20%, transparent);
 }
 
-.cv-md h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  line-height: 1;
-  margin-block: 0 0.25em;
-  color: var(--color-ink);
-}
-.cv-md h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  line-height: 1.15;
-  margin-block: 2.5rem 0.75rem;
-  color: var(--color-ink);
-  border-bottom: 2px dashed color-mix(in oklch, var(--color-ink) 25%, transparent);
-  padding-bottom: 0.35em;
-}
+.cv-md h1,
+.cv-md h2,
 .cv-md h3 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  margin-block: 1.5rem 0.25rem;
-  color: var(--color-ink);
+  font-weight: 400;
 }
-.cv-md h4 {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 1.05rem;
-  margin-block: 1rem 0.25rem;
-  color: var(--color-ink-soft);
-}
-
-.cv-md p {
-  margin-block: 0.6rem;
-}
-.cv-md blockquote {
-  border-left: 3px solid var(--color-bubblegum);
-  padding: 0.4rem 0 0.4rem 1rem;
-  margin: 1.25rem 0;
-  font-style: italic;
-  color: var(--color-ink-soft);
-}
-.cv-md ul {
-  list-style: none;
-  padding-left: 1.25rem;
-}
-.cv-md ul li {
-  position: relative;
-  margin: 0.35rem 0;
-}
-.cv-md ul li::before {
-  content: "✦";
-  position: absolute;
-  left: -1.25rem;
-  color: var(--color-bubblegum);
-  font-size: 0.9em;
-  top: 0.1em;
-}
-.cv-md ul ul li::before {
-  content: "–";
-  color: var(--color-ink-faint);
+.cv-md h2 {
+  border-bottom: 2px dashed color-mix(in oklch, var(--color-ink) 25%, transparent);
+  padding-bottom: 0.3em;
 }
 .cv-md strong {
-  color: var(--color-ink);
-  font-weight: 700;
   background-image: linear-gradient(
     transparent 60%,
-    color-mix(in oklch, var(--color-highlighter) 60%, transparent) 60%,
-    color-mix(in oklch, var(--color-highlighter) 60%, transparent) 92%,
+    var(--color-highlighter) 60%,
+    var(--color-highlighter) 92%,
     transparent 92%
   );
   padding: 0 0.05em;
 }
+/* In dark mode the cream text would sit poorly on a light yellow strip
+   (both light), so swap the underline strip for a solid pink one — keeps
+   the "marked" feel and reads fine against the cream text. */
+:root.dark .cv-md strong {
+  background-image: linear-gradient(
+    transparent 60%,
+    color-mix(in oklch, var(--color-bubblegum) 70%, transparent) 60%,
+    color-mix(in oklch, var(--color-bubblegum) 70%, transparent) 92%,
+    transparent 92%
+  );
+}
 .cv-md a {
-  color: var(--color-ink);
   background-image: linear-gradient(
     transparent 78%,
     color-mix(in oklch, var(--color-bubblegum) 80%, transparent) 78%,
     color-mix(in oklch, var(--color-bubblegum) 80%, transparent) 95%,
     transparent 95%
   );
+  text-decoration: none;
+  font-weight: inherit;
   transition: background-color 200ms ease-out;
 }
 .cv-md a:hover {
@@ -111,12 +81,46 @@ const {
 }
 .cv-md code {
   font-family: var(--font-mono);
-  font-size: 0.92em;
   background: var(--color-paper-shade);
   padding: 0.05em 0.35em;
   border-radius: 3px;
+  font-weight: inherit;
+}
+.cv-md code::before,
+.cv-md code::after {
+  content: none;
+}
+.cv-md blockquote {
+  font-style: italic;
+  font-weight: inherit;
+  quotes: none;
+}
+.cv-md blockquote p::before,
+.cv-md blockquote p::after {
+  content: none;
+}
+/* swap default disc bullet for ✦ */
+.cv-md ul {
+  list-style: none;
+  padding-left: 1.25rem;
+}
+.cv-md ul > li {
+  position: relative;
+}
+.cv-md ul > li::before {
+  content: "✦";
+  position: absolute;
+  left: -1.25rem;
+  color: var(--color-bubblegum);
+  font-size: 0.9em;
+  top: 0.1em;
+}
+.cv-md ul ul > li::before {
+  content: "–";
+  color: var(--color-ink-faint);
 }
 
+/* sticky-note button styling for cv.md's <a class="button"> */
 .cv-md .social-links {
   display: flex;
   gap: 0.6rem;
@@ -180,46 +184,30 @@ const {
   .print-only {
     display: block !important;
   }
-  .cv-md {
-    max-width: none;
-    margin: 0;
-    font-size: 11pt;
-    line-height: 1.45;
-    color: #111 !important;
+  main {
+    padding: 0.3in !important;
+    max-width: none !important;
+    margin: 0 !important;
   }
-  .cv-md h1 {
-    font-size: 22pt;
+  .cv-md {
+    max-width: none !important;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
   }
   .cv-md h2 {
-    font-size: 14pt;
-    margin-block: 1rem 0.4rem;
-    border-bottom: 1px solid #000;
-    padding-bottom: 0.15em;
-  }
-  .cv-md h3 {
-    font-size: 12pt;
-    margin-block: 0.8rem 0.15rem;
+    border-bottom: 1px solid #000 !important;
   }
   .cv-md strong {
     background: none !important;
     color: #000 !important;
   }
   .cv-md a {
-    color: #111 !important;
     background: none !important;
     text-decoration: underline;
     text-decoration-color: #888;
   }
-  .cv-md ul li::before {
-    color: #000 !important;
-  }
-  .cv-md blockquote {
-    border-color: #000;
-    font-style: italic;
-    color: #222 !important;
-  }
   @page {
-    margin: 0.6in 0.7in;
+    margin: 0;
   }
 }
 </style>

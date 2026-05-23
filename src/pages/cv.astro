@@ -9,7 +9,7 @@ import CvLayout from '../layouts/CvLayout.astro';
   <main class="relative mx-auto max-w-[820px] px-5 py-16 sm:px-10">
     <div class="print-hidden relative mb-8 flex flex-wrap items-center justify-between gap-4">
       <a href="/" class="font-hand text-xl text-ink-soft hover:text-bubblegum-deep">
-        ← back to the diary
+        ← back home
       </a>
       <div class="flex items-center gap-3">
         <a
@@ -33,7 +33,7 @@ import CvLayout from '../layouts/CvLayout.astro';
       </div>
     </div>
 
-    <div class="print-hidden relative mb-12">
+    <div class="relative mb-12">
       <WashiTape rotate={-5} width={130} class="absolute -top-2 left-4 z-10" />
       <WashiTape rotate={7} width={110} pattern="dot" class="absolute -top-2 right-8 z-10" />
       <FaceSticker
@@ -44,7 +44,7 @@ import CvLayout from '../layouts/CvLayout.astro';
       />
     </div>
 
-    <article class="cv-md">
+    <article class="cv-md prose prose-sm sm:prose-base max-w-none">
       <CvContent />
     </article>
 

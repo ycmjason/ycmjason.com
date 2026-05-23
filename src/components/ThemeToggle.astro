@@ -1,6 +1,8 @@
 ---
 // Three-state theme toggle: system / light / dark. Persisted in localStorage.
-// The pre-paint script lives in BaseLayout so we avoid FOUC.
+// Icon visibility is driven by `[data-theme]` on <html> (see BaseLayout's
+// pre-paint script + global rules), so the correct icon is visible from first
+// paint — no FOUC.
 ---
 
 <button
@@ -12,7 +14,7 @@
 >
   <svg
     data-icon="sun"
-    class="hidden h-5 w-5"
+    class="h-5 w-5"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -28,7 +30,7 @@
   </svg>
   <svg
     data-icon="moon"
-    class="hidden h-5 w-5"
+    class="h-5 w-5"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -41,7 +43,7 @@
   </svg>
   <svg
     data-icon="system"
-    class="hidden h-5 w-5"
+    class="h-5 w-5"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -66,8 +68,20 @@
   const root = document.documentElement;
   const btn = document.getElementById('theme-toggle');
   if (!btn) return;
-  const icons = btn.querySelectorAll('[data-icon]');
   const label = btn.querySelector('[data-label]');
+
+  const readStored = () => {
+    try {
+      return localStorage.getItem(KEY) || 'system';
+    } catch {
+      return 'system';
+    }
+  };
+  const writeStored = (m) => {
+    try {
+      localStorage.setItem(KEY, m);
+    } catch {}
+  };
 
   const apply = (mode) => {
     const effective =
@@ -76,24 +90,21 @@
           ? 'dark'
           : 'light'
         : mode;
+    root.dataset.theme = mode;
     root.classList.toggle('dark', effective === 'dark');
-    icons.forEach((i) => {
-      i.classList.toggle('hidden', i.dataset.icon !== mode);
-    });
-    label.textContent = mode;
+    if (label) label.textContent = mode;
   };
 
-  const current = () => localStorage.getItem(KEY) || 'system';
-  apply(current());
+  apply(readStored());
 
   btn.addEventListener('click', () => {
-    const next = order[(order.indexOf(current()) + 1) % order.length];
-    localStorage.setItem(KEY, next);
+    const next = order[(order.indexOf(readStored()) + 1) % order.length];
+    writeStored(next);
     apply(next);
   });
 
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (current() === 'system') apply('system');
+    if (readStored() === 'system') apply('system');
   });
 })();
 </script>

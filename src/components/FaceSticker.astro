@@ -9,22 +9,17 @@ interface Props {
   wiggle?: boolean;
 }
 const { mood, size = 96, rotate = -6, class: cls = '', alt, wiggle = true } = Astro.props;
-const labels: Record<Mood, string> = {
-  neutral: 'Jason, deadpan',
-  happy: 'Jason, grinning',
-  surprised: 'Jason, agape',
-  thinking: 'Jason, pondering',
-};
+const decorative = !alt;
 ---
 
 <span
   class={`face-sticker inline-block ${wiggle ? 'wiggle' : ''} ${cls}`}
   style={`--rot: ${rotate}deg; --size: ${size}px; transform: rotate(var(--rot));`}
-  aria-hidden={!alt ? 'true' : undefined}
+  aria-hidden={decorative ? 'true' : undefined}
 >
   <img
-    src={`/stickers/${mood}.png`}
-    alt={alt ?? labels[mood]}
+    src={`/stickers/${mood}.webp`}
+    alt={decorative ? '' : alt}
     width={size}
     height={size}
     loading="lazy"

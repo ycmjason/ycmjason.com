@@ -8,9 +8,6 @@ import WashiTape from '../components/WashiTape.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const now = new Date();
-const stampDate = now
-  .toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
-  .toUpperCase();
 
 const socials = [
   { name: 'GitHub', href: 'https://github.com/ycmjason', handle: '@ycmjason' },
@@ -18,7 +15,6 @@ const socials = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/ycmjason/', handle: 'in/ycmjason' },
   { name: 'dev.to', href: 'https://dev.to/ycmjason', handle: '@ycmjason' },
   { name: 'YouTube', href: 'https://www.youtube.com/@YCMJasonCodes', handle: '@YCMJasonCodes' },
-  { name: 'Email', href: 'mailto:jason@ycmjason.com', handle: 'jason@ycmjason.com' },
 ];
 ---
 
@@ -32,7 +28,7 @@ const socials = [
           class="mt-2 font-display text-[clamp(3rem,8vw,6rem)] leading-[0.95] text-ink text-balance"
         >
           i'm <span class="highlighted">Jason</span>,<br>
-          and this is <em class="font-display italic text-bubblegum-deep">my diary.</em>
+          and this is <em class="font-display italic text-bubblegum-deep">my website.</em>
         </h1>
         <p class="mt-6 max-w-[52ch] text-pretty text-[1.075rem] leading-relaxed text-ink-soft">
           Principal frontend engineer in London, occasional tech speaker, full-time fan of
@@ -49,14 +45,14 @@ const socials = [
             class="absolute -top-3 left-1/2 z-10 -translate-x-1/2"
           />
           <Polaroid
-            src="/profile.png"
-            alt="Jason Yu"
-            caption="london, somewhere ~2026 ✏️"
+            src="/profile.webp"
+            alt="Jason on stage at Vue.js London, with a code projection behind him"
+            caption="vue.js london, 2019 ✏️"
             rotate={-3}
             width={280}
           />
-          <span class="absolute -bottom-4 -left-6 z-20">
-            <Stamp text={`UPDATED · ${stampDate}`} rotate={-12} />
+          <span class="absolute -top-3 -left-16 z-20">
+            <Stamp text="PROFESSIONAL" rotate={-15} />
           </span>
         </div>
       </div>
@@ -95,13 +91,13 @@ const socials = [
               Outside of that: writing about <span class="highlighted">dev tools</span>, shipping
               the occasional open-source thing, and speaking at conferences when they'll have me. I
               once made a mobile app that hit
-              <strong class="font-display text-ink">12k+</strong>
+              <strong class="font-display text-ink">14k+</strong>
               downloads, and I haven't shut up about it since.
             </p>
           </div>
         </div>
 
-        <div class="col-span-12 md:col-span-3 md:col-start-10 self-center">
+        <div class="hidden md:col-span-3 md:col-start-10 md:block self-center">
           <MarginNote rotate={-8} arrow="left">
             this is the bit where i pretend to be humble
           </MarginNote>

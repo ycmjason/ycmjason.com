@@ -22,7 +22,9 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
+    "@astrojs/sitemap": "^3.7.2",
     "@biomejs/biome": "^2.4.15",
-    "one-page-pdf": "^1.2.2"
+    "@tailwindcss/typography": "^0.5.19",
+    "puppeteer": "^25.0.4"
   }
 }

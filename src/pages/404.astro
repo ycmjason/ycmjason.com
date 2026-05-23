@@ -8,7 +8,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="404 — page not found" description="That page isn't in this diary.">
   <main class="relative mx-auto grid min-h-[80vh] max-w-[900px] place-items-center px-6 py-16">
     <div class="relative text-center">
-      <FaceSticker mood="surprised" size={320} rotate={-8} wiggle={false} class="block mx-auto" />
+      <FaceSticker
+        mood="surprised"
+        size={320}
+        rotate={-8}
+        wiggle={false}
+        alt="A surprised Jason"
+        class="block mx-auto"
+      />
       <p class="mt-8 font-hand text-3xl text-ink-soft">oh.</p>
       <h1
         class="mt-2 font-display text-[clamp(2.75rem,7vw,5rem)] leading-[0.95] text-ink text-balance"

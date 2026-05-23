@@ -14,6 +14,9 @@ const {
   description = "Jason Yu's personal corner of the internet. Principal frontend engineer, tech speaker, OSS contributor, based in London.",
   bare = false,
 } = Astro.props;
+
+const canonicalImage = new URL('/og.webp', Astro.site).toString();
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <!doctype html>
@@ -22,21 +25,42 @@ const {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content={description}>
-    <link rel="icon" type="image/png" href="/profile.png">
+    <link rel="canonical" href={canonicalUrl}>
+    <link rel="icon" type="image/webp" href="/stickers/happy.webp">
+    <link rel="apple-touch-icon" href="/stickers/happy.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Eczar:wght@400;500;600;700;800&family=Gloock&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    >
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     <meta property="og:type" content="website">
-    <meta property="og:image" content="/profile.png">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:url" content={canonicalUrl}>
+    <meta property="og:image" content={canonicalImage}>
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="1731">
+    <meta property="og:image:height" content="909">
+    <meta property="og:image:alt" content="A diary-page portrait of Jason Yu — Principal Frontend Engineer">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content={canonicalImage}>
+    <meta name="twitter:image:alt" content="A diary-page portrait of Jason Yu — Principal Frontend Engineer">
     <title>{title}</title>
     <script is:inline>
+    // Set theme + data-theme attr before paint. Wrapped in try/catch because
+    // localStorage throws in some sandboxed contexts (private iframes etc.).
     (() => {
-      const m = localStorage.getItem('theme') || 'system';
+      let mode = 'system';
+      try {
+        mode = localStorage.getItem('theme') || 'system';
+      } catch {}
+      const root = document.documentElement;
+      root.dataset.theme = mode;
       const dark =
-        m === 'dark' || (m === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
-      if (dark) document.documentElement.classList.add('dark');
+        mode === 'dark' ||
+        (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+      if (dark) root.classList.add('dark');
     })();
     </script>
   </head>
@@ -50,5 +74,20 @@ const {
 body.bare::before,
 body.bare::after {
   display: none;
+}
+
+/* Theme toggle icon selection driven by data-theme on <html>. This means the
+   correct icon is visible from first paint, before the toggle's own JS runs. */
+#theme-toggle [data-icon] {
+  display: none;
+}
+:root[data-theme="system"] #theme-toggle [data-icon="system"],
+:root[data-theme="light"] #theme-toggle [data-icon="sun"],
+:root[data-theme="dark"] #theme-toggle [data-icon="moon"],
+/* fallback when no data-theme is set (e.g. JS off entirely) */
+  :root:not([data-theme])
+  #theme-toggle
+  [data-icon="system"] {
+  display: block;
 }
 </style>
