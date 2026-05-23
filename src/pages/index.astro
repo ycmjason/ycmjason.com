@@ -57,9 +57,11 @@ const socials = [
         </div>
       </div>
 
-      {/* Fires on every load on purpose. The wiggle is the site's "hello" —
-          it sets the playful tone the rest of the page leans on. Don't
-          throttle it per session; a static greeting is the wrong register. */}
+      <!--
+        Fires on every load on purpose. The wiggle is the site's "hello",
+        it sets the playful tone the rest of the page leans on. Don't
+        throttle it per session; a static greeting is the wrong register.
+      -->
       <FaceSticker
         mood="neutral"
         size={72}
@@ -242,7 +244,12 @@ const socials = [
           © {now.getFullYear()} · Jason Yu
         </p>
       </div>
-      <FaceSticker mood="surprised" size={64} rotate={18} class="absolute -top-2 right-1/3" />
+      <FaceSticker
+        mood="surprised"
+        size={64}
+        rotate={18}
+        class="absolute -top-10 right-4 md:-top-2 md:right-1/3"
+      />
     </footer>
   </main>
 </BaseLayout>

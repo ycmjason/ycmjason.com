@@ -41,6 +41,26 @@ const decorative = !alt;
   >
 </span>
 
+<script>
+// Replay the wiggle on every tap/click. Multiple FaceStickers on the page
+// each manage themselves, so we delegate from the document and restart the
+// animation by toggling the class (with a forced reflow in between).
+document.addEventListener('pointerdown', (e) => {
+  const target = e.target as Element | null;
+  const el = target?.closest('.face-sticker.wiggle') as HTMLElement | null;
+  if (!el) return;
+  el.classList.remove('tap-wiggle');
+  void el.offsetWidth;
+  el.classList.add('tap-wiggle');
+});
+document.addEventListener('animationend', (e) => {
+  const target = e.target as HTMLElement | null;
+  if (target?.classList.contains('tap-wiggle')) {
+    target.classList.remove('tap-wiggle');
+  }
+});
+</script>
+
 <style>
 .face-sticker {
   filter: drop-shadow(0 0 0 #fff8f6) drop-shadow(2px 0 0 #fff8f6) drop-shadow(-2px 0 0 #fff8f6)
@@ -60,6 +80,11 @@ const decorative = !alt;
 }
 .face-sticker.auto-wiggle {
   animation: wiggle-once 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--auto-wiggle-delay, 600ms) 1 both;
+}
+/* Replays on every tap via JS toggling the class, so the gesture is always
+   rewarded — primary "delight" hook on touch where :hover doesn't fire. */
+.face-sticker.tap-wiggle {
+  animation: wiggle-once 600ms cubic-bezier(0.22, 1, 0.36, 1) 0s 1 both;
 }
 @keyframes wiggle {
   0% {
@@ -96,7 +121,8 @@ const decorative = !alt;
 @media (prefers-reduced-motion: reduce) {
   .face-sticker,
   .face-sticker.wiggle:hover,
-  .face-sticker.auto-wiggle {
+  .face-sticker.auto-wiggle,
+  .face-sticker.tap-wiggle {
     transition: none;
     animation: none;
     transform: rotate(var(--rot));
