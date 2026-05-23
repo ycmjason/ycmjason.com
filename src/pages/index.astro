@@ -57,6 +57,9 @@ const socials = [
         </div>
       </div>
 
+      {/* Fires on every load on purpose. The wiggle is the site's "hello" —
+          it sets the playful tone the rest of the page leans on. Don't
+          throttle it per session; a static greeting is the wrong register. */}
       <FaceSticker
         mood="neutral"
         size={72}
