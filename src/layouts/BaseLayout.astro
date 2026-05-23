@@ -15,7 +15,7 @@ const {
   bare = false,
 } = Astro.props;
 
-const canonicalImage = new URL('/og.webp', Astro.site).toString();
+const canonicalImage = new URL('/og.jpg', Astro.site).toString();
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
@@ -39,7 +39,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <meta property="og:type" content="website">
     <meta property="og:url" content={canonicalUrl}>
     <meta property="og:image" content={canonicalImage}>
-    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1731">
     <meta property="og:image:height" content="909">
     <meta property="og:image:alt" content="A diary-page portrait of Jason Yu — Principal Frontend Engineer">
